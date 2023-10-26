@@ -3,9 +3,10 @@ import './App.css'
 
  const App:React.FC = ()=>{
  
-return (
+
+  return (
     <>
-      <h1>Pizzería Don Remolo</h1>
+      <h1>Pizzeria Don Remolo</h1>
     </>
   )
 }
