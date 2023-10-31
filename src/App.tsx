@@ -6,7 +6,7 @@ import './App.css'
 
   return (
     <>
-      <h1>Pizzeria Don Remolo</h1>
+      <h1>Pizzería Don Remolo</h1>
     </>
   )
 }
