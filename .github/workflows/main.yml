@@ -19,4 +19,4 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npm run start:cypress
-          wait-on: 'http://localhost:5173'
+          wait-on: 'http://localhost:3001'
