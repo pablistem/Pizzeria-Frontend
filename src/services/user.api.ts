@@ -1,15 +1,11 @@
-
 import { loginInterface } from "../types/types";
-import axios, {AxiosResponse} from "axios";
-
-
-
-const urlLogin = "http://localhost:9000/auth/login"
+import {AxiosResponse} from "axios";
+import axios from '../services/axios.api'
 
 const controller = new AbortController()
 
 const login = (data:loginInterface) => {
-    axios.post(urlLogin, data, { signal: controller.signal })
+    axios.post("/auth/login", data, { signal: controller.signal })
     .then((res: AxiosResponse<any>) => {
         console.log(res)
     }).catch((err) => {
@@ -17,7 +13,8 @@ const login = (data:loginInterface) => {
     })
 }
 
-
-
 export default login
+
+
+
 
