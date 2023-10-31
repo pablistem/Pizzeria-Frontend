@@ -6,13 +6,17 @@ on:
   pull_request:
     branches: ["*"]
   workflow_dispatch:
-  
-test:
+jobs:
+  test:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        with:
+          start: npm run start:cypress
+          wait-on: 'http://localhost:3001'
