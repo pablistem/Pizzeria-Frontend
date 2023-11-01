@@ -29,7 +29,7 @@ export const Login = () => {
                 <div className="text-center md:text-left flex justify-center ">
                     <button className="mt-4 bg-light-pink hover:bg-blue-700 px-8 py-2 text-text-paragraph font-semibold font-sans rounded-full text-xs tracking-wider " type="submit"> → Continuar sin cuenta*</button>
                 </div>
-                <div className=' linea text-input-grey'>
+                <div className=' line-break text-input-grey'>
                     <p className='text-xs'>Esta opción solo le permitira finalizar el pedido mediante</p>
                     <p className='text-xs text-left'>Whatsapp*</p>
                 </div>

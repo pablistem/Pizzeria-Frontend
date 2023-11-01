@@ -4,12 +4,9 @@
 
 @import 'tailwindcss/utilities';
 
-.linea{
+.line-break{
     white-space: pre-line;
     display: inline-block;
     align-items: flex-start;
     margin-top: 60px;
 }
-/* .ocultar-div{
-    display:none;
-} */
