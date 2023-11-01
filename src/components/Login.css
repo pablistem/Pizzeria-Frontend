@@ -1,0 +1,15 @@
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
+.linea{
+    white-space: pre-line;
+    display: inline-block;
+    align-items: flex-start;
+    margin-top: 60px;
+}
+/* .ocultar-div{
+    display:none;
+} */
