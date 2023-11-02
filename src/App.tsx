@@ -1,12 +1,11 @@
 import React from 'react'
 import './App.css'
 import { Login } from './components/Login'
-const App: React.FC = () => {
 
+ const App:React.FC = ()=>{
   return (
-    <>
-      <Login></Login>
-    </>
+   <Login></Login>
+
   )
 }
 
