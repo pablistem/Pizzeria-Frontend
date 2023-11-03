@@ -1,4 +1,4 @@
-export interface loginInterface {
-    email: string,
-    password: string
+export interface ILoginPayload {
+  email: string;
+  password: string;
 }
