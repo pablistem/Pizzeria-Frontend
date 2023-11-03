@@ -25,6 +25,7 @@ module.exports = {
         singleQuote: true
       }
     ],
+    quotes: ["error", "single"],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
