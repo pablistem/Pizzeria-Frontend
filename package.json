@@ -6,10 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
+    "format": "prettier --write \"src/**/*.(ts|tsx|js|jsx)\"",
     "preview": "vite preview",
+    "test": "start-server-and-test start:cypress http://localhost:3001 cypress:run",
     "start:cypress": "vite --port 3001",
-    "cypress:open": "cypress open"
+    "cypress:run": "cypress run",
+    "cypress:ui": "cypress open",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.(ts|tsx)": [
+      "npm run lint",
+      "npm run format"
+    ]
   },
   "dependencies": {
     "axios": "^1.5.1",
@@ -28,9 +38,16 @@
     "autoprefixer": "^10.4.16",
     "cypress": "^13.3.1",
     "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
     "postcss": "^8.4.31",
+    "prettier": "3.0.3",
+    "start-server-and-test": "^2.0.1",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
