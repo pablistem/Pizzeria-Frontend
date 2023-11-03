@@ -13,12 +13,7 @@ module.exports = {
       "error",
       {
         endOfLine: "auto",
-        trailingComma: 'all',
-        tabWidth: 2,
-        semi: true,
         singleQuote: true,
-        printWidth: 120,
-        bracketSpacing: true,
       },
     ],
     quotes: ['error', 'single'],
