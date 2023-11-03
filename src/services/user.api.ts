@@ -9,9 +9,7 @@ const login = async (payload: loginInterface): Promise<unknown> => {
     const res: AxiosResponse<unknown> = await Axios.post(
       "/auth/login",
       payload,
-      {
-        signal: controller.signal,
-      },
+      { signal: controller.signal },
     );
     return res;
   } catch (error: unknown) {

@@ -1,4 +1,9 @@
 module.exports = {
+  settings: {
+    "react": {
+      "version": "detect"
+    }
+  },
   root: true,
   env: { browser: true, es2020: true },
   extends: [
