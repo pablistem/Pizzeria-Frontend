@@ -1,13 +1,13 @@
-import { ILoginPayload } from "../types/types";
-import { AxiosResponse, AxiosError } from "axios";
-import Axios from "../services/axios.api";
+import { ILoginPayload } from '../types/types';
+import { AxiosResponse, AxiosError } from 'axios';
+import Axios from '../services/axios.api';
 
 const controller = new AbortController();
 
 const login = async (payload: ILoginPayload): Promise<unknown> => {
   try {
     const res: AxiosResponse<unknown> = await Axios.post(
-      "/auth/login",
+      '/auth/login',
       payload,
       {
         signal: controller.signal,
