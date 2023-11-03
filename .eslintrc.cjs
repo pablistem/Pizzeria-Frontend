@@ -17,6 +17,7 @@ module.exports = {
       "error",
       {
         endOfLine: "auto",
+        singleQuote: true
       }
     ],
     'react-refresh/only-export-components': [
