@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance } from 'axios';
 
 const Axios: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
