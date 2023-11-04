@@ -1,14 +1,18 @@
-import React from 'react'
-import './App.css'
+import React from 'react';
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Importa BrowserRouter, Routes y Route
 
- const App:React.FC = ()=>{
- 
-return (
-    <>
-      <h1>Pizzería Don Remolo</h1>
-      <p>hola</p>
-    </>
-  )
-}
+import Register from './pages/Register';
 
-export default App
+
+const App: React.FC = () => {
+  return (
+    <BrowserRouter>
+      <Routes> 
+        <Route path="/" element={<Register />} /> {/* Ruta para la página de registro */}        
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
