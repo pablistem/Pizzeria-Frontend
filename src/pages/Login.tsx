@@ -6,7 +6,7 @@ import icon from '../assets/icon_pizza_shop.jpg'
 export const Login = () => {
     return (
 
-        <div className='w-full overflow-hidden wrapper grid gap-8 justify-items-center items-center align-middle pt-14 pb-12 lg:grid-cols-2 m-0 max-sm:flex flex-col justify-center '>
+        <div className='w-full overflow-hidden wrapper grid gap-8 justify-items-center items-center align-middle pt-5 pb-12 lg:grid-cols-2 m-0 max-sm:flex flex-col justify-center '>
             <div className="w-56 md:w-72">
                 <img src={icon} alt="Pizzería Don Remolo Logo" className='rounded-xl' />
             </div>
