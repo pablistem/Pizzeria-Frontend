@@ -1,0 +1,16 @@
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
+.clase{
+    margin-left: 50px;
+}
+
+.textdiv-whatsapp{
+    width: 320px;
+}
+.text-whatsapp{
+  font-size: 0.75rem;  
+}

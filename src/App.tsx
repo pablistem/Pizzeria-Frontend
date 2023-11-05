@@ -1,13 +1,13 @@
 
 import React from 'react'
 import './App.css'
-import { Login } from './components/Login'
+import { Login } from './pages/Login'
 
- const App:React.FC = ()=>{
+const App: React.FC = () => {
   return (
-   <Login></Login>
 
+    <Login></Login>
   )
-  }
+}
 export default App;
 
