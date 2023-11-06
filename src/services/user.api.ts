@@ -4,7 +4,7 @@ import Axios from '../services/axios.api';
 
 const controller = new AbortController();
 
-const login = async (payload: ILoginPayload): Promise<unknown> => {
+export const login = async (payload: ILoginPayload): Promise<unknown> => {
   try {
     const res: AxiosResponse<unknown> = await Axios.post(
       '/auth/login',
@@ -21,7 +21,7 @@ const login = async (payload: ILoginPayload): Promise<unknown> => {
   }
 };
 
-const signup = async (payload: ISignUpPayload): Promise<unknown> => {
+export const signup = async (payload: ISignUpPayload): Promise<unknown> => {
   try {
     const res: AxiosResponse<unknown> = await Axios.post(
       '/auth/signup',
@@ -39,5 +39,3 @@ const signup = async (payload: ISignUpPayload): Promise<unknown> => {
 };
 
 
-
-export default {login, signup};
