@@ -11,10 +11,10 @@ export const LoginForm = () => {
 
                 <div className="">
                     <input
-                        id="nombre"
-                        name="Nombre"
+                        id="correo"
+                        name="correo"
                         type="Text"
-                        placeholder='Nombre'
+                        placeholder='Correo electrónico'
                         required
                         className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
                     />
@@ -23,10 +23,10 @@ export const LoginForm = () => {
 
                 <div className="">
                     <input
-                        id="apellido"
-                        name="Apellido"
+                        id="contrasenia"
+                        name="contrasenia"
                         type="Text"
-                        placeholder='Apellido'
+                        placeholder='Contraseña'
                         required
                         className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
                     />
