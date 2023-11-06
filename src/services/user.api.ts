@@ -1,4 +1,4 @@
-import { ILoginPayload } from '../types/types';
+import { ILoginPayload, ISignUpPayload } from '../types/types';
 import { AxiosResponse, AxiosError } from 'axios';
 import Axios from '../services/axios.api';
 
@@ -21,4 +21,23 @@ const login = async (payload: ILoginPayload): Promise<unknown> => {
   }
 };
 
-export default login;
+const signup = async (payload: ISignUpPayload): Promise<unknown> => {
+  try {
+    const res: AxiosResponse<unknown> = await Axios.post(
+      '/auth/signup',
+      payload,
+      {
+        signal: controller.signal,
+      },
+    );
+    return res.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw new Error(error.message);
+    }
+  }
+};
+
+
+
+export default {login, signup};
