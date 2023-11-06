@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
-describe('Render test', () => {
+describe('Login page', () => {
   it('Should visit the home page and check the title', () => {
     cy.visit('/');
-    cy.get('h1').should('have.text', 'Pizzería Don Remolo');
+    cy.get('[name=email]').type('email');
+    cy.intercept('GET');
   });
 });

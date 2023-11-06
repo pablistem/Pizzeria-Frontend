@@ -1,20 +1,19 @@
-
-import './LoginForm.css'
+import './LoginForm.css';
 export const LoginForm = () => {
-    return (
+return (
         <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
             <form className="space-y-6" action='#' method='POST'>
                 <div className='text-3xl max-sm:hidden max-lg:hidden lg:text-3xl'>
                     <p className=' justify-center'>Hace tu pedido</p>
                     <p className='justify-center'>en pocos minutos</p>
-                </div>
+        </div>
 
-                <div className="">
-                    <input
-                        id="correo"
-                        name="correo"
+        <div className="">
+            <input
+                id="email"
+                name="email"
                         type="Text"
-                        placeholder='Correo electrónico'
+                        placeholder='Email direction'
                         required
                         className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
                     />
@@ -23,10 +22,10 @@ export const LoginForm = () => {
 
                 <div className="">
                     <input
-                        id="contrasenia"
-                        name="contrasenia"
+                        id="password"
+                        name="password"
                         type="Text"
-                        placeholder='Contraseña'
+                        placeholder='Password'
                         required
                         className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
                     />
