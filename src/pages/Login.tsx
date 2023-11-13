@@ -1,5 +1,5 @@
-import { LoginForm } from '../components/LoginForm';
-import './Login.css';
+import { LoginForm } from '../components/LoginForm/LoginForm';
+
 import icon from '../assets/icon_pizza_shop.jpg';
 
 export const Login = () => {
@@ -8,7 +8,7 @@ export const Login = () => {
       <div className="w-56 md:w-72">
         <img src={icon} alt="Pizzería Don Remolo Logo" className="rounded-xl" />
       </div>
-      {/* <h1></h1> */}
+
       <div className="flex w-full min-h-full flex-col mb-50 justify-center px-6 py-12 lg:px-8 ">
         <LoginForm></LoginForm>
 
