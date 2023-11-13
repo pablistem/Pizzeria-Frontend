@@ -8,10 +8,9 @@ export const Login = () => {
       <div className="w-56 md:w-72">
         <img src={icon} alt="Pizzería Don Remolo Logo" className="rounded-xl" />
       </div>
-
       <div className="flex w-full min-h-full flex-col mb-50 justify-center px-6 py-12 lg:px-8 ">
-        <LoginForm></LoginForm>
-
+        <LoginForm />
+        <h1 className="text-white">Pizzería Don Remolo</h1>
         <div className="flex justify-center">
           <button
             type="submit"

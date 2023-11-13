@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <h1>Pizzería Don Remolo</h1>
       <Routes>
         <Route path="/" element={<Login />} />{' '}
       </Routes>
