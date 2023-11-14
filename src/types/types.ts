@@ -1,4 +1,4 @@
-import { SweetAlertIcon } from "sweetalert2";
+import { SweetAlertIcon,  SweetAlertPosition } from "sweetalert2";
 
 
 export interface ILoginPayload {
@@ -20,4 +20,6 @@ export interface IParamsAlert {
   btnCancel?: boolean; 
   icon: SweetAlertIcon; 
   toast?: boolean;
+  position?: SweetAlertPosition;
+  timer?: number;
 }
