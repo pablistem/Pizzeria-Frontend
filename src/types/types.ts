@@ -1,6 +1,3 @@
-import { SweetAlertIcon,  SweetAlertPosition } from "sweetalert2";
-
-
 export interface ILoginPayload {
   email: string;
   password: string;
@@ -13,13 +10,3 @@ export interface ISignUpPayload {
   password: string;
 }
 
-export interface IParamsAlert {
-  title: string;
-  message: string;
-  btnConfirm?: boolean; 
-  btnCancel?: boolean; 
-  icon: SweetAlertIcon; 
-  toast?: boolean;
-  position?: SweetAlertPosition;
-  timer?: number;
-}

@@ -1,16 +1,46 @@
 import Swal from "sweetalert2";
-import { IParamsAlert } from "../types/types";
 
 
-export const alertModule = ({title, message,  btnConfirm = true, btnCancel = false , icon, toast = false, position = 'center', timer = 1600}: IParamsAlert)=>{
-        Swal.fire({
-            title: title,
-            text: message,
-            icon: icon,
-            showCancelButton: btnCancel,
-            showConfirmButton: btnConfirm,
-            toast: toast,
-            position: position,
-            timer: timer
-        })
+export const successAlert = (title: string, message: string)=>{
+    Swal.fire(title, message, 'success')
+}
+
+export const errorAlert = (title: string, message: string)=>{
+    Swal.fire(title, message, 'error')
+}
+
+export const warningAlert = (title: string, message: string, callback: Function)=>{
+    Swal.fire({
+        title: title,
+        text: message,
+        showCancelButton: true,
+        showConfirmButton: true,
+        icon: 'question'
+    }).then(result => {
+        if(result.isConfirmed){
+            callback()
+        }
+    })
+}
+
+export const toastAlertSuccess = (title: string, message: string)=>{
+    Swal.fire({
+        title,
+        text: message,
+        icon: 'success',
+        toast: true,
+        timer: 1200,
+        position: 'center-right'
+    })
+}
+
+export const toastAlertError = (title: string, message: string)=>{
+    Swal.fire({
+        title,
+        text: message,
+        icon: 'error',
+        toast: true,
+        timer: 1200,
+        position: 'center-right'
+    })
 }
