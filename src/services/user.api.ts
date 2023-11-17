@@ -37,5 +37,3 @@ export const signup = async (payload: ISignUpPayload): Promise<unknown> => {
     }
   }
 };
-
-
