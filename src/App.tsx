@@ -4,12 +4,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Importa Brow
 
 import Register from './pages/Register';
 
-
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Routes> 
-        <Route path="/" element={<Register />} /> {/* Ruta para la página de registro */}        
+      <Routes>
+        <Route path="/" element={<Register />} />{' '}
+        {/* Ruta para la página de registro */}
       </Routes>
     </BrowserRouter>
   );
