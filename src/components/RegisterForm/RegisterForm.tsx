@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import SubmitButton from '../Buttons/SubmitButton';
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
 
