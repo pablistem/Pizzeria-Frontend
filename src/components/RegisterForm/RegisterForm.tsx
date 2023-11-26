@@ -1,5 +1,8 @@
+import { errorAlert, successAlert } from '../../services/alert';
+import { signup } from '../../services/user.api';
 import SubmitButton from '../Buttons/SubmitButton';
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
+import { useNavigate } from 'react-router-dom';
 
 interface FormValues {
   name: string;
@@ -10,6 +13,8 @@ interface FormValues {
 }
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+
   const validateForm = (values: FormValues) => {
     const errors: Partial<FormValues> = {};
 
@@ -40,8 +45,27 @@ const RegisterForm = () => {
     return errors;
   };
 
-  const onSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
-    console.log(values);
+  const onSubmit = async (
+    values: FormValues,
+    actions: FormikHelpers<FormValues>,
+  ) => {
+    const payloadRegister = {
+      name: values.name,
+      lastName: values.lastName,
+      email: values.email,
+      password: values.password,
+    };
+
+    try {
+      const response = await signup(payloadRegister);
+      console.log(response);
+      successAlert('Success', 'User registered successfully');
+      navigate('/login');
+    } catch (err) {
+      const error = err;
+      errorAlert('Error', JSON.stringify(error));
+    }
+
     actions.setSubmitting(false);
   };
 
