@@ -63,7 +63,7 @@ const RegisterForm = () => {
     try {
       const response = await signup(payloadRegister);
       console.log(response);
-      successAlert('Success', 'User registered successfully');
+      successAlert('Success', 'Usuario Registrado Exitosamente');
       navigate('/login');
     } catch (err) {
       if (err instanceof AxiosError) {
