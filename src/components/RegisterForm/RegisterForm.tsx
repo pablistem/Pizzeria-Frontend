@@ -7,6 +7,7 @@ import RegisterInput from './RegisterInput';
 import { INPUTS_SIGNUP } from '../const/inputs.auth';
 import { AxiosError } from 'axios';
 
+// interface values form
 interface FormValues {
   name: string;
   lastName: string;
