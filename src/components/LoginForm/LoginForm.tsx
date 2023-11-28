@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const LoginForm = () => {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -40,12 +42,12 @@ export const LoginForm = () => {
 
         <div className=" font-semibold text-sm text-slate-500 text-center md:text-left flex justify-center text-logo-orange mt-9">
           No tienes una cuenta?{' '}
-          <a
+          <Link
             className="text-logo-orange hover:underline hover:underline-offset-4"
-            href="#"
+            to="/"
           >
             Registrate
-          </a>
+          </Link>
         </div>
       </form>
     </div>

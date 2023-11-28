@@ -1,8 +1,11 @@
 import { errorAlert, successAlert } from '../../services/alert';
 import { signup } from '../../services/user.api';
 import SubmitButton from '../Buttons/SubmitButton';
-import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
+import { Formik, Form, ErrorMessage, FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import RegisterInput from './RegisterInput';
+import { INPUTS_SIGNUP } from '../const/inputs.auth';
+import { AxiosError } from 'axios';
 
 interface FormValues {
   name: string;
@@ -62,8 +65,18 @@ const RegisterForm = () => {
       successAlert('Success', 'User registered successfully');
       navigate('/login');
     } catch (err) {
-      const error = err;
-      errorAlert('Error', JSON.stringify(error));
+      if (err instanceof AxiosError) {
+        if (err.response?.data.statusCode === 409) {
+          errorAlert(
+            'Error',
+            'Este usuario ya ha sido registrado. Por favor cree un nuevo usuario',
+          );
+        } else {
+          errorAlert('Error', err.message);
+        }
+      }
+
+      console.log(err);
     }
 
     actions.setSubmitting(false);
@@ -82,17 +95,15 @@ const RegisterForm = () => {
         validate={validateForm}
         onSubmit={onSubmit}
       >
-        <Form className="space-y-6" action="#" method="POST">
+        <Form
+          className="space-y-6"
+          action="#"
+          method="POST"
+          data-cy="form-register"
+        >
           <div>
             <div>
-              <Field
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Nombre"
-                autoComplete="given-name"
-                className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
-              />
+              <RegisterInput {...INPUTS_SIGNUP.name} />
               <ErrorMessage
                 name="name"
                 component="div"
@@ -102,15 +113,7 @@ const RegisterForm = () => {
           </div>
           <div>
             <div>
-              <Field
-                id="lastName"
-                name="lastName"
-                type="Text"
-                placeholder="Apellido"
-                required
-                autoComplete="family-name"
-                className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
-              />
+              <RegisterInput {...INPUTS_SIGNUP.lastName} />
               <ErrorMessage
                 name="lastName"
                 component="div"
@@ -120,15 +123,7 @@ const RegisterForm = () => {
           </div>
           <div>
             <div>
-              <Field
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Correo electrónico"
-                required
-                autoComplete="email"
-                className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
-              />
+              <RegisterInput {...INPUTS_SIGNUP.email} />
               <ErrorMessage
                 name="email"
                 component="div"
@@ -138,14 +133,7 @@ const RegisterForm = () => {
           </div>
           <div>
             <div>
-              <Field
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Contraseña"
-                required
-                className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
-              />
+              <RegisterInput {...INPUTS_SIGNUP.password} />
               <ErrorMessage
                 name="password"
                 component="div"
@@ -155,14 +143,7 @@ const RegisterForm = () => {
           </div>
           <div>
             <div>
-              <Field
-                id="password2"
-                name="password2"
-                type="password"
-                placeholder="Repetir Contraseña"
-                required
-                className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
-              />
+              <RegisterInput {...INPUTS_SIGNUP.password2} />
               <ErrorMessage
                 name="password2"
                 component="div"
