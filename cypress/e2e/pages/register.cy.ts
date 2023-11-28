@@ -20,7 +20,7 @@ const userAlreadyRegistered = {
 
 describe('register page', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5173/');
+    cy.visit('/');
   });
 
   it('should to register a new user', () => {
