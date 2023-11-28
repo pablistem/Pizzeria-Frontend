@@ -30,9 +30,9 @@ describe('register page', () => {
     cy.get('#password').type(validUser.password);
     cy.get('#password2').type(validUser.password2);
 
-    cy.get('[data-cy = "form-register"]').submit();
-
+    
     cy.intercept('POST', '/auth/signup').as('signupUser');
+    cy.get('[data-cy = "form-register"]').submit();
     cy.wait('@signupUser').then((interception) => {
       expect(interception?.response?.statusCode).to.equal(201);
     });
