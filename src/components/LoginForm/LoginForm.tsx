@@ -1,3 +1,4 @@
+import SubmitButton from '../Buttons/SubmitButton';
 export const LoginForm = () => {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -28,16 +29,9 @@ export const LoginForm = () => {
             className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
           />
         </div>
-
         <div className="flex justify-center">
-          <button
-            type="submit"
-            className="flex w-32 justify-center rounded-full bg-logo-orange px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Iniciar sesión
-          </button>
+          <SubmitButton buttonText={'Iniciar sesion'} />
         </div>
-
         <div className=" font-semibold text-sm text-slate-500 text-center md:text-left flex justify-center text-logo-orange mt-9">
           No tienes una cuenta?{' '}
           <a

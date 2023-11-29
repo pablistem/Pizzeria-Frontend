@@ -1,139 +1,56 @@
+// import { Hamburguermenu } from '../Menu/Menu';
+//import iconMenu from '../../assets/icon-hamburger.svg';
+import iconCart from '../../assets/cart_icon.svg';
+
 export const Sidebar = () => {
   return (
-    <div>
-      <nav className="bg-bubble-gum p-4 flex items-center justify-between">
-        <div>
-          <h1 className="text-white text-xl font-semibold"></h1>
+    <header>
+      <nav className="h-20 w-[100%] mx-auto overflow-hidden flex items-center justify-between bg-bubble-gum">
+        {/* <div className="w-6 max-w-[1.5rem]">
+          <img src={iconMenu} alt="Menu icon" className="w-full" />
+        </div> */}
+
+        <input
+          type="checkbox"
+          name="checkbox"
+          id="menu"
+          className="peer hidden "
+        />
+        <label
+          htmlFor="menu"
+          className="bg-open-menu w-6 h-5 bg-cover bg-center cursor-pointer peer-checked:bg-close-menu transition-all z-50 max-w-screen-lg: ml-10"
+        ></label>
+        <h1>Pizzeria Don Remolo</h1>
+        <div className="fixed inset-0 bg-bubble-gum w-1/3 h-96 -translate-x-full peer-checked:translate-x-0 transition-transform">
+          <ul className="absolute inset-x-0 top-24 w-[90%] mx-auto h-max grid gap-6 font-bold">
+            <li>
+              <a href="#">Mi perfil</a>
+            </li>
+            <li>
+              <a href="#">Mis pedidos</a>
+            </li>
+            <li>
+              <a href="#">Descuentos</a>
+            </li>
+            <li>
+              <a href="#">Cupones</a>
+            </li>
+          </ul>
         </div>
-        <div className="flex items-center space-x-4">
-          <span className="text-white">Bienvenido</span>
-          <i className="fas fa-user-circle text-white text-2xl"></i>
+        <div className="w-6 max-w-[1.5rem] max-w-screen-lg: mr-10">
+          <a href="#">
+            <img src={iconCart} alt="Menu icon" className="w-full" />
+          </a>
         </div>
       </nav>
-      <div className="grid grid-cols-3">
-        <aside className="bg-bubble-gum text-white w-64 min-h-screen p-4">
-          <nav>
-            <ul className="space-y-2">
-              <li className="opcion-con-desplegable">
-                <div className="flex items-center justify-between p-2 hover:bg-gray-700">
-                  <div className="flex items-center">
-                    <i className="fas fa-calendar-alt mr-2"></i>
-                    <span></span>
-                  </div>
-                  <i className="fas fa-chevron-down text-xs"></i>
-                </div>
-                <ul className="desplegable ml-4 hidden">
-                  <li>
-                    <a
-                      href="#"
-                      className="block p-2 hover:bg-gray-700 items-center"
-                    >
-                      <i className="fas fa-chevron-right mr-2 text-xs"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block p-2 hover:bg-gray-700 items-center"
-                    >
-                      <i className="fas fa-chevron-right mr-2 text-xs"></i>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li className="opcion-con-desplegable">
-                <div className="flex items-center justify-between p-2 hover:bg-gray-700">
-                  <div className="flex items-center">
-                    <i className="fas fa-money-bill-wave mr-2"></i>
-                  </div>
-                  <i className="fas fa-chevron-down text-xs"></i>
-                </div>
-                <ul className="desplegable ml-4 hidden">
-                  <li>
-                    <a
-                      href="#"
-                      className="block p-2 hover:bg-gray-700 items-center"
-                    >
-                      <i className="fas fa-chevron-right mr-2 text-xs"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block p-2 hover:bg-gray-700 items-center"
-                    >
-                      <i className="fas fa-chevron-right mr-2 text-xs"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block p-2 hover:bg-gray-700 items-center"
-                    >
-                      <i className="fas fa-chevron-right mr-2 text-xs"></i>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li className="opcion-con-desplegable">
-                <div className="flex items-center justify-between p-2 hover:bg-gray-700">
-                  <div className="flex items-center">
-                    <i className="fas fa-chart-bar mr-2"></i>
-                    <span></span>
-                  </div>
-                  <i className="fas fa-chevron-down text-xs"></i>
-                </div>
-                <ul className="desplegable ml-4 hidden">
-                  <li>
-                    <a
-                      href="#"
-                      className="block p-2 hover:bg-gray-700 items-center"
-                    >
-                      <i className="fas fa-chevron-right mr-2 text-xs"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block p-2 hover:bg-gray-700 items-center"
-                    >
-                      <i className="fas fa-chevron-right mr-2 text-xs"></i>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li className="opcion-con-desplegable">
-                <div className="flex items-center justify-between p-2 hover:bg-gray-700">
-                  <div className="flex items-center">
-                    <i className="fas fa-file-alt mr-2"></i>
-                  </div>
-                  <i className="fas fa-chevron-down text-xs"></i>
-                </div>
-                <ul className="desplegable ml-4 hidden">
-                  <li>
-                    <a
-                      href="#"
-                      className="block p-2 hover:bg-gray-700 items-center"
-                    >
-                      <i className="fas fa-chevron-right mr-2 text-xs"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block p-2 hover:bg-gray-700 items-center"
-                    >
-                      <i className="fas fa-chevron-right mr-2 text-xs"></i>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-        </aside>
-        <p>columna 2</p>
-        <p>columna 3</p>
-      </div>
-    </div>
+    </header>
+    // <div>
+    //   <h1 className="text-3xl bg-bubble-gum">Hola mundo</h1>
+    // </div>
   );
 };
+{
+  /* <div className="w-full h-screen bg-bubble-gum mx-auto flex">
+<h1 className="text-3xl">Hola mundo</h1>
+</div> */
+}
