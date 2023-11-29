@@ -35,3 +35,18 @@ export const INPUTS_SIGNUP = {
     placeholder: 'Repetir Contraseña',
   },
 };
+
+export const INPUTS_LOGIN = {
+  email: {
+    id: 'email',
+    name: 'email',
+    type: 'Text',
+    placeholder: 'Email direction',
+  },
+  password: {
+    id: "password",
+    name: "password",
+    type: "password",
+    placeholder:"Password"
+  }
+};
