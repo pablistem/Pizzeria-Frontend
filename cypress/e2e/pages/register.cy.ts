@@ -20,7 +20,7 @@ const userAlreadyRegistered = {
 
 describe('register page', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('/register');
   });
 
   it('should to register a new user', () => {
@@ -30,7 +30,7 @@ describe('register page', () => {
     cy.get('#password').type(validUser.password);
     cy.get('#password2').type(validUser.password2);
 
-    cy.intercept('POST', '/auth/signup', {statusCode: 201}).as('signupUser');
+    cy.intercept('POST', '/auth/signup', { statusCode: 201 }).as('signupUser');
     cy.get('[data-cy = "form-register"]').submit();
     cy.wait('@signupUser').then((interception) => {
       expect(interception?.response?.statusCode).to.equal(201);

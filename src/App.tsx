@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Importa Brow
 
 import Register from './pages/Register';
 
-import { Login } from './pages/Login';
+import Login from './pages/Login';
 import HomeTest from './pages/HomeTest';
 
 const App: React.FC = () => {

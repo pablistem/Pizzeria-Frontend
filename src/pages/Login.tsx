@@ -2,7 +2,7 @@ import { LoginForm } from '../components/LoginForm/LoginForm';
 
 import icon from '../assets/icon_pizza_shop.jpg';
 
-export const Login = () => {
+const Login = () => {
   return (
     <div className="w-full overflow-hidden wrapper grid gap-8 justify-items-center items-center align-middle pt-5 pb-12 lg:grid-cols-2 max-sm:flex flex-col justify-center ">
       <div className="w-56 md:w-72">
@@ -28,3 +28,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;
