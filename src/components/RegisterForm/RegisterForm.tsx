@@ -63,7 +63,7 @@ const RegisterForm = () => {
           className="space-y-6"
           action="#"
           method="POST"
-          data-cy="error-validate"
+          data-cy="form-register"
         >
           <div>
             <div>
