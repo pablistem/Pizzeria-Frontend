@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom';
-import LoginInputs from './LoginInputs';
 import { INPUTS_LOGIN } from '../const/inputs.auth';
 import { login } from '../../services/user.api';
 import { errorAlert, toastAlertSuccess } from '../../services/alert';
@@ -7,6 +6,8 @@ import { ErrorMessage, Formik, Form } from 'formik';
 import { ILoginPayload } from '../../types/types';
 import { loginSchema } from '../../schemas/validates.schema';
 import './Login.css';
+import { AxiosError } from 'axios';
+import InputForm from '../InputForm/InputForm';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
@@ -22,8 +23,10 @@ export const LoginForm = () => {
       console.log(response);
       toastAlertSuccess('Logeado satisfactoriamente');
       navigate('/', { replace: true });
-    } catch (error) {
-      errorAlert('Error', 'Campos Incorrectos');
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        errorAlert('Error', error.response?.data.message);
+      }
     }
   };
 
@@ -44,7 +47,7 @@ export const LoginForm = () => {
           </div>
 
           <div className="">
-            <LoginInputs {...INPUTS_LOGIN.email} />
+            <InputForm {...INPUTS_LOGIN.email} />
             <ErrorMessage
               name="email"
               component="div"
@@ -53,7 +56,7 @@ export const LoginForm = () => {
           </div>
 
           <div className="">
-            <LoginInputs {...INPUTS_LOGIN.password} />
+            <InputForm {...INPUTS_LOGIN.password} />
             <ErrorMessage
               name="password"
               component="div"

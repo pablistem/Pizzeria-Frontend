@@ -10,13 +10,6 @@ export interface ISignUpPayload {
   password: string;
 }
 
-export interface IAttributesInput {
-  id: React.HTMLInputTypeAttribute;
-  name: React.HTMLInputTypeAttribute;
-  type: React.HTMLInputTypeAttribute;
-  placeholder: React.HTMLInputTypeAttribute;
-}
-
 export interface IFormValues {
   name: string;
   lastName: string;

@@ -2,8 +2,10 @@ import { object, string, ObjectSchema } from 'yup';
 import { ILoginPayload } from '../types/types';
 
 export const loginSchema: ObjectSchema<ILoginPayload> = object({
-  email: string().required('Este campo es requerido').email('Email inválido'),
-  password: string().required('Este campo es requerido'),
+  email: string()
+    .required('Tenés que ingresar el email')
+    .email('Email inválido'),
+  password: string().required('Tenés que ingresar la contraseña'),
 });
 
 export const registerSchema = object().shape({

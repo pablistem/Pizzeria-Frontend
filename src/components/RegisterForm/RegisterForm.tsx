@@ -3,11 +3,11 @@ import { signup } from '../../services/user.api';
 import SubmitButton from '../Buttons/SubmitButton';
 import { Formik, Form, ErrorMessage, FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import RegisterInput from './RegisterInput';
 import { INPUTS_SIGNUP } from '../const/inputs.auth';
 import { AxiosError } from 'axios';
 import { IFormValues } from '../../types/types';
 import { registerSchema } from '../../schemas/validates.schema';
+import InputForm from '../InputForm/InputForm';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -63,55 +63,55 @@ const RegisterForm = () => {
           className="space-y-6"
           action="#"
           method="POST"
-          data-cy="form-register"
+          data-cy="error-validate"
         >
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.name} />
+              <InputForm {...INPUTS_SIGNUP.name} />
               <ErrorMessage
                 name="name"
                 component="div"
-                className="text-red-500"
+                className="error-validate"
               />
             </div>
           </div>
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.lastName} />
+              <InputForm {...INPUTS_SIGNUP.lastName} />
               <ErrorMessage
                 name="lastName"
                 component="div"
-                className="text-red-500"
+                className="error-validate"
               />
             </div>
           </div>
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.email} />
+              <InputForm {...INPUTS_SIGNUP.email} />
               <ErrorMessage
                 name="email"
                 component="div"
-                className="text-red-500"
+                className="error-validate"
               />
             </div>
           </div>
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.password} />
+              <InputForm {...INPUTS_SIGNUP.password} />
               <ErrorMessage
                 name="password"
                 component="div"
-                className="text-red-500"
+                className="error-validate"
               />
             </div>
           </div>
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.password2} />
+              <InputForm {...INPUTS_SIGNUP.password2} />
               <ErrorMessage
                 name="password2"
                 component="div"
-                className="text-red-500"
+                className="error-validate"
               />
             </div>
           </div>

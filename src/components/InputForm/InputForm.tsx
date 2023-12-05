@@ -1,7 +1,6 @@
 import { Field } from 'formik';
-import { IAttributesInput } from '../../types/types';
 
-const LoginInputs = ({ ...props }: IAttributesInput) => {
+const InputForm = ({ ...props }) => {
   return (
     <Field
       {...props}
@@ -11,4 +10,4 @@ const LoginInputs = ({ ...props }: IAttributesInput) => {
   );
 };
 
-export default LoginInputs;
+export default InputForm;
