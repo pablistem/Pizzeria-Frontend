@@ -26,9 +26,7 @@ describe('Login page', () => {
     cy.wait('@loginUser').then((interception) => {
       expect(interception?.response?.statusCode).to.equal(401);
     });
-    cy.contains(
-      'Error: Please ensure all registration fields are filled correctly.',
-    ).should('exist');
+    cy.contains('email y/o contraseña incorrectos').should('exist');
   });
   it('should show validate errors', () => {
     cy.get('#email').focus();

@@ -6,7 +6,6 @@ import { ErrorMessage, Formik, Form } from 'formik';
 import { ILoginPayload } from '../../types/types';
 import { loginSchema } from '../../schemas/validates.schema';
 import './Login.css';
-import { AxiosError } from 'axios';
 import InputForm from '../InputForm/InputForm';
 
 export const LoginForm = () => {
@@ -23,10 +22,8 @@ export const LoginForm = () => {
       console.log(response);
       toastAlertSuccess('Logeado satisfactoriamente');
       navigate('/', { replace: true });
-    } catch (error: unknown) {
-      if (error instanceof AxiosError) {
-        errorAlert('Error', error.response?.data.message);
-      }
+    } catch (error) {
+      errorAlert('Error', 'email y/o contraseña incorrectos');
     }
   };
 
