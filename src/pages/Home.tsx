@@ -4,7 +4,7 @@ import almendrado from '../assets/Food/almendrado.jpg';
 import empanada_atun from '../assets/Food/empanada_atun.jpg';
 import gaseosa from '../assets/Food/gaseosa.jpg';
 import jamonymorron from '../assets/Food/jamonymorron.jpg';
-export const Homeside = () => {
+export const Home = () => {
   return (
     <div className="mb-[calc(1.25rem * var(--tw-space-y-reverse))]">
       <Navbar />
