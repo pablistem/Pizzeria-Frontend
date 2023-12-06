@@ -11,8 +11,8 @@ export default {
       'bubble-gum': '#FDEEEB',
     },
     backgroundImage: {
-      'close-menu': 'url("../src/assets/icon-hamburger.svg")',
-      'open-menu': 'url("../src/assets/icon-hamburger.svg")',
+      'close-menu': 'url("../src/assets/Home images/icon-hamburger.svg")',
+      'open-menu': 'url("../src/assets/Home images/icon-hamburger.svg")',
     },
   },
   plugins: [],
