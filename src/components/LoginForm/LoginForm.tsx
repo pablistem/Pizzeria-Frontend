@@ -47,8 +47,7 @@ export const LoginForm = () => {
             <InputForm {...INPUTS_LOGIN.email} />
             <ErrorMessage
               name="email"
-              component="div"
-              className="error-validate"
+              render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
             />
           </div>
 
@@ -56,8 +55,7 @@ export const LoginForm = () => {
             <InputForm {...INPUTS_LOGIN.password} />
             <ErrorMessage
               name="password"
-              component="div"
-              className="error-validate"
+              render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
             />
           </div>
 

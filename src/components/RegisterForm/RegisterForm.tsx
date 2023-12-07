@@ -54,7 +54,7 @@ const RegisterForm = () => {
           lastName: '',
           email: '',
           password: '',
-          password2: '',
+          ppasswordConfirm: '',
         }}
         validationSchema={registerSchema}
         onSubmit={onSubmit}
@@ -70,8 +70,7 @@ const RegisterForm = () => {
               <InputForm {...INPUTS_SIGNUP.name} />
               <ErrorMessage
                 name="name"
-                component="div"
-                className="error-validate"
+                render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
               />
             </div>
           </div>
@@ -80,8 +79,7 @@ const RegisterForm = () => {
               <InputForm {...INPUTS_SIGNUP.lastName} />
               <ErrorMessage
                 name="lastName"
-                component="div"
-                className="error-validate"
+                render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
               />
             </div>
           </div>
