@@ -9,6 +9,7 @@ export default {
       'light-pink': '#F4AB9D',
       'input-grey': '#17171750',
       'text-paragraph': '#000000',
+      'red-error': '#ae3232'
     },
   },
   plugins: [],

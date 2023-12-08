@@ -20,17 +20,17 @@ const userAlreadyRegistered = {
 
 describe('register page', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('/register');
   });
 
-  it('should to register a new user', () => {
+  it('Should register a new user', () => {
     cy.get('#name').type(validUser.name);
     cy.get('#lastName').type(validUser.lastName);
     cy.get('#email').type(validUser.email);
     cy.get('#password').type(validUser.password);
     cy.get('#password2').type(validUser.password2);
 
-    cy.intercept('POST', '/auth/signup', {statusCode: 201}).as('signupUser');
+    cy.intercept('POST', '/auth/signup', { statusCode: 201 }).as('signupUser');
     cy.get('[data-cy = "form-register"]').submit();
     cy.wait('@signupUser').then((interception) => {
       expect(interception?.response?.statusCode).to.equal(201);
@@ -49,6 +49,7 @@ describe('register page', () => {
 
     cy.intercept('POST', '/auth/signup', { statusCode: 409 }).as('signupUser');
     cy.get('[data-cy = "form-register"]').submit();
+    cy.contains('Request failed with status code 409').should('exist');
     cy.wait('@signupUser').then((interception) => {
       expect(interception?.response?.statusCode).to.equal(409);
     });
@@ -57,7 +58,10 @@ describe('register page', () => {
   it('should to show a validation error', () => {
     cy.get('#name').focus();
     cy.get('#lastName').focus();
-    cy.get('#lastName').blur();
+    cy.get('#email').focus();
+    cy.get('#password').focus();
+    cy.get('#password2').focus();
+    cy.get('#password2').blur();
     cy.contains('El nombre es obligatorio').should('exist');
     cy.contains('El apellido es obligatorio').should('exist');
   });

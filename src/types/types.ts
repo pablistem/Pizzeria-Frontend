@@ -9,3 +9,11 @@ export interface ISignUpPayload {
   email: string;
   password: string;
 }
+
+export interface IFormValues {
+  name: string;
+  lastName: string;
+  email: string;
+  password: string;
+  ppasswordConfirm: string;
+}

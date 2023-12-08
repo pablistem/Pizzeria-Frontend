@@ -27,9 +27,8 @@ export const warningAlert = (
   });
 };
 
-export const toastAlertSuccess = (title: string, message: string) => {
+export const toastAlertSuccess = (message: string) => {
   Swal.fire({
-    title,
     text: message,
     icon: 'success',
     toast: true,
