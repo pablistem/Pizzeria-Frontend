@@ -5,7 +5,7 @@ import { Home } from './pages/Home';
 
 import Register from './pages/Register';
 
-import { Login } from './pages/Login';
+import Login from './pages/Login';
 
 const App: React.FC = () => {
   return (
@@ -13,7 +13,6 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/Home" element={<Home />} />{' '}
         <Route path="/Register" element={<Register />} />{' '}
-        {/* Ruta para la página de registro */}
         <Route path="/" element={<Login />} />{' '}
       </Routes>
     </BrowserRouter>

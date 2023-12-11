@@ -3,55 +3,18 @@ import { signup } from '../../services/user.api';
 import SubmitButton from '../Buttons/SubmitButton';
 import { Formik, Form, ErrorMessage, FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import RegisterInput from './RegisterInput';
 import { INPUTS_SIGNUP } from '../const/inputs.auth';
 import { AxiosError } from 'axios';
-
-// interface values form
-interface FormValues {
-  name: string;
-  lastName: string;
-  email: string;
-  password: string;
-  password2: string;
-}
+import { IFormValues } from '../../types/types';
+import { registerSchema } from '../../schemas/validates.schema';
+import InputForm from '../InputForm/InputForm';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
 
-  const validateForm = (values: FormValues) => {
-    const errors: Partial<FormValues> = {};
-
-    if (!values.name) {
-      errors.name = 'El nombre es obligatorio';
-    }
-
-    if (!values.lastName) {
-      errors.lastName = 'El apellido es obligatorio';
-    }
-
-    if (!values.email) {
-      errors.email = 'El correo electrónico es obligatorio';
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = 'Correo electrónico no válido';
-    }
-
-    if (!values.password) {
-      errors.password = 'La contraseña es obligatoria';
-    }
-
-    if (values.password !== values.password2) {
-      errors.password2 = 'Las contraseñas deben coincidir';
-    }
-
-    return errors;
-  };
-
   const onSubmit = async (
-    values: FormValues,
-    actions: FormikHelpers<FormValues>,
+    values: IFormValues,
+    actions: FormikHelpers<IFormValues>,
   ) => {
     const payloadRegister = {
       name: values.name,
@@ -91,9 +54,9 @@ const RegisterForm = () => {
           lastName: '',
           email: '',
           password: '',
-          password2: '',
+          ppasswordConfirm: '',
         }}
-        validate={validateForm}
+        validationSchema={registerSchema}
         onSubmit={onSubmit}
       >
         <Form
@@ -104,51 +67,49 @@ const RegisterForm = () => {
         >
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.name} />
+              <InputForm {...INPUTS_SIGNUP.name} />
               <ErrorMessage
                 name="name"
-                component="div"
-                className="text-red-500"
+                render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
               />
             </div>
           </div>
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.lastName} />
+              <InputForm {...INPUTS_SIGNUP.lastName} />
               <ErrorMessage
                 name="lastName"
-                component="div"
-                className="text-red-500"
+                render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
               />
             </div>
           </div>
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.email} />
+              <InputForm {...INPUTS_SIGNUP.email} />
               <ErrorMessage
                 name="email"
                 component="div"
-                className="text-red-500"
+                className="error-validate"
               />
             </div>
           </div>
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.password} />
+              <InputForm {...INPUTS_SIGNUP.password} />
               <ErrorMessage
                 name="password"
                 component="div"
-                className="text-red-500"
+                className="error-validate"
               />
             </div>
           </div>
           <div>
             <div>
-              <RegisterInput {...INPUTS_SIGNUP.password2} />
+              <InputForm {...INPUTS_SIGNUP.password2} />
               <ErrorMessage
                 name="password2"
                 component="div"
-                className="text-red-500"
+                className="error-validate"
               />
             </div>
           </div>

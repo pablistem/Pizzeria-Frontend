@@ -9,10 +9,11 @@ export default {
       'input-grey': '#17171750',
       'text-paragraph': '#000000',
       'bubble-gum': '#FDEEEB',
+      'red-error': '#ae3232',
     },
     backgroundImage: {
-      'close-menu': 'url("../src/assets/Home images/icon-hamburger.svg")',
-      'open-menu': 'url("../src/assets/Home images/icon-hamburger.svg")',
+      'close-menu': 'url("../src/assets/Navbar icons/icon-hamburger.svg")',
+      'open-menu': 'url("../src/assets/Navbar icons/icon-hamburger.svg")',
     },
   },
   plugins: [],

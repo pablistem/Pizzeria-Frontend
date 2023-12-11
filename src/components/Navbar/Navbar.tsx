@@ -1,4 +1,4 @@
-import iconCart from '../../assets/Home images/cart_icon.svg';
+import iconCart from '../../assets/Navbar icons/cart_icon.svg';
 import { Menu } from '../Menu/Menu';
 export const Navbar = () => {
   return (
