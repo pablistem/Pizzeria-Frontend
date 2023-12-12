@@ -2,7 +2,7 @@
 
 describe('Login page', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('/login');
   });
 
   it('Should log in correctly', () => {
