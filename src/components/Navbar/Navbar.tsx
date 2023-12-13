@@ -13,6 +13,7 @@ export const Navbar = () => {
 
         <label
           htmlFor="menu"
+          id="label-menu"
           className="bg-open-menu w-6 h-5 bg-cover bg-center cursor-pointer peer-checked:bg-close-menu transition-all delay-300 z-50 max-w-screen-lg: ml-10"
         ></label>
         <h1>Pizzeria Don Remolo</h1>
