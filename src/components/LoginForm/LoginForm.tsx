@@ -1,4 +1,3 @@
-import SubmitButton from '../Buttons/SubmitButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { INPUTS_LOGIN } from '../const/inputs.auth';
 import { login } from '../../services/user.api';
@@ -50,28 +49,6 @@ export const LoginForm = () => {
               name="email"
               render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
             />
-          </div>
-          <div className="">
-            <input
-              id="password"
-              name="password"
-              type="Text"
-              placeholder="Password"
-              required
-              className="block w-full rounded-xl border-1 py-3 text-gray-900 shadow-md ring-1 p-3 ring-inset ring-input-grey placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
-            />
-          </div>
-          <div className="flex justify-center">
-            <SubmitButton buttonText={'Iniciar sesion'} />
-          </div>
-          <div className=" font-semibold text-sm text-slate-500 text-center md:text-left flex justify-center text-logo-orange mt-9">
-            No tienes una cuenta?{' '}
-            <Link
-              className="text-logo-orange hover:underline hover:underline-offset-4"
-              to="/"
-            >
-              Registrate
-            </Link>
           </div>
           <div className="">
             <InputForm {...INPUTS_LOGIN.password} />
