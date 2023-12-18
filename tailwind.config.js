@@ -2,7 +2,12 @@
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateRows: {
+        // Simple 8 row grid
+        8: 'repeat(8, minmax(0, 1fr))',
+      },
+    },
     colors: {
       'logo-orange': '#E9573A',
       'light-pink': '#F4AB9D',
