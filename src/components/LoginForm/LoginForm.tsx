@@ -50,7 +50,6 @@ export const LoginForm = () => {
               render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
             />
           </div>
-
           <div className="">
             <InputForm {...INPUTS_LOGIN.password} />
             <ErrorMessage
