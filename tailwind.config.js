@@ -6,6 +6,9 @@ export default {
       gridTemplateRows: {
         8: 'repeat(8, minmax(0, 1fr))',
       },
+      gridRow: {
+        'span-1': 'span 1 / span 1',
+      },
     },
     colors: {
       'logo-orange': '#E9573A',
