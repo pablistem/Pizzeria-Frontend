@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {
       gridTemplateRows: {
-        // Simple 8 row grid
         8: 'repeat(8, minmax(0, 1fr))',
       },
     },
@@ -15,6 +14,7 @@ export default {
       'text-paragraph': '#000000',
       'bubble-gum': '#FDEEEB',
       'red-error': '#ae3232',
+      'bg-card': '#FFFFFF',
     },
     backgroundImage: {
       'close-menu': 'url("../src/assets/Navbar icons/icon-hamburger.svg")',

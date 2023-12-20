@@ -3,7 +3,7 @@ import { Menu } from '../Menu/Menu';
 export const Navbar = () => {
   return (
     <header>
-      <nav className="fixed top-0 h-16 w-[100%] mx-auto overflow-hidden flex items-center justify-between bg-bubble-gum">
+      <nav className="fixed top-0 h-16 w-[100%] mx-auto overflow-hidden flex items-center justify-between bg-light-pink">
         <input
           type="checkbox"
           name="checkbox"

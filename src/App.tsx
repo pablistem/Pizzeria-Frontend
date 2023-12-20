@@ -12,8 +12,8 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/Home" element={<Home />} />{' '}
-        <Route path="/Register" element={<Register />} />{' '}
+        <Route path="/" element={<Home />} />{' '}
+        <Route path="/register" element={<Register />} />{' '}
         <Route path="/login" element={<Login />} />{' '}
       </Routes>
     </BrowserRouter>
