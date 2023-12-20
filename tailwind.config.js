@@ -5,11 +5,15 @@ export default {
     extend: {},
     colors: {
       'logo-orange': '#E9573A',
-      white: '#FFFFFF',
       'light-pink': '#F4AB9D',
       'input-grey': '#17171750',
       'text-paragraph': '#000000',
-      'red-error': '#ae3232'
+      'bubble-gum': '#FDEEEB',
+      'red-error': '#ae3232',
+    },
+    backgroundImage: {
+      'close-menu': 'url("../src/assets/Navbar icons/icon-hamburger.svg")',
+      'open-menu': 'url("../src/assets/Navbar icons/icon-hamburger.svg")',
     },
   },
   plugins: [],
