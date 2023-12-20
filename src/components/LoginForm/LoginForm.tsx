@@ -3,13 +3,16 @@ import { INPUTS_LOGIN } from '../const/inputs.auth';
 import { login } from '../../services/user.api';
 import { errorAlert, toastAlertSuccess } from '../../services/alert';
 import { ErrorMessage, Formik, Form } from 'formik';
-import { ILoginPayload } from '../../types/types';
+import { IAuthContext, ILoginPayload } from '../../types/types';
 import { loginSchema } from '../../schemas/validates.schema';
 import './Login.css';
 import InputForm from '../InputForm/InputForm';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
+  const { saveToken, setAuth } = useContext(AuthContext) as IAuthContext;
 
   const onSubmit = async (values: ILoginPayload) => {
     const loginPayload = {
@@ -19,9 +22,11 @@ export const LoginForm = () => {
 
     try {
       const response = await login(loginPayload);
-      console.log(response);
       toastAlertSuccess('Logeado satisfactoriamente');
       navigate('/', { replace: true });
+      console.log(response);
+      setAuth(true);
+      saveToken(response?.data?.accessToken);
     } catch (error) {
       errorAlert('Error', 'email y/o contraseña incorrectos');
     }

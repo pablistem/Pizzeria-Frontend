@@ -15,5 +15,13 @@ export interface IFormValues {
   lastName: string;
   email: string;
   password: string;
-  ppasswordConfirm: string;
+  passwordConfirm: string;
+}
+
+export interface IAuthContext {
+  isAuth: boolean;
+  setIsAuth: (value: boolean) => void;
+  token: string;
+  saveToken: (value: string) => void;
+  setAuth: (value: boolean) => boolean;
 }
