@@ -10,6 +10,7 @@ export default {
       'text-paragraph': '#000000',
       'bubble-gum': '#FDEEEB',
       'red-error': '#ae3232',
+      'bg-profile': '#FEF7F5',
     },
     backgroundImage: {
       'close-menu': 'url("../src/assets/Navbar icons/icon-hamburger.svg")',
