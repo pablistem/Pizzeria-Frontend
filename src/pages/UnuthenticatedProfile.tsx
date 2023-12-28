@@ -16,7 +16,7 @@ const Profile = () => {
             type="submit"
             className="flex w-full text-white justify-center rounded-full bg-logo-orange px-3 py-1.5  font-semibold shadow-sm hover:bg-red-error"
           >
-            Iniciar sesion
+            Iniciar sesión
           </button>
           <a
             href=""
