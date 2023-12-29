@@ -17,7 +17,10 @@ const App: React.FC = () => {
         <Route path="/register" element={<Register />} />{' '}
         <Route path="/login" element={<Login />} />{' '}
         <Route path="/profile" element={<Profile />} />{' '}
-        <Route path="/profileoff" element={<UnuthenticatedProfile />} />{' '}
+        <Route
+          path="/unauthenticated-profile"
+          element={<UnuthenticatedProfile />}
+        />{' '}
       </Routes>
     </BrowserRouter>
   );
