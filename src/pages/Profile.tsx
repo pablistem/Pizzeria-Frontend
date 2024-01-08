@@ -1,6 +1,29 @@
+import { useState, useEffect } from 'react';
+import { getUserData } from '../services/user.api';
+import { IUser } from '../types/types';
+
 import icon from '../assets/icon_pizza_shop.jpg';
 
 const Profile = () => {
+  const [userData, setUserData] = useState<IUser>({
+    name: '',
+    direction: '',
+    email: '',
+    telephone: 0,
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await getUserData();
+        setUserData(result);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="min-w-96 wrapper pt-5 pb-12  bg-bg-profile ">
       <div className="w-96 grid overflow-hidden  text-left m-auto">
@@ -30,16 +53,16 @@ const Profile = () => {
         <div className="flex w-full min-h-full flex-col mt-50 items-start">
           <h2 className="text-center my-6 text-2xl">Datos Personales</h2>
           <div className="flex flex-col justify-center w-full bg-bubble-gum rounded-lg">
-            <p className="mt-3 mx-3 font-semibold ">Carlitos</p>
+            <p className="mt-3 mx-3 font-semibold ">{userData.name}</p>
             <p className="mb-3 mx-3">Nombre</p>
 
-            <p className="mt-3 mx-3 font-semibold ">Calle falsa 123</p>
+            <p className="mt-3 mx-3 font-semibold ">{userData.direction}</p>
             <p className="mb-3 mx-3">Dirección</p>
 
-            <p className="mt-3 mx-3 font-semibold ">Carlitostuki@gmail.com</p>
+            <p className="mt-3 mx-3 font-semibold ">{userData.email}</p>
             <p className="mb-3 mx-3">Mail</p>
 
-            <p className="mt-3 mx-3 font-semibold ">11 6515 6514</p>
+            <p className="mt-3 mx-3 font-semibold ">{userData.telephone}</p>
             <p className="mb-3 mx-3">Teléfono</p>
           </div>
         </div>
