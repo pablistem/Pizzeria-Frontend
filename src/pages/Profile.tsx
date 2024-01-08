@@ -16,12 +16,11 @@ const Profile = () => {
     const fetchData = async () => {
       try {
         const result = await getUserData();
-        setUserData(result as IUser);
+        setUserData(result);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
-
     fetchData();
   }, []);
 
