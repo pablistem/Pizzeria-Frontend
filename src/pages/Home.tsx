@@ -8,7 +8,7 @@ import jamonymorron from '../assets/Food/jamonymorron.jpg';
 //import fondo from '../assets/imagen_seleccion.jpg';
 export const Home = () => {
   return (
-    <div className="flex justify-center items-center pt-20 bg-bubble-gum">
+    <div className="flex justify-center items-center pt-20 bg-background-home">
       <div className="container mx-auto grid max-md: grid-cols-1 lg:grid-cols-2">
         <section className="grid gap-4 p-4 items-center place-content-around max-sm:grid-cols-1">
           <div className="grid grid-rows-6 max-md:grid-cols-8 lg:grid-cols-5 gap-3">
@@ -50,7 +50,10 @@ export const Home = () => {
           </div> */}
         </section>
         <section>
-          <h2 className="">Recomendaciones</h2>
+          <div className="flex justify-center">
+            <h2 className="font-bold">Recomendaciones</h2>
+          </div>
+
           <ImageGallery />
         </section>
       </div>
