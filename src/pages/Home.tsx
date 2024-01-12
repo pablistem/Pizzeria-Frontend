@@ -1,12 +1,10 @@
-
-// import { Navbar } from '../components/Navbar/Navbar';
 import announce from '../assets/Navbar icons/promos img.jpg';
 import ImageGallery from '../components/Image_gallery/Imagegallery';
 import almendrado from '../assets/Food/almendrado.jpg';
 import empanada_atun from '../assets/Food/empanada_atun.jpg';
 import gaseosa from '../assets/Food/gaseosa.jpg';
 import jamonymorron from '../assets/Food/jamonymorron.jpg';
-//import fondo from '../assets/imagen_seleccion.jpg';
+
 export const Home = () => {
   return (
     <div className="flex justify-center items-center pt-20 bg-background-home">
@@ -58,12 +56,6 @@ export const Home = () => {
           <ImageGallery />
         </section>
       </div>
-import { Navbar } from '../components/Navbar/Navbar';
-export const Home = () => {
-  return (
-    <div className="">
-      <Navbar />
-
     </div>
   );
 };
