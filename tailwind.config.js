@@ -18,6 +18,7 @@ export default {
       },
     },
     colors: {
+      white: '#ffffff',
       'logo-orange': '#E9573A',
       'light-pink': '#F4AB9D',
       'input-grey': '#17171750',
@@ -26,6 +27,7 @@ export default {
       'red-error': '#ae3232',
       'bg-card': '#FFFFFF',
       'background-home': '#FEF7F5',
+      'bg-profile': '#FEF7F5',
     },
     backgroundImage: {
       'close-menu': 'url("../src/assets/Navbar icons/icon-hamburger.svg")',

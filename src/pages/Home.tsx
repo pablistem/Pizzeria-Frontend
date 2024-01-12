@@ -1,3 +1,4 @@
+
 // import { Navbar } from '../components/Navbar/Navbar';
 import announce from '../assets/Navbar icons/promos img.jpg';
 import ImageGallery from '../components/Image_gallery/Imagegallery';
@@ -57,6 +58,12 @@ export const Home = () => {
           <ImageGallery />
         </section>
       </div>
+import { Navbar } from '../components/Navbar/Navbar';
+export const Home = () => {
+  return (
+    <div className="">
+      <Navbar />
+
     </div>
   );
 };

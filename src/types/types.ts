@@ -17,3 +17,10 @@ export interface IFormValues {
   password: string;
   ppasswordConfirm: string;
 }
+
+export interface IUser {
+  name: string;
+  direction: string;
+  email: string;
+  telephone: number;
+}
