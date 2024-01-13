@@ -4,86 +4,73 @@ import pizza_pepperoni from '../../assets/Pizza types/pizza-cheese-pepperoni.jpg
 import pizza_jamon_salchichas from '../../assets/Pizza types/pizza-jamon-salchichas.jpg';
 const ImageGallery = () => {
   return (
-    <div className="grid gap-5 m-auto max-sm:grid-cols-2 md:space-x-4 grid-cols-4 lg:grid-cols-3">
-      <div className="max-w-sm z-10 bg-bg-card border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 max-sm:w-[10rem] relative left-4">
-        <div className="flex justify-center sm:w-20 md:w-[100%]">
+    <div className="mx-auto grid max-w-6xl gap-4 grid-cols-2 p-4 md:grid-cols-4 lg:grid-cols-3">
+      <article className="flex flex-col overflow-hidden rounded bg-white shadow w-[100%]">
+        <div className="h-52">
           <img
-            className="rounded-t-lg sm:w-36 md:w-full"
+            className="h-full w-full object-cover object-center"
             src={pizza_jamon}
             alt="pizza de jamon"
           />
         </div>
-
-        <div className="p-5">
-          <h5 className="text-sm  md:text-2xl mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
-            Jamon
-          </h5>
-          <p className="text-xs md:mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <div className="flex-1 space-y-3 p-5">
+          <h3 className="text-xl font-semibold text-sky-500">Jamon</h3>
+          <h2 className="text-sm font-semibold leading-tight text-slate-800">
             Salsa,muzzarella y jamon
-          </p>
-          <p className="text-sm md:text-xl">4000</p>
+          </h2>
+          <p className="text-slate-500">4000</p>
         </div>
-      </div>
-
-      <div className="max-w-sm bg-bg-card border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-[11rem] max-sm:w-[10rem]">
-        <div className=" flex justify-center sm:w-20 md:w-fit items-center">
+      </article>
+      <article className="flex flex-col overflow-hidden rounded bg-white shadow">
+        <div className="h-52">
           <img
-            className="rounded-t-lg sm:w-36 md:w-full"
+            className="h-full w-full object-cover object-center"
             src={pizza_cuatro_quesos}
-            alt="pizza de cuatro quesos"
+            alt="pizza de jamon"
           />
         </div>
-
-        <div className="p-5">
-          <div className="flex">
-            <h5 className="text-sm md:text-2xl mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
-              Cuatro quesos
-            </h5>
-          </div>
-          <p className="text-xs md:mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Salsa,muzzarella,queso azul,queso parmesano y queso gorgonzola
-          </p>
-          <p className="text-sm md:text-xl">4000</p>
+        <div className="flex-1 space-y-3 p-5">
+          <h3 className="text-xl font-semibold text-sky-500">Cuatro quesos</h3>
+          <h2 className="text-sm font-semibold leading-tight text-slate-800">
+            Salsa, muzzarella, queso azul, queso parmesano y queso gorgonzola
+          </h2>
+          <p className="text-slate-500">5000</p>
         </div>
-      </div>
-      <div className="max-w-sm bg-bg-card border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-44 max-sm:w-[10rem] relative left-4">
-        <div className="flex justify-center sm:w-20 md:w-[100%]">
+      </article>
+      <article className="flex flex-col overflow-hidden rounded bg-white shadow">
+        <div className="h-52">
           <img
-            className="rounded-t-lg w-fit"
+            className="h-full w-full object-cover object-center"
             src={pizza_jamon_salchichas}
-            alt="pizza de jamon y salchichas"
+            alt="pizza de jamon"
           />
         </div>
-
-        <div className="p-5 sm:w-20">
-          <div className="flex">
-            <h5 className="text-sm font-bold tracking-tight text-gray-900 dark:text-white md:text-2xl mb-2">
-              Jamon y champiñon
-            </h5>
-          </div>
-          <div className=" md:w-[9rem]">
-            <p className="text-xs w-full md:mb-3 font-normal text-gray-700 dark:text-gray-400 ">
-              Salsa,muzzarella, ajo, jamon y champiñon
-            </p>
-          </div>
-          <p className="text-sm md:text-xl">4850</p>
+        <div className="flex-1 space-y-3 p-5">
+          <h3 className="text-xl font-semibold text-sky-500">
+            Jamon y salchichas
+          </h3>
+          <h2 className="text-sm font-semibold leading-tight text-slate-800">
+            Salsa,muzzarella, jamon, salchichas
+          </h2>
+          <p className="text-slate-500">4000</p>
         </div>
-      </div>
-      <div className="max-w-sm bg-bg-card border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 max-sm:w-[10rem] lg:w-[100%]">
-        <div className="flex justify-center sm:w-20 md:w-fit">
-          <img className="rounded-t-lg" src={pizza_pepperoni} alt="" />
+      </article>
+      <article className="flex flex-col overflow-hidden rounded bg-white shadow ">
+        <div className="h-52">
+          <img
+            className="h-full w-full object-cover object-center"
+            src={pizza_pepperoni}
+            alt="pizza de jamon"
+          />
         </div>
-
-        <div className="p-5 sm:w-20">
-          <h5 className="text-sm font-bold tracking-tight text-gray-900 dark:text-white  md:text-2xl mb-2">
-            Pepperoni
-          </h5>
-          <p className="text-xs md:mb-3 text-left font-normal text-gray-700 dark:text-gray-400 ">
+        <div className="flex-1 space-y-3 p-5">
+          <h3 className="text-xl font-semibold text-sky-500">Pepperoni</h3>
+          <h2 className="text-sm font-semibold leading-tight text-slate-800">
             Salsa,muzzarella y pepperoni
-          </p>
-          <p className="text-sm md:text-xl">4850</p>
+          </h2>
+          <p className="text-slate-500">4850</p>
         </div>
-      </div>
+      </article>
     </div>
   );
 };
