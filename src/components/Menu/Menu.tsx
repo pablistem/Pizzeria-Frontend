@@ -5,7 +5,7 @@ import discountIcon from '../../assets/Menu icons/discount_icon.jpg';
 
 export const Menu = () => {
   return (
-    <div className="fixed inset-0 bg-background-navbar h-full -translate-x-full peer-checked:translate-x-0 transition-transform delay-300 max-w-xs max-lg: top-16">
+    <div className="fixed inset-0 bg-bubble-gum h-full -translate-x-full peer-checked:translate-x-0 transition-transform delay-300 max-w-xs max-lg: top-16">
       <ul className="absolute inset-x-0 top-24 mx-auto h-max grid gap-6 font-bold max-sm: ml-5">
         <li className="flex items-center">
           <img src={profileIcon} alt="Profile icon" className="w-[13%]" />
