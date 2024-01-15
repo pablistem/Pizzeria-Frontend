@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Profile page', () => {
+describe('Should visit the profile page and check the title', () => {
   it('Should visit the profile page and check the title', () => {
     cy.visit('/login');
     cy.get('[name=email]').type('fedebataglia@mail.com');
@@ -34,7 +34,7 @@ describe('Profile page', () => {
     cy.contains('Teléfono').should('exist');
     cy.get('[data-cy="button-back"]').click();
   });
-  it('should display the unauthenticated profile page', () => {
+  it('should visit the unauthenticated profile page and check the title', () => {
     cy.visit('/');
     cy.get('[id="label-menu"]').click();
     cy.get('[data-cy="my-profile"]').click();
