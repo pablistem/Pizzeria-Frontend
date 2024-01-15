@@ -26,7 +26,12 @@ const Menu = () => {
   }, []);
 
   const menuItems = [
-    { icon: profileIcon, label: 'Mi perfil', section: 'profile' },
+    {
+      icon: profileIcon,
+      label: 'Mi perfil',
+      section: 'profile',
+      dataCy: 'my-profile',
+    },
     { icon: orderIcon, label: 'Mis pedidos', section: '' }, //orders
     { icon: discountIcon, label: 'Descuentos', section: '' }, //discounts
     { icon: couponIcon, label: 'Cupones', section: '' }, //coupons
@@ -46,7 +51,7 @@ const Menu = () => {
               <a
                 onClick={() => setSelectedSection(item.section)}
                 href="#"
-                data-cy={item.section}
+                data-cy={item.dataCy}
               >
                 {item.label}
               </a>
