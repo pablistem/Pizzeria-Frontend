@@ -1,29 +1,15 @@
-// Menu.tsx
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import profileIcon from '../../assets/Menu icons/profile_icon.jpg';
 import orderIcon from '../../assets/Menu icons/order_icon.jpg';
 import couponIcon from '../../assets/Menu icons/coupon_icon.jpg';
 import discountIcon from '../../assets/Menu icons/discount_icon.jpg';
 import UnauthenticatedProfile from '../../pages/UnauthenticatedProfile';
 import Profile from '../../pages/Profile';
-import { getUserData } from '../../services/user.api';
-import { IUser } from '../../types/types';
+import useUser from '../../hook/useUser';
 
 const Menu = () => {
-  const [userData, setUserData] = useState<IUser | null>(null);
+  const { userData } = useUser();
   const [selectedSection, setSelectedSection] = useState<string>('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getUserData();
-        setUserData(result);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-    fetchData();
-  }, []);
 
   const menuItems = [
     {
