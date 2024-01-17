@@ -6,8 +6,6 @@ import { Home } from './pages/Home';
 import Register from './pages/Register';
 
 import Login from './pages/Login';
-import Profile from './pages/Profile';
-import UnuthenticatedProfile from './pages/UnuthenticatedProfile';
 
 const App: React.FC = () => {
   return (
@@ -16,11 +14,6 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />{' '}
         <Route path="/register" element={<Register />} />{' '}
         <Route path="/login" element={<Login />} />{' '}
-        <Route path="/profile" element={<Profile />} />{' '}
-        <Route
-          path="/unauthenticated-profile"
-          element={<UnuthenticatedProfile />}
-        />{' '}
       </Routes>
     </BrowserRouter>
   );
