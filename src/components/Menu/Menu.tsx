@@ -22,7 +22,6 @@ const Menu = () => {
     { icon: discountIcon, label: 'Descuentos', section: '' }, //discounts
     { icon: couponIcon, label: 'Cupones', section: '' }, //coupons
   ];
-
   return (
     <div className="fixed flex  inset-0 bg-bubble-gum w-1/2 h-full -translate-x-full peer-checked:translate-x-0 transition-transform delay-300 max-w-xs max-lg: top-16">
       {selectedSection === '' && (
