@@ -1,12 +1,14 @@
 import announce from '../assets/Navbar icons/promos img.jpg';
-import ImageGallery from '../components/Image_gallery/Imagegallery';
+import ProductCard from '../components/Cards/ProductCard';
 import almendrado from '../assets/Food/almendrado.jpg';
 import empanada_atun from '../assets/Food/empanada_atun.jpg';
 import gaseosa from '../assets/Food/gaseosa.jpg';
 import jamonymorron from '../assets/Food/jamonymorron.jpg';
 import { Navbar } from '../components/Navbar/Navbar';
+import useProducts from '../hook/useProduct';
 
 export const Home = () => {
+  const { productsData } = useProducts();
   return (
     <>
       <Navbar />
@@ -24,28 +26,28 @@ export const Home = () => {
               <div className="col-span-3 row-span-3 max-md:col-span-5">
                 <img
                   src={jamonymorron}
-                  alt="Imagen de pizza de jamon"
+                  alt="jamon y morron"
                   className="object-cover w-full h-full rounded-lg"
                 />
               </div>
               <div className="col-span-2 row-span-2 max-md:col-span-3">
                 <img
                   src={gaseosa}
-                  alt=""
+                  alt="coca cola"
                   className="object-cover w-full h-full rounded-lg items-center"
                 />
               </div>
               <div className="col-span-2 row-span-3 max-md:col-span-3">
                 <img
                   src={almendrado}
-                  alt=""
+                  alt="postre almendrado"
                   className="object-cover w-full h-full rounded-lg"
                 />
               </div>
               <div className="col-span-3 row-span-2 max-md:col-span-5">
                 <img
                   src={empanada_atun}
-                  alt=""
+                  alt="empanada atun"
                   className="object-cover w-full h-full rounded-lg"
                 />
               </div>
@@ -55,8 +57,9 @@ export const Home = () => {
             <div className="flex justify-center">
               <h2 className="font-bold">Recomendaciones</h2>
             </div>
-
-            <ImageGallery />
+            <div className="mx-auto grid max-w-6xl gap-4 grid-cols-2 p-4 md:grid-cols-4 lg:grid-cols-3">
+              <ProductCard products={productsData || []} />
+            </div>
           </section>
         </div>
       </div>
