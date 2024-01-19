@@ -18,6 +18,8 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
+    "no-unused-vars":"warn",
+    "@typescript-eslint/no-unused-vars": "off",
     "prettier/prettier": [
       "error",
       {
