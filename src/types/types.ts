@@ -24,3 +24,9 @@ export interface IUser {
   email: string;
   telephone: number;
 }
+export interface IProduct {
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+}
