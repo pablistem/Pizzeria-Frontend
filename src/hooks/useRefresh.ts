@@ -19,7 +19,7 @@ const useRefresh = ({ onSuccess, onReject }: options) => {
         console.log(error);
         onReject?.();
       });
-  }, []);
+  }, [onReject, onSuccess]);
 };
 
 export default useRefresh;

@@ -12,7 +12,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState(true);
   const navigate = useNavigate();
 
-  useRefresh({ onSuccess: () => navigate('/') });
+  useRefresh({ onSuccess: () => navigate('/home') });
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

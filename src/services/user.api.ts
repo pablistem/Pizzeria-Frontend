@@ -1,4 +1,4 @@
-import { ILoginPayload, ISignUpPayload } from '../types/types';
+import { ILoginPayload, ISignUpPayload, IUser } from '../types/types';
 import { AxiosResponse } from 'axios';
 import { Axios, AxiosAuth } from '../services/axios.api';
 
@@ -45,4 +45,8 @@ export const refreshSessions = async (): Promise<{ accessToken: string }> => {
 export const setSession = async (token: string) => {
   Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   console.log(token, 'this is a token');
+};
+export const getUserData = async (): Promise<IUser> => {
+  const res: AxiosResponse<IUser> = await Axios.get('/user/profile');
+  return res.data;
 };
