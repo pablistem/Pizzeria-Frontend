@@ -12,7 +12,7 @@ export const login = async (payload: ILoginPayload): Promise<unknown> => {
       signal: controller.signal,
     },
   );
-  return { data: res.data, fullRes: res };
+  return res.data;
 };
 
 export const signup = async (payload: ISignUpPayload): Promise<unknown> => {
@@ -33,4 +33,16 @@ export const userInfo = async (token: string) => {
   });
 
   return res.data;
+};
+
+export const refreshSessions = async (): Promise<{ accessToken: string }> => {
+  const res = await Axios.get('/auth/session', {
+    withCredentials: true,
+  });
+  return res.data;
+};
+
+export const setSession = async (token: string) => {
+  Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  console.log(token, 'this is a token');
 };

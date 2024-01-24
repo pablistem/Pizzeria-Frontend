@@ -1,4 +1,6 @@
 import { createContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useRefresh from '../hooks/useRefresh';
 
 export const AuthContext = createContext({});
 
@@ -7,23 +9,13 @@ interface AuthProviderProps {
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [isAuth, setIsAuth] = useState(true);
-  const [token, setToken] = useState('');
+  const [user, setUser] = useState(true);
+  const navigate = useNavigate();
 
-  const saveToken = (tokenParam: string) => {
-    setToken(tokenParam);
-  };
-
-  const setAuth = (bool: boolean) => {
-    setIsAuth(bool);
-    console.log('isAuth: ', isAuth);
-    localStorage.setItem('auth', JSON.stringify(isAuth));
-  };
+  useRefresh({ onSuccess: () => navigate('/') });
 
   return (
-    <AuthContext.Provider
-      value={{ isAuth, setIsAuth, token, saveToken, setAuth }}
-    >
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
     </AuthContext.Provider>
   );
