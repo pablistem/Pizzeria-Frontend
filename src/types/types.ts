@@ -18,10 +18,15 @@ export interface IFormValues {
   passwordConfirm: string;
 }
 
-export interface IAuthContext {
-  isAuth: boolean;
-  setIsAuth: (value: boolean) => void;
-  token: string;
-  saveToken: (value: string) => void;
-  setAuth: (value: boolean) => boolean;
+export interface IUser {
+  name: string;
+  direction: string;
+  email: string;
+  telephone: number;
+}
+export interface IProduct {
+  name: string;
+  description: string;
+  price: string;
+  image: string;
 }
