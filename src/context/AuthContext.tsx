@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useRefresh from '../hooks/useRefresh';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext({});
 

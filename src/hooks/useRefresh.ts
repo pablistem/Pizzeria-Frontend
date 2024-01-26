@@ -19,6 +19,7 @@ const useRefresh = ({ onSuccess, onReject }: options) => {
         console.log(error);
         onReject?.();
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 
