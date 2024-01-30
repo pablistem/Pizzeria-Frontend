@@ -20,7 +20,7 @@ export const Navbar = () => {
         ></label>
         <h1>Pizzeria Don Remolo</h1>
         <Menu /> {/* Aquí se utiliza el componente Menu */}
-        <Link to={'login'}>Login</Link>
+        <Link to={'/login'}>Login</Link>
         <div className="w-6 max-w-[1.5rem] max-w-screen-lg: mr-10">
           <a href="#">
             <img
