@@ -26,7 +26,7 @@ describe('Login page', () => {
     cy.wait('@loginUser').then((interception) => {
       expect(interception?.response?.statusCode).to.equal(401);
     });
-    cy.contains('email y/o contraseña incorrectos').should('exist');
+    cy.contains('Request failed with status code 401').should('exist');
   });
   it('should show validate errors', () => {
     cy.get('#email').focus();

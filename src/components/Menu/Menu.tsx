@@ -27,7 +27,7 @@ const Menu = () => {
       {selectedSection === '' && (
         <ul className="absolute inset-x-0 top-24 w-[90%] mx-auto h-max grid gap-6 font-bold max-sm: ml-5">
           {menuItems.map((item) => (
-            <li key={item.section} className="flex items-center">
+            <li key={item.label} className="flex items-center">
               <img
                 src={`${item.icon}`}
                 alt={`${item.label} icon`}

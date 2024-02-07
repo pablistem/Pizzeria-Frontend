@@ -15,7 +15,7 @@ export interface IFormValues {
   lastName: string;
   email: string;
   password: string;
-  ppasswordConfirm: string;
+  passwordConfirm: string;
 }
 
 export interface IUser {

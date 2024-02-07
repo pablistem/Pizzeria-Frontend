@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import img from '../assets/profile/doorProfile.png';
 type Props = { onShowMenuAgain: () => void };
 
@@ -29,12 +29,12 @@ const UnauthenticatedProfile = ({ onShowMenuAgain }: Props) => {
           >
             Iniciar sesión
           </button>
-          <a
-            href=""
+          <Link
+            to={'/register'}
             className="text-center mt-4 font-semibold text-logo-orange hover:text-red-error"
           >
             Registrarme
-          </a>
+          </Link>
         </div>
       </div>
     </div>

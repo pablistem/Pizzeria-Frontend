@@ -18,12 +18,11 @@ export const LoginForm = () => {
     };
 
     try {
-      const response = await login(loginPayload);
-      console.log(response);
+      await login(loginPayload);
       toastAlertSuccess('Logeado satisfactoriamente');
       navigate('/', { replace: true });
     } catch (error) {
-      errorAlert('Error', 'email y/o contraseña incorrectos');
+      errorAlert('Error', error.message);
     }
   };
 
