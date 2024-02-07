@@ -44,7 +44,6 @@ export const refreshSessions = async (): Promise<{ accessToken: string }> => {
 
 export const setSession = async (token: string) => {
   Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  console.log(token, 'this is a token');
 };
 
 export const getUserData = async (): Promise<IUser> => {

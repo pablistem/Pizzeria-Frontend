@@ -18,10 +18,9 @@ export const LoginForm = () => {
     };
 
     try {
-      const response = await login(loginPayload);
+      await login(loginPayload);
       toastAlertSuccess('Logeado satisfactoriamente');
       navigate('/', { replace: true });
-      console.log(response);
     } catch (error) {
       errorAlert('Error', error.message);
     }
