@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import iconCart from '../../assets/Navbar icons/cart_icon.svg';
 import { Menu } from '../Menu/Menu';
+import { valueContext } from '../../App';
 export const Navbar = () => {
+  const { prueba } = useContext(valueContext);
   return (
     <header>
       <nav className="fixed top-0 h-16 w-[100%] mx-auto overflow-hidden flex items-center justify-between bg-light-pink">
@@ -26,6 +29,7 @@ export const Navbar = () => {
               className="w-full max-sm:hidden"
             />
           </a>
+          <div>prueba: {prueba.length}</div>
         </div>
       </nav>
     </header>
