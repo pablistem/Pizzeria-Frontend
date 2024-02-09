@@ -32,7 +32,8 @@ describe('Should visit the profile page and check the title', () => {
     cy.contains('Mail').should('exist');
     cy.get('[data-cy=user-telephone]').should('exist');
     cy.contains('Teléfono').should('exist');
-    cy.get('[data-cy="button-back"]').click();
+    cy.get('[data-cy="user-logout"]').click({ force: true });
+    cy.url().should('include', '/login');
   });
   it('should visit the unauthenticated profile page and check the title', () => {
     cy.visit('/');

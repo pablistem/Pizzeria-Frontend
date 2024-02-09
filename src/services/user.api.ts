@@ -50,3 +50,9 @@ export const getUserData = async (): Promise<IUser> => {
   const res: AxiosResponse<IUser> = await Axios.get('/user/profile');
   return res.data;
 };
+
+export const logout = async () => {
+  localStorage.removeItem('token');
+  delete Axios.defaults.headers.common['Authorization'];
+  controller.abort();
+};

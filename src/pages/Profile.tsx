@@ -1,8 +1,18 @@
 import icon from '../assets/icon_pizza_shop.jpg';
 import { IUser } from '../types/types';
+import { logout } from '../services/user.api';
+import { useNavigate } from 'react-router-dom';
+
 type Props = { user: IUser; onShowMenuAgain: () => void };
 
 const Profile = ({ user, onShowMenuAgain }: Props) => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/login');
+  };
+
   return (
     <div className="min-w-50 wrapper pt-5 pb-12 pl-5 pr-5 bg-bubble-gum">
       <button
@@ -12,7 +22,7 @@ const Profile = ({ user, onShowMenuAgain }: Props) => {
       >
         volver
       </button>
-      <div className="w-96 grid overflow-hidden  text-left m-auto">
+      <div className="w-96  grid overflow-hidden  text-left m-auto">
         <h1 className="font-semibold text-2xl">Mi Perfil</h1>
         <a href="" className="justify-self-end">
           <svg
@@ -59,8 +69,9 @@ const Profile = ({ user, onShowMenuAgain }: Props) => {
             </p>
             <p className="mb-3 mx-3">Teléfono</p>
             <button
+              data-cy="user-logout"
               type="button"
-              onClick={() => console.log('logout')}
+              onClick={handleLogout}
               className="flex w-full text-white justify-center rounded-full bg-logo-orange px-3 py-1.5 font-semibold shadow-sm hover:bg-red-error"
             >
               Cerrar sesion
