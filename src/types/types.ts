@@ -15,7 +15,7 @@ export interface IFormValues {
   lastName: string;
   email: string;
   password: string;
-  ppasswordConfirm: string;
+  passwordConfirm: string;
 }
 
 export interface IUser {
@@ -23,4 +23,10 @@ export interface IUser {
   direction: string;
   email: string;
   telephone: number;
+}
+export interface IProduct {
+  name: string;
+  description: string;
+  price: string;
+  image: string;
 }

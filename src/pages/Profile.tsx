@@ -1,31 +1,17 @@
-import { useState, useEffect } from 'react';
-import { getUserData } from '../services/user.api';
-import { IUser } from '../types/types';
-
 import icon from '../assets/icon_pizza_shop.jpg';
+import { IUser } from '../types/types';
+type Props = { user: IUser; onShowMenuAgain: () => void };
 
-const Profile = () => {
-  const [userData, setUserData] = useState<IUser>({
-    name: '',
-    direction: '',
-    email: '',
-    telephone: 0,
-  });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getUserData();
-        setUserData(result);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-    fetchData();
-  }, []);
-
+const Profile = ({ user, onShowMenuAgain }: Props) => {
   return (
-    <div className="min-w-96 wrapper pt-5 pb-12  bg-bg-profile ">
+    <div className="min-w-50 wrapper pt-5 pb-12 pl-5 pr-5 bg-bubble-gum">
+      <button
+        className="flex w-20 text-black justify-center rounded-full bg-white px-3 py-1.5 font-semibold shadow-sm hover:bg-red-error"
+        data-cy="button-back"
+        onClick={onShowMenuAgain}
+      >
+        volver
+      </button>
       <div className="w-96 grid overflow-hidden  text-left m-auto">
         <h1 className="font-semibold text-2xl">Mi Perfil</h1>
         <a href="" className="justify-self-end">
@@ -53,17 +39,32 @@ const Profile = () => {
         <div className="flex w-full min-h-full flex-col mt-50 items-start">
           <h2 className="text-center my-6 text-2xl">Datos Personales</h2>
           <div className="flex flex-col justify-center w-full bg-bubble-gum rounded-lg">
-            <p className="mt-3 mx-3 font-semibold ">{userData.name}</p>
+            <p data-cy="user-name" className="mt-3 mx-3 font-semibold ">
+              {user.name}
+            </p>
             <p className="mb-3 mx-3">Nombre</p>
 
-            <p className="mt-3 mx-3 font-semibold ">{userData.direction}</p>
+            <p data-cy="user-direction" className="mt-3 mx-3 font-semibold ">
+              {user.direction}
+            </p>
             <p className="mb-3 mx-3">Dirección</p>
 
-            <p className="mt-3 mx-3 font-semibold ">{userData.email}</p>
+            <p data-cy="user-email" className="mt-3 mx-3 font-semibold ">
+              {user.email}
+            </p>
             <p className="mb-3 mx-3">Mail</p>
 
-            <p className="mt-3 mx-3 font-semibold ">{userData.telephone}</p>
+            <p data-cy="user-telephone" className="mt-3 mx-3 font-semibold ">
+              {user.telephone}
+            </p>
             <p className="mb-3 mx-3">Teléfono</p>
+            <button
+              type="button"
+              onClick={() => console.log('logout')}
+              className="flex w-full text-white justify-center rounded-full bg-logo-orange px-3 py-1.5 font-semibold shadow-sm hover:bg-red-error"
+            >
+              Cerrar sesion
+            </button>
           </div>
         </div>
       </div>

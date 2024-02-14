@@ -54,7 +54,7 @@ const RegisterForm = () => {
           lastName: '',
           email: '',
           password: '',
-          ppasswordConfirm: '',
+          passwordConfirm: '',
         }}
         validationSchema={registerSchema}
         onSubmit={onSubmit}
