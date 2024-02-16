@@ -64,37 +64,42 @@ const Cart = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-start items-start font-bold">
-          <h3>Tu pedido</h3>
-        </div>
-        <div className="bg-logo-orange p-4 h-60 w-[100%] flex flex-col justify-center items-center self-center rounded-2xl overflow-x-auto overflow-y-auto space-y-1">
+        <h3 className="font-bold text-text-paragraph">Tu pedido</h3>
+        <div className="p-4 h-60 w-[100%] flex flex-col justify-center items-center self-center rounded-2xl overflow-x-auto overflow-y-auto">
           {productosCompra.map((productoCompra) => (
             <div
               key={productoCompra.id}
-              className={
-                'flex items-center bg-white w-52 h-52 space-x-2 object-cover object-center'
-              }
+              className="flex items-center w-48 h-52 space-x-2 object-cover object-center"
             >
-              {/* Aquí puedes renderizar cualquier información del elemento */}
-              <img
-                src={productoCompra.imagen}
-                className="w-full h-full object-cover object-center"
-                alt="producto"
-              />
-              <div className="flex">
+              {/* Imagen */}
+              <div className="flex flex-col ml-1">
+                <img
+                  src={productoCompra.imagen}
+                  className="w-10 h-10 object-cover object-center"
+                  alt="producto"
+                />
+
+                <button className="text-text-paragraph">Editar</button>
+              </div>
+
+              <div className="flex flex-col flex-grow items-center justify-center">
                 <p className="text-text-paragraph text-sm">
                   {productoCompra.texto}
                 </p>
+                <div className="flex border-text-paragraph  rounded-3xl">
+                  <button className="text-text-paragraph w-6">-</button>
+                  <p>0</p>
+                  <button className="text-text-paragraph w-6">+</button>
+                </div>
               </div>
-              <button className="bg-text-paragraph text-white">agregar</button>
             </div>
           ))}
         </div>
-        <div className="flex justify-start items-start mt-1 font-bold">
-          <h3>¿Queres agregar algo más?</h3>
-        </div>
-        <div className="bg-white p-4 mb-16 h-36 w-[90%] flex justify-center items-center self-center rounded-xl overflow-x-auto overflow-y-auto space-x-4">
-          <div className="flex space-x-3 space-y-6">
+        <h3 className=" font-bold text-text-paragraph mb-7">
+          ¿Queres agregar algo más?
+        </h3>
+        <div className="bg-white p-4 mb-20 h-36 w-[90%] flex justify-center items-center self-center rounded-xl overflow-x-auto overflow-y-auto space-x-4 relative bottom-5">
+          <div className="flex space-x-3">
             {elementos.map((elemento) => (
               <div
                 key={elemento.id}
@@ -105,23 +110,18 @@ const Cart = () => {
                   alt="imagen"
                   className="w-32 h-32 object-cover object-center"
                 />
-                <div className="flex justify-center items-center">
-                  <button className="bg-text-paragraph text-white">
-                    Agregar
-                  </button>
-                </div>
               </div>
             ))}
           </div>
-          {/* {elementos.map((elemento) => (
-            <div key={elemento.id} className="max-w-xs">
-              <img
-                src={elemento.imagen}
-                alt="Imagen 1"
-                className="max-w-full"
-              />
-            </div>
-          ))} */}
+        </div>
+        <div className="flex justify-around">
+          <div className="relative bottom-24">
+            <p className="text-text-paragraph">Total</p>
+            <p className="text-text-paragraph">$1400</p>
+          </div>
+          <button className="text-text-paragraph bg-logo-orange relative bottom-24 w-24 rounded-3xl">
+            Pagar
+          </button>
         </div>
       </div>
     </div>
