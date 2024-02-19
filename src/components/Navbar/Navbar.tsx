@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
 import iconCart from '../../assets/Navbar icons/cart_icon.svg';
 import Menu from '../Menu/Menu';
-
+import Cart from '../Cart/Cart';
+import { useState } from 'react';
 export const Navbar = () => {
+  const [cartOpen, setCartOpen] = useState(false);
+
+  const toggleCart = () => {
+    setTimeout(() => {
+      setCartOpen(!cartOpen);
+    }, 300);
+  };
+
   return (
     <header>
       <nav className="fixed top-0 h-20 w-[100%] mx-auto overflow-hidden flex items-center justify-between bg-bubble-gum">
@@ -11,7 +20,7 @@ export const Navbar = () => {
           name="checkbox"
           id="menu"
           data-cy="burger-menu"
-          className="peer hidden "
+          className="peer hidden"
         />
         <label
           htmlFor="menu"
@@ -21,15 +30,17 @@ export const Navbar = () => {
         <h1>Pizzeria Don Remolo</h1>
         <Menu /> {/* Aquí se utiliza el componente Menu */}
         <Link to={'/login'}>Login</Link>
-        <div className="w-6 max-w-[1.5rem] max-w-screen-lg: mr-10">
-          <a href="#">
-            <img
-              src={iconCart}
-              alt="Menu icon"
-              className="w-full max-sm:hidden"
-            />
-          </a>
+        <div className="relative">
+          <button
+            className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md"
+            onClick={toggleCart}
+          >
+            <img src={iconCart} alt="Shopping Cart" className="h-6 w-6 mr-2" />
+            <p className="text-text-paragraph">0</p>
+            {cartOpen ? true : false}
+          </button>
         </div>
+        {cartOpen && <Cart />}
       </nav>
     </header>
   );

@@ -23,7 +23,7 @@ const Menu = () => {
     { icon: couponIcon, label: 'Cupones', section: '' }, //coupons
   ];
   return (
-    <div className="fixed flex  inset-0 bg-bubble-gum w-1/2 h-full -translate-x-full peer-checked:translate-x-0 transition-transform delay-300 max-w-xs max-lg: top-16">
+    <div className="fixed flex inset-0 bg-bubble-gum w-1/2 h-full -translate-x-full peer-checked:translate-x-0 transition-transform delay-300 max-w-xs max-lg: top-16">
       {selectedSection === '' && (
         <ul className="absolute inset-x-0 top-24 w-[90%] mx-auto h-max grid gap-6 font-bold max-sm: ml-5">
           {menuItems.map((item) => (

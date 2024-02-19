@@ -22,10 +22,9 @@ export const LoginForm = () => {
       toastAlertSuccess('Logeado satisfactoriamente');
       navigate('/', { replace: true });
     } catch (error) {
-      errorAlert('Error', error.message);
+      errorAlert('Error', (error as Error).message);
     }
   };
-
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <Formik
