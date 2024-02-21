@@ -51,7 +51,15 @@ export const getUserData = async (): Promise<IUser> => {
   return res.data;
 };
 
-export const logout = async () => {
+export const logout = async (accessToken: string) => {
+  try {
+    await Axios.delete('auth/token', {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+  } catch (error) {
+    console.error('Error removing refresh token on backend: ', error);
+  }
+
   localStorage.removeItem('token');
   delete Axios.defaults.headers.common['Authorization'];
   controller.abort();
