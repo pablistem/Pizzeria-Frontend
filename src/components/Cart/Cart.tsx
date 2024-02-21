@@ -1,42 +1,17 @@
 const Cart = () => {
-  const elementos = [
+  const productsTosell = [
     {
       id: 1,
-      nombre: 'Elemento 1',
-      color: 'bg-white',
-      imagen: '../src/assets/Pizza types/pizza-jamon-salchichas.jpg',
-    },
-    {
-      id: 2,
-      nombre: 'Elemento 2',
-      color: 'bg-white',
-      imagen: '../src/assets/Pizza types/pizza-cuatro-quesos.jpg',
-    },
-    {
-      id: 3,
-      nombre: 'Elemento 3',
-      color: 'bg-white',
-      imagen: '../src/assets/Pizza types/pizza-jamon.jpg',
-    },
-    // Puedes agregar más objetos al array según sea necesario
-  ];
-  const productosCompra = [
-    {
-      id: 1,
-      texto: 'Pizza pepperoni',
-      imagen: '../src/assets/Pizza types/pizza-cheese-pepperoni.jpg',
-    },
-    {
-      id: 2,
-      texto: 'Pizza cuatro quesos',
-      imagen: '../src/assets/Pizza types/pizza-cuatro-quesos.jpg',
-    },
-    {
-      id: 3,
-      texto: 'Pizza jamon',
-      imagen: '../src/assets/Pizza types/pizza-jamon.jpg',
+      imagen: 'ej',
+      texto: '',
     },
   ];
+  // const elements = [
+  //   {
+  //     id: 1,
+  //     imagen: 'ej',
+  //   },
+  // ];
   return (
     <div className="absolute">
       <div className="fixed right-0 top-20 mx-auto w-72 bg-bubble-gum shadow-lg h-screen flex flex-col overflow-y-auto">
@@ -66,7 +41,7 @@ const Cart = () => {
         </div>
         <h3 className="font-bold text-text-paragraph">Tu pedido</h3>
         <div className="p-4 h-60 w-[100%] flex flex-col justify-center items-center self-center rounded-2xl overflow-x-auto overflow-y-auto">
-          {productosCompra.map((productoCompra) => (
+          {productsTosell.map((productoCompra) => (
             <div
               key={productoCompra.id}
               className="flex items-center w-48 h-52 space-x-2 object-cover object-center"
@@ -98,9 +73,9 @@ const Cart = () => {
         <h3 className=" font-bold text-text-paragraph mb-7">
           ¿Queres agregar algo más?
         </h3>
-        <div className="bg-white p-4 mb-20 h-36 w-[90%] flex justify-center items-center self-center rounded-xl overflow-x-auto overflow-y-auto space-x-4 relative bottom-5">
+        {/* <div className="bg-white p-4 mb-20 h-36 w-[90%] flex justify-center items-center self-center rounded-xl overflow-x-auto overflow-y-auto space-x-4 relative bottom-5">
           <div className="flex space-x-3">
-            {elementos.map((elemento) => (
+            {elements.map((elemento) => (
               <div
                 key={elemento.id}
                 className="flex-none justify-center items-center bg-white self-center"
@@ -113,7 +88,7 @@ const Cart = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
         <div className="flex justify-around">
           <div className="relative bottom-24">
             <p className="text-text-paragraph">Total</p>

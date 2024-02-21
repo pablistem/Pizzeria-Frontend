@@ -23,6 +23,9 @@ const ProductCard = ({ products }: Props) => {
             </h2>
             <p className="text-slate-500">{obj.price}</p>
           </div>
+          <button className="bg-logo-orange rounded-3xl text-text-paragraph text-sm w-4/6 items-center self-center">
+            Agregar al carrito
+          </button>
         </article>
       ))}
     </>
