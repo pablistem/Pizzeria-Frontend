@@ -9,13 +9,19 @@ interface AuthProviderProps {
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState(true);
+  const [ user, setUser ] = useState<boolean>(true);
+  const [ accessToken, setAccessToken ] = useState<string>('');
   const navigate = useNavigate();
 
   useRefresh({ onSuccess: () => navigate('/') });
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      setUser,
+      accessToken,
+      setAccessToken
+      }}>
       {children}
     </AuthContext.Provider>
   );

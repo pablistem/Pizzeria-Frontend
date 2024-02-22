@@ -19,6 +19,7 @@ export interface IFormValues {
 }
 
 export interface IUser {
+  id: number,
   name: string;
   direction: string;
   email: string;
@@ -29,4 +30,11 @@ export interface IProduct {
   description: string;
   price: string;
   image: string;
+}
+
+export interface IAddress {
+  country: string;
+  state: string;
+  city: string;
+  address: string;
 }

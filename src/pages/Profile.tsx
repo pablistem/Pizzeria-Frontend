@@ -1,4 +1,5 @@
 import icon from '../assets/icon_pizza_shop.jpg';
+import { AddressForm } from '../components/AddressForm/Address';
 import { IUser } from '../types/types';
 type Props = { user: IUser; onShowMenuAgain: () => void };
 
@@ -58,6 +59,7 @@ const Profile = ({ user, onShowMenuAgain }: Props) => {
               {user.telephone}
             </p>
             <p className="mb-3 mx-3">Teléfono</p>
+            <AddressForm profile={user.id} />
             <button
               type="button"
               onClick={() => console.log('logout')}

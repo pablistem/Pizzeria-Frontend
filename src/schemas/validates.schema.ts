@@ -19,3 +19,10 @@ export const registerSchema = object().shape({
       return value === this?.parent.password;
     }),
 });
+
+export const addressSchema = object().shape({
+  country: string().required(),
+  state: string().required(),
+  city: string().required(),
+  address: string().required(),
+})

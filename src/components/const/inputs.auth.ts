@@ -48,3 +48,26 @@ export const INPUTS_LOGIN = {
     placeholder: 'Password',
   },
 };
+
+export const ADDRESS_INPUTS = {
+  country: {
+    id: 'country',
+    name: 'country',
+    type: 'text',
+  },
+  state: {
+    id: 'state',
+    name: 'state',
+    type: 'text',
+  },
+  city: {
+    id: 'city',
+    name: 'city',
+    type: 'text',
+  },
+  address: {
+    id: 'address',
+    name: 'address',
+    type: 'text',
+  },
+};

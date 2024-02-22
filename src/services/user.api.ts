@@ -1,4 +1,4 @@
-import { ILoginPayload, ISignUpPayload, IUser } from '../types/types';
+import { IAddress, ILoginPayload, ISignUpPayload, IUser } from '../types/types';
 import { AxiosResponse } from 'axios';
 import { Axios, AxiosAuth } from '../services/axios.api';
 
@@ -47,6 +47,23 @@ export const setSession = async (token: string) => {
 };
 
 export const getUserData = async (): Promise<IUser> => {
-  const res: AxiosResponse<IUser> = await Axios.get('/user/profile');
+  const res: AxiosResponse<IUser> = await Axios.get('/profile');
   return res.data;
 };
+
+export const getAddressData = async (): Promise<IAddress> => {
+  const res: AxiosResponse<IAddress> = await Axios({
+    url: '/address',
+    method: 'GET',
+  })
+  return res.data;
+}
+
+export const addAddressData = async (address: IAddress): Promise<unknown> => {
+  const res: AxiosResponse<IAddress> = await Axios({
+    url: '/address',
+    method: 'POST',
+    data: JSON.stringify(address),
+  })
+  return res.data;
+}
