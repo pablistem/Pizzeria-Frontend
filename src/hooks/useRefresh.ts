@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
-import { refreshSessions, setSession } from '../services/user.api';
+import { refreshSessions } from '../services/user.api';
 
 type options = {
   onSuccess?: () => void;
   onReject?: () => void;
+  setToken: (token: string) => void;
 };
 
-const useRefresh = ({ onSuccess, onReject }: options) => {
+const useRefresh = ({ onSuccess, onReject, setToken }: options) => {
   useEffect(() => {
     refreshSessions()
       .then(({ accessToken }) => {
-        setSession(accessToken);
+        setToken(accessToken);
       })
       .then(() => {
         onSuccess?.();

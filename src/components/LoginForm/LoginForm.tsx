@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { INPUTS_LOGIN } from '../const/inputs.auth';
 import { login } from '../../services/user.api';
@@ -7,8 +8,10 @@ import { ILoginPayload } from '../../types/types';
 import { loginSchema } from '../../schemas/validates.schema';
 import './Login.css';
 import InputForm from '../InputForm/InputForm';
+import { AuthContext } from '../../context/AuthContext';
 
 export const LoginForm = () => {
+  const { setAccessToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = async (values: ILoginPayload) => {
@@ -18,8 +21,9 @@ export const LoginForm = () => {
     };
 
     try {
-      await login(loginPayload);
+      const token = await login(loginPayload);
       toastAlertSuccess('Logeado satisfactoriamente');
+      setAccessToken({ accessToken: token });
       navigate('/', { replace: true });
     } catch (error) {
       errorAlert('Error', (error as Error).message);

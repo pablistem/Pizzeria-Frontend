@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import profileIcon from '../../assets/Menu icons/profile_icon.jpg';
 import orderIcon from '../../assets/Menu icons/order_icon.jpg';
 import couponIcon from '../../assets/Menu icons/coupon_icon.jpg';
@@ -6,10 +6,13 @@ import discountIcon from '../../assets/Menu icons/discount_icon.jpg';
 import UnauthenticatedProfile from '../../pages/UnauthenticatedProfile';
 import Profile from '../../pages/Profile';
 import useUser from '../../hook/useUser';
+import ProfileForm from '../ProfileForm/ProfileForm';
+import { AuthContext } from '../../context/AuthContext';
 
 const Menu = () => {
   const { userData } = useUser();
-  const [selectedSection, setSelectedSection] = useState<string>('');
+  const { accessToken } = useContext(AuthContext);
+  const [ selectedSection, setSelectedSection ] = useState<string>('');
 
   const menuItems = [
     {
@@ -44,13 +47,16 @@ const Menu = () => {
           ))}
         </ul>
       )}
-      {userData && selectedSection === 'profile' && (
+      {accessToken && userData && selectedSection === 'profile' && (
         <Profile
           onShowMenuAgain={() => setSelectedSection('')}
           user={userData}
         />
       )}
-      {!userData && selectedSection === 'profile' && (
+      {accessToken && !userData && selectedSection === 'profile' && (
+        <ProfileForm />
+      )}
+      {!accessToken && selectedSection === 'profile' && (
         <UnauthenticatedProfile
           onShowMenuAgain={() => setSelectedSection('')}
         />

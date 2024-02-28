@@ -6,7 +6,7 @@ import { Home } from './pages/Home';
 import Register from './pages/Register';
 
 import Login from './pages/Login';
-import AuthProvider from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 
 const App: React.FC = () => {
   return (
