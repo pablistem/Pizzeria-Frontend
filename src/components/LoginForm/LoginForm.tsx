@@ -1,18 +1,16 @@
-import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { INPUTS_LOGIN } from '../const/inputs.auth';
-import { login } from '../../services/user.api';
 import { errorAlert, toastAlertSuccess } from '../../services/alert';
 import { ErrorMessage, Formik, Form } from 'formik';
 import { ILoginPayload } from '../../types/types';
 import { loginSchema } from '../../schemas/validates.schema';
 import './Login.css';
 import InputForm from '../InputForm/InputForm';
-import { AuthContext } from '../../context/AuthContext';
+import useLogin from '../../hooks/useLogin';
 
 export const LoginForm = () => {
-  const { setAccessToken } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { setLogin } = useLogin({ onSuccess: () => navigate('/', { replace: true })});
 
   const onSubmit = async (values: ILoginPayload) => {
     const loginPayload = {
@@ -21,14 +19,13 @@ export const LoginForm = () => {
     };
 
     try {
-      const token = await login(loginPayload);
+      setLogin(loginPayload);
       toastAlertSuccess('Logeado satisfactoriamente');
-      setAccessToken({ accessToken: token });
-      navigate('/', { replace: true });
     } catch (error) {
       errorAlert('Error', (error as Error).message);
     }
   };
+  
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <Formik

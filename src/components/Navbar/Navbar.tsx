@@ -3,8 +3,12 @@ import iconCart from '../../assets/Navbar icons/cart_icon.svg';
 import Menu from '../Menu/Menu';
 import Cart from '../Cart/Cart';
 import { useState } from 'react';
+import useLogout from '../../hooks/useLogout';
+import useAuth from '../../hooks/useAuth';
 export const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
+  const { accessToken } = useAuth();
+  const { setLogout } = useLogout({});
 
   const toggleCart = () => {
     setTimeout(() => {
@@ -29,7 +33,8 @@ export const Navbar = () => {
         ></label>
         <h1>Pizzeria Don Remolo</h1>
         <Menu /> {/* Aquí se utiliza el componente Menu */}
-        <Link to={'/login'}>Login</Link>
+        {!accessToken && <Link to={'/login'}>Login</Link>}
+        {accessToken && <div onClick={() => setLogout()} className='cursor-pointer'>Logout</div>}
         <div className="relative">
           <button
             className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md"

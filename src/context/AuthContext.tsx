@@ -3,17 +3,15 @@ import useRefresh from '../hooks/useRefresh';
 import { useNavigate } from 'react-router-dom';
 import { setSession } from '../services/user.api';
 
-export type AccessToken = {
-  accessToken: string;
-}
+export type AccessToken = string | null;
 
 export interface AuthContextInterface {
-  accessToken: {},
+  accessToken: string | null,
   setAccessToken: Dispatch<SetStateAction<AccessToken>>
 }
 
 const defaultState = {
-  accessToken: '',
+  accessToken: null,
   setAccessToken: () => {}
 } as AuthContextInterface;
 
@@ -24,10 +22,13 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [ accessToken, setAccessToken ] = useState<AccessToken>({ accessToken: '' });
+  const [ accessToken, setAccessToken ] = useState<AccessToken>(null);
   const navigate = useNavigate();
 
-  useRefresh({ onSuccess: () => navigate('/'), setToken: (token: string) => setAccessToken({ accessToken: token }) });
+  useRefresh({ 
+    onSuccess: () => navigate('/'), 
+    setToken: (token: string) => setAccessToken(token) 
+  });
   setSession(accessToken)
 
   return (

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import profileIcon from '../../assets/Menu icons/profile_icon.jpg';
 import orderIcon from '../../assets/Menu icons/order_icon.jpg';
 import couponIcon from '../../assets/Menu icons/coupon_icon.jpg';
@@ -7,11 +7,11 @@ import UnauthenticatedProfile from '../../pages/UnauthenticatedProfile';
 import Profile from '../../pages/Profile';
 import useUser from '../../hook/useUser';
 import ProfileForm from '../ProfileForm/ProfileForm';
-import { AuthContext } from '../../context/AuthContext';
+import useAuth from '../../hooks/useAuth';
 
 const Menu = () => {
   const { userData } = useUser();
-  const { accessToken } = useContext(AuthContext);
+  const { accessToken } = useAuth();
   const [ selectedSection, setSelectedSection ] = useState<string>('');
 
   const menuItems = [

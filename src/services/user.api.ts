@@ -5,7 +5,7 @@ import { AccessToken } from '../context/AuthContext';
 
 const controller = new AbortController();
 
-export const login = async (payload: ILoginPayload): Promise<string> => {
+export const login = async (payload: ILoginPayload): Promise<{ accessToken: string }> => {
   const res: AxiosResponse<{ accessToken: string }> = await AxiosAuth.post(
     '/auth/login',
       payload,
@@ -13,7 +13,7 @@ export const login = async (payload: ILoginPayload): Promise<string> => {
         signal: controller.signal,
       },
     );
-    return res.data.accessToken;
+    return res.data;
 };
 
 export const signup = async (payload: ISignUpPayload): Promise<unknown> => {
@@ -25,6 +25,18 @@ export const signup = async (payload: ISignUpPayload): Promise<unknown> => {
     },
   );
   return res.data;
+};
+
+export const logout = async (token: string | null): Promise<void> => {
+  await AxiosAuth.get(
+    '/auth/logout',
+    {
+      signal: controller.signal,
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    },
+  );
 };
 
 export const userInfo = async (token: string) => {
@@ -48,7 +60,7 @@ export const refreshSessions = async (): Promise<{ accessToken: string }> => {
 };
 
 export const setSession = async (token: AccessToken) => {
-  Axios.defaults.headers.common['Authorization'] = `Bearer ${token.accessToken}`;
+  Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
 export const getUserData = async (): Promise<IUser> => {
