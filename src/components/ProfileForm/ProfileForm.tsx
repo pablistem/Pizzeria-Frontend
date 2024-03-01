@@ -8,7 +8,7 @@ const ProfileForm = () => {
   return (
     <>
     <div>
-      <AddressForm profile={1} />
+      <AddressForm profile={1} /> {/* ID del profile */}
     </div>
     <div 
         className="text-center mt-4 font-semibold text-logo-orange hover:text-red-error cursor-pointer" 

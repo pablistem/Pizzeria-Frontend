@@ -5,7 +5,13 @@ import { AuthContext } from '../context/AuthContext';
 
 const useUser = () => {
   const { accessToken } = useContext(AuthContext)
-  const [userData, setUserData] = useState<IUser | null>(null);
+  const [userData, setUserData] = useState<IUser | null>({
+    id: 1,
+    name: 'facu',
+    direction: '',
+    email: 'email@gmail.com',
+    telephone: 1154953811,
+  });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

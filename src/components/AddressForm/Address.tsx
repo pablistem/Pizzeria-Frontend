@@ -34,7 +34,7 @@ export const AddressForm = ({ profile }) => {
       <button
         id="open-modal-button"
         type="button"
-        className="flex w-full text-white justify-center rounded-full bg-logo-orange px-3 py-1.5 font-semibold shadow-sm hover:bg-red-error"
+        className="flex w-full text-white justify-center rounded-full bg-logo-orange mb-2 px-3 py-1.5 font-semibold shadow-sm hover:bg-red-error"
         onClick={() => setOpenModal(true)}>
           Añadir dirección
         </button>
