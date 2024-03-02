@@ -1,7 +1,18 @@
+/* eslint-disable no-unused-vars */
 import { createContext, useMemo, useState } from 'react';
 import { IProduct } from '../types/types';
 
-export const CartContext = createContext({});
+type CartContextType = {
+  productsCart: {
+    [key: number]: { product: IProduct; quantity: number };
+  };
+  addToCart: (product: IProduct) => void;
+  deleteItemfromcart: (product: IProduct) => void;
+  removeFromCart: (product: IProduct) => void;
+  clearCart: () => void;
+};
+
+export const CartContext = createContext({} as CartContextType);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [productsCart, setProductsCart] = useState<{
