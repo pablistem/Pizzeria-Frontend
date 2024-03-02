@@ -47,6 +47,6 @@ export const setSession = async (token: string) => {
 };
 
 export const getUserData = async (): Promise<IUser> => {
-  const res: AxiosResponse<IUser> = await Axios.get('/user/profile');
+  const res: AxiosResponse<IUser> = await Axios.get('/profile');
   return res.data;
 };

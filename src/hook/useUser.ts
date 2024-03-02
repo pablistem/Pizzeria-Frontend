@@ -10,6 +10,7 @@ const useUser = () => {
     const fetchData = async () => {
       try {
         const result = await getUserData();
+        console.log(result);
         setUserData(result);
       } catch (error) {
         console.error(error);

@@ -1,17 +1,10 @@
+import { useCart } from '../../context/CartContext';
+import { IProduct } from '../../types/types';
 const Cart = () => {
-  const productsTosell = [
-    {
-      id: 1,
-      imagen: 'ej',
-      texto: '',
-    },
-  ];
-  // const elements = [
-  //   {
-  //     id: 1,
-  //     imagen: 'ej',
-  //   },
-  // ];
+  const { productsCart, addToCart, removeFromCart, deleteItemfromcart } =
+    useCart() as {
+      productsCart: Record<string, IProduct>;
+    };
   return (
     <div className="absolute">
       <div className="fixed right-0 top-20 mx-auto w-72 bg-bubble-gum shadow-lg h-screen flex flex-col overflow-y-auto">
@@ -40,31 +33,46 @@ const Cart = () => {
           </div>
         </div>
         <h3 className="font-bold text-text-paragraph">Tu pedido</h3>
-        <div className="p-4 h-60 w-[100%] flex flex-col justify-center items-center self-center rounded-2xl overflow-x-auto overflow-y-auto">
-          {productsTosell.map((productoCompra) => (
+        <div className="p-4 h-56 w-[100%] flex flex-col justify-center items-center self-center rounded-2xl overflow-x-auto overflow-y-auto">
+          {Object.values(productsCart).map((item) => (
             <div
-              key={productoCompra.id}
+              key={item.id}
               className="flex items-center w-48 h-52 space-x-2 object-cover object-center"
             >
               {/* Imagen */}
               <div className="flex flex-col ml-1">
                 <img
-                  src={productoCompra.imagen}
+                  src={item.image}
                   className="w-10 h-10 object-cover object-center"
                   alt="producto"
                 />
 
-                <button className="text-text-paragraph">Editar</button>
+                <button
+                  className="text-text-paragraph"
+                  onClick={() => deleteItemfromcart(item.id)}
+                >
+                  Editar
+                </button>
               </div>
 
               <div className="flex flex-col flex-grow items-center justify-center">
                 <p className="text-text-paragraph text-sm">
-                  {productoCompra.texto}
+                  {item.description}
                 </p>
                 <div className="flex border-text-paragraph  rounded-3xl">
-                  <button className="text-text-paragraph w-6">-</button>
+                  <button
+                    className="text-text-paragraph w-6"
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    -
+                  </button>
                   <p>0</p>
-                  <button className="text-text-paragraph w-6">+</button>
+                  <button
+                    className="text-text-paragraph w-6"
+                    onClick={() => addToCart(item)}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             </div>
@@ -92,7 +100,7 @@ const Cart = () => {
         <div className="flex justify-around">
           <div className="relative bottom-24">
             <p className="text-text-paragraph">Total</p>
-            <p className="text-text-paragraph">$1400</p>
+            <p className="text-text-paragraph">0</p>
           </div>
           <button className="text-text-paragraph bg-logo-orange relative bottom-24 w-24 rounded-3xl">
             Pagar

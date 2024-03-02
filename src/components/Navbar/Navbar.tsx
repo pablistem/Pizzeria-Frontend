@@ -3,9 +3,13 @@ import iconCart from '../../assets/Navbar icons/cart_icon.svg';
 import Menu from '../Menu/Menu';
 import Cart from '../Cart/Cart';
 import { useState } from 'react';
+import { useCart } from '../../context/CartContext';
+import { IProduct } from '../../types/types';
 export const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
-
+  const { productsCart } = useCart() as {
+    productsCart: Record<string, IProduct>;
+  };
   const toggleCart = () => {
     setTimeout(() => {
       setCartOpen(!cartOpen);
@@ -36,7 +40,9 @@ export const Navbar = () => {
             onClick={toggleCart}
           >
             <img src={iconCart} alt="Shopping Cart" className="h-6 w-6 mr-2" />
-            <p className="text-text-paragraph">0</p>
+            <p className="text-text-paragraph">
+              {Object.keys(productsCart).length}
+            </p>
             {cartOpen ? true : false}
           </button>
         </div>
