@@ -5,7 +5,7 @@ import couponIcon from '../../assets/Menu icons/coupon_icon.jpg';
 import discountIcon from '../../assets/Menu icons/discount_icon.jpg';
 import UnauthenticatedProfile from '../../pages/UnauthenticatedProfile';
 import Profile from '../../pages/Profile';
-import useUser from '../../hook/useUser';
+import useUser from '../../hooks/useUser';
 
 const Menu = () => {
   const { userData } = useUser();

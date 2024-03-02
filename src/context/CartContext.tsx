@@ -1,105 +1,60 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useMemo, useState } from 'react';
 import { IProduct } from '../types/types';
 
-const CartContext = createContext({} as unknown);
+export const CartContext = createContext({});
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const useCart = () => {
-  return useContext(CartContext);
-};
-
-// eslint-disable-next-line react/prop-types
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [productsCart, setProductsCart] = useState<{
-    [key: number]: IProduct[];
+    [key: number]: { product: IProduct; quantity: number };
   }>({});
 
   const addToCart = (product: IProduct) => {
     setProductsCart((prevItems) => {
       const updatedCart = { ...prevItems };
 
-      updatedCart[product.id] = [...(updatedCart[product.id] || []), product];
-      console.log(updatedCart);
+      if (updatedCart[product.id]) {
+        updatedCart[product.id].quantity += 1;
+      } else {
+        updatedCart[product.id] = { product, quantity: 1 };
+      }
       return updatedCart;
     });
   };
 
-  const removeFromCart = (productId: IProduct) => {
+  const deleteItemfromcart = (product: IProduct) => {
     setProductsCart((prevItems) => {
       const updatedCart = { ...prevItems };
-      if (updatedCart[productId.id]) {
-        // Si el producto está en el carrito, decrementa la cantidad
-        if (updatedCart && updatedCart[productId.id]) {
-          delete updatedCart[productId.id];
-        }
+      updatedCart[product.id].quantity -= 1;
+      if (updatedCart[product.id].quantity === 0) {
+        delete updatedCart[product.id];
       }
       return updatedCart;
     });
   };
-  const deleteItemfromcart = (product: IProduct) => {
+
+  const removeFromCart = (product: IProduct) => {
     setProductsCart((prevItems) => {
       const updatedCart = { ...prevItems };
-      console.log(updatedCart);
-      if (updatedCart[product.id]) {
-        delete updatedCart[product.id];
-      }
+      delete updatedCart[product.id];
       return updatedCart;
     });
   };
   const clearCart = () => {
     setProductsCart({});
   };
-  // const getTotalPrice = () => {
-  //   if (!productsCart) {
-  //     return 0;
-  //   } else {
-  //     return Object.values(productsCart).reduce((total, items) => {
-  //       return items.reduce(item)=>{
 
-  //       };
-  //     }, 0);
-  //   }
-  // };
-  // const addToCart = (product: IProduct) => {
+  const contextValue = useMemo(
+    () => ({
+      productsCart,
+      addToCart,
+      deleteItemfromcart,
+      clearCart,
+      removeFromCart,
+    }),
+    [productsCart],
+  );
 
-  //   setproductsCart((prevCart) => {
-
-  //     const updatedCart = { ...prevCart };
-  //     updatedCart[product.name] = [...(prevCart[product.name] || []), product];
-  //     console.log(updatedCart);
-  //     return updatedCart;
-  //   });
-  // };
-
-  // //   const removeFromcart = (itemToRemove) => {
-  // //     setproductsCart(productsCart.filter((item) => item !== itemToRemove));
-  // //   };
-  // const removeItem = (product) => {
-  //   const deleteProductcart = { ...productsCart };
-  //   deleteProductcart[product.name]?.pop;
-  //   if (deleteProductcart[product.name]?.length === 0) {
-  //     delete deleteProductcart[product.name];
-  //   }
-  //   setproductsCart(deleteProductcart);
-  // };
-
-  //   const cartTotal = productsCart.reduce(
-  //     (total, item) => total + item.price * item.quantity,
-  //     0,
-  //   );
-
-  //Object.keys(productsCart).map((productName)=>acum + productsCart[pr]);
   return (
-    <CartContext.Provider
-      value={{
-        productsCart,
-        addToCart,
-        removeFromCart,
-        clearCart,
-        deleteItemfromcart,
-      }}
-    >
-      {children}
-    </CartContext.Provider>
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
 };
