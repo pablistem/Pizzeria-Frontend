@@ -1,4 +1,4 @@
-import { object, string, ObjectSchema } from 'yup';
+import { object, string, ObjectSchema, mixed, number } from 'yup';
 import { ILoginPayload } from '../types/types';
 
 export const loginSchema: ObjectSchema<ILoginPayload> = object({
@@ -19,6 +19,15 @@ export const registerSchema = object().shape({
       return value === this?.parent.password;
     }),
 });
+
+export const updateProfile = object().shape({
+  avatar: mixed().test('fileSize', 'El archivo es demasiado grande', (value) => value && value.size <= 1000000 ),
+  street: string(),
+  height: string(),
+  postalCode: number(),
+  age: number(),
+  phone: number(),
+})
 
 export const addressSchema = object().shape({
   country: string().required(),

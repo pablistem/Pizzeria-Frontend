@@ -24,8 +24,7 @@ const RegisterForm = () => {
     };
 
     try {
-      const response = await signup(payloadRegister);
-      console.log(response);
+      await signup(payloadRegister);
       successAlert('Success', 'Usuario Registrado Exitosamente');
       navigate('/login');
     } catch (err) {

@@ -19,12 +19,14 @@ export interface IFormValues {
 }
 
 export interface IUser {
-  id: number,
-  name: string;
-  direction: string;
-  email: string;
-  telephone: number;
+  avatar: File;
+  street: string;
+  height: number;
+  postalCode: number;
+  age: number;
+  phone: number;
 }
+
 export interface IProduct {
   name: string;
   description: string;
