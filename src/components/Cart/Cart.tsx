@@ -1,4 +1,12 @@
+import { useState } from 'react';
+import Modal from '../Modal/Modal';
+import OrderModal from '../Modal/OrderModal';
+
 const Cart = () => {
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => setModal(!modal);
+
   const elementos = [
     {
       id: 1,
@@ -119,11 +127,19 @@ const Cart = () => {
             <p className="text-text-paragraph">Total</p>
             <p className="text-text-paragraph">$1400</p>
           </div>
-          <button className="text-text-paragraph bg-logo-orange relative bottom-24 w-24 rounded-3xl">
+          <button
+            className="text-text-paragraph bg-logo-orange relative bottom-24 w-24 rounded-3xl"
+            onClick={() => setModal(!modal)}
+          >
             Pagar
           </button>
         </div>
       </div>
+      {modal ? (
+        <Modal>
+          <OrderModal closeModal={() => closeModal()} />
+        </Modal>
+      ) : null}
     </div>
   );
 };
