@@ -19,10 +19,11 @@ export interface IFormValues {
 }
 
 export interface IUser {
-  avatar: File;
-  street: string;
-  height: number;
-  postalCode: number;
+  avatar: {
+    name: File["name"],
+    size: File["size"],
+    type: File["type"]
+  };
   age: number;
   phone: number;
 }
@@ -38,5 +39,7 @@ export interface IAddress {
   country: string;
   state: string;
   city: string;
-  address: string;
+  street: string;
+  height: number;
+  postalCode: number;
 }

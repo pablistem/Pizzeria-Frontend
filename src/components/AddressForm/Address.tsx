@@ -16,7 +16,9 @@ export const AddressForm = ({ profile }) => {
         country: values.country,
         state: values.state,
         city: values.city,
-        address: values.address,
+        street: values.street,
+        height: values.height,
+        postalCode: values.postalCode,
         profile: profile,
       };
 
@@ -47,7 +49,9 @@ export const AddressForm = ({ profile }) => {
               country: '',
               state: '',
               city: '',
-              address: ''
+              street: '',
+              height: 0,
+              postalCode: 0
             }}
             validationSchema={addressSchema}
             onSubmit={onSubmit}
@@ -78,10 +82,26 @@ export const AddressForm = ({ profile }) => {
                 ></ErrorMessage>
               </div>
               <div>
-                <label>Domicilio</label>
-                <InputForm {...ADDRESS_INPUTS.address}></InputForm>
+                <label>Calle</label>
+                <InputForm {...ADDRESS_INPUTS.street}></InputForm>
                 <ErrorMessage 
-                  name="address"
+                  name="street"
+                  render={(msg => <p style={{ color: '#ae3232' }}>{msg}</p>)}
+                ></ErrorMessage>
+              </div>
+              <div>
+                <label>Altura</label>
+                <InputForm {...ADDRESS_INPUTS.height}></InputForm>
+                <ErrorMessage 
+                  name="height"
+                  render={(msg => <p style={{ color: '#ae3232' }}>{msg}</p>)}
+                ></ErrorMessage>
+              </div>
+              <div>
+                <label>Código Postal</label>
+                <InputForm {...ADDRESS_INPUTS.postalCode}></InputForm>
+                <ErrorMessage 
+                  name="postal-code"
                   render={(msg => <p style={{ color: '#ae3232' }}>{msg}</p>)}
                 ></ErrorMessage>
               </div>

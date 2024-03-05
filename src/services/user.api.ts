@@ -68,7 +68,18 @@ export const getUserData = async (): Promise<IUser> => {
   return res.data;
 };
 
-export const fillProfileData = async (data: IUser): Promise<void> => {
+export const createProfile = async (data: IUser): Promise<void> => {
+  await Axios({
+    url: '/profile',
+    method: 'POST',
+    data: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    }
+  });
+}
+
+export const updateProfile = async (data: IUser): Promise<void> => {
   await Axios({
     url: '/profile',
     method: 'PUT',

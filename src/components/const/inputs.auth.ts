@@ -65,9 +65,19 @@ export const ADDRESS_INPUTS = {
     name: 'city',
     type: 'text',
   },
-  address: {
-    id: 'address',
-    name: 'address',
+  street: {
+    id: 'street',
+    name: 'street',
+    type: 'text',
+  },
+  height: {
+    id: 'height',
+    name: 'height',
+    type: 'text',
+  },
+  postalCode: {
+    id: 'postal-code',
+    name: 'postal-code',
     type: 'text',
   },
 };

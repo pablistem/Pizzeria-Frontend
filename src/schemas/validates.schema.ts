@@ -21,10 +21,7 @@ export const registerSchema = object().shape({
 });
 
 export const updateProfile = object().shape({
-  avatar: mixed().test('fileSize', 'El archivo es demasiado grande', (value) => value && value.size <= 1000000 ),
-  street: string(),
-  height: string(),
-  postalCode: number(),
+  avatar: mixed(),
   age: number(),
   phone: number(),
 })
