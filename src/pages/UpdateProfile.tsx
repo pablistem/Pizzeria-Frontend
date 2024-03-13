@@ -1,28 +1,31 @@
-import icon from '../assets/icon_pizza_shop.jpg';
 import { useState } from 'react'
 import Modal from '../components/Modal/Modal';
-import { createProfile } from '../services/user.api';
-import { IUser } from '../types/types';
+import { updateProfile } from '../services/user.api';
+import { IProfile } from '../types/types';
 import { FormikHelpers, Formik } from 'formik';
 import { AxiosError } from 'axios';
 import { errorAlert } from '../services/alert';
-import { updateProfile } from '../schemas/validates.schema';
+import { updateProfileSchema } from '../schemas/validates.schema';
+import UploadImage from '../components/UploadImage/UploadImage';
 
 function UpdateProfile() {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const onSubmit = async (
-    values: IUser,
-    actions: FormikHelpers<IUser>,
+    values: IProfile,
+    actions: FormikHelpers<IProfile>,
   ) => {
     const payloadUpdateProfile = {
+      id: values.id,
       avatar: values.avatar,
+      name: values.name,
+      lastName: values.lastName,
       age: values.age,
       phone: values.phone,
     };
 
     try {
-      await createProfile(payloadUpdateProfile)
+      await updateProfile(payloadUpdateProfile)
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error?.response?.data.statusCode === 404) {
@@ -54,42 +57,21 @@ function UpdateProfile() {
       <Modal open={openModal} >
         <Formik 
           initialValues={{
-            avatar: {
-              name: 'image',
-              size: 1024,
-              type: 'image/jpeg'
-            },
+            id: 1,
+            avatar: 'image',
+            name: 'user',
+            lastName: 'user',
             age: 30,
             phone: 2610000000,
             }} 
-            validationSchema={updateProfile} 
+            validationSchema={updateProfileSchema} 
             onSubmit={onSubmit}>
           <form>
             <main className="bg-white p-6 rounded-xl w-96">
               <div className="grid w-full min-h-full flex-col mt-50 justify-center">
                 <h1 className="font-semibold text-center text-2xl">Editar perfil</h1>
                 <div className="relative top-start w-32 justify-self-center">
-                  <img
-                    src={icon}
-                    alt="Pizzería Don Remolo Logo"
-                    className="relative rounded-full opacity-50"
-                  />
-                  <div className='absolute bg-light-pink rounded-full start-11 top-11'>
-                    <label htmlFor="avatar">
-                      <svg
-                        className="w-10 h-10 p-2 cursor-pointer"
-                        data-slot="icon"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"></path>
-                      </svg>
-                    </label>
-                    <input type="file" name="avatar" id="avatar" accept='.jpg,.jpeg,.png' style={{ display: 'none' }} />
-                  </div>
+                  <UploadImage />
                 </div>
                 <div className='w-80 p-6'>
                   <div className="relative mb-2 mt-5">

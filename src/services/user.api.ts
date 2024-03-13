@@ -1,4 +1,4 @@
-import { IAddress, ILoginPayload, ISignUpPayload, IUser } from '../types/types';
+import { IAddress, ILoginPayload, ISignUpPayload, IProfile } from '../types/types';
 import { AxiosResponse } from 'axios';
 import { Axios, AxiosAuth } from '../services/axios.api';
 import { AccessToken } from '../context/AuthContext';
@@ -63,12 +63,12 @@ export const setSession = async (token: AccessToken) => {
   Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 };
 
-export const getUserData = async (): Promise<IUser> => {
-  const res: AxiosResponse<IUser> = await Axios.get('/profile');
+export const getProfile = async (): Promise<IProfile> => {
+  const res: AxiosResponse<IProfile> = await Axios.get('/profile');
   return res.data;
 };
 
-export const createProfile = async (data: IUser): Promise<void> => {
+export const createProfile = async (data: IProfile): Promise<void> => {
   await Axios({
     url: '/profile',
     method: 'POST',
@@ -79,7 +79,7 @@ export const createProfile = async (data: IUser): Promise<void> => {
   });
 }
 
-export const updateProfile = async (data: IUser): Promise<void> => {
+export const updateProfile = async (data: IProfile): Promise<void> => {
   await Axios({
     url: '/profile',
     method: 'PUT',

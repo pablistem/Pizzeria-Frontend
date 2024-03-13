@@ -9,8 +9,6 @@ export const loginSchema: ObjectSchema<ILoginPayload> = object({
 });
 
 export const registerSchema = object().shape({
-  name: string().required('El nombre es obligatorio'),
-  lastName: string().required('El apellido es obligatorio'),
   email: string().email('Email inválido').required('El email es obligatorio'),
   password: string().required('La contraseña es obligatoria'),
   password2: string()
@@ -20,8 +18,18 @@ export const registerSchema = object().shape({
     }),
 });
 
-export const updateProfile = object().shape({
+export const createProfileSchema = object().shape({
   avatar: mixed(),
+  name: string().required('Debes ingresar un nombre'),
+  lastName: string().required('Debes ingresar un apellido'),
+  age: number().required('Debes ingresar una edad'),
+  phone: number().required('Debes ingresar un número de teléfono'),
+})
+
+export const updateProfileSchema = object().shape({
+  avatar: mixed(),
+  name: string(),
+  lastName: string(),
   age: number(),
   phone: number(),
 })

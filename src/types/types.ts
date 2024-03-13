@@ -4,26 +4,21 @@ export interface ILoginPayload {
 }
 
 export interface ISignUpPayload {
-  name: string;
-  lastName: string;
   email: string;
   password: string;
 }
 
 export interface IFormValues {
-  name: string;
-  lastName: string;
   email: string;
   password: string;
   passwordConfirm: string;
 }
 
-export interface IUser {
-  avatar: {
-    name: File["name"],
-    size: File["size"],
-    type: File["type"]
-  };
+export interface IProfile {
+  id: number;
+  avatar: string;
+  name: string;
+  lastName: string;
   age: number;
   phone: number;
 }

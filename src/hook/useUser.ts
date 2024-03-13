@@ -1,16 +1,17 @@
 import { useEffect, useState, useContext} from 'react';
-import { getUserData } from '../services/user.api';
-import { IUser } from '../types/types';
+import { getProfile } from '../services/user.api';
+import { IProfile } from '../types/types';
 import { AuthContext } from '../context/AuthContext';
 
 const useUser = () => {
   const { accessToken } = useContext(AuthContext)
-  const [userData, setUserData] = useState<IUser | null>({
+  const [userData, setUserData] = useState<IProfile | null>({
     id: 1,
-    name: 'facu',
-    direction: '',
-    email: 'email@gmail.com',
-    telephone: 1154953811,
+    avatar: 'image',
+    name: 'Facundo',
+    lastName: 'Castro',
+    age: 32,
+    phone: 1154953811,
   });
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +19,7 @@ const useUser = () => {
     if (accessToken) {
       const fetchData = async () => {
         try {
-          const result = await getUserData();
+          const result = await getProfile();
           setUserData(result);
         } catch (error) {
           console.error(error);

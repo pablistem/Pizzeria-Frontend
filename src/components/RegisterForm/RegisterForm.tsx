@@ -17,8 +17,6 @@ const RegisterForm = () => {
     actions: FormikHelpers<IFormValues>,
   ) => {
     const payloadRegister = {
-      name: values.name,
-      lastName: values.lastName,
       email: values.email,
       password: values.password,
     };
@@ -49,8 +47,6 @@ const RegisterForm = () => {
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <Formik
         initialValues={{
-          name: '',
-          lastName: '',
           email: '',
           password: '',
           passwordConfirm: '',
@@ -64,24 +60,6 @@ const RegisterForm = () => {
           method="POST"
           data-cy="form-register"
         >
-          <div>
-            <div>
-              <InputForm {...INPUTS_SIGNUP.name} />
-              <ErrorMessage
-                name="name"
-                render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
-              />
-            </div>
-          </div>
-          <div>
-            <div>
-              <InputForm {...INPUTS_SIGNUP.lastName} />
-              <ErrorMessage
-                name="lastName"
-                render={(msg) => <p style={{ color: '#ae3232' }}>{msg}</p>}
-              />
-            </div>
-          </div>
           <div>
             <div>
               <InputForm {...INPUTS_SIGNUP.email} />

@@ -1,9 +1,9 @@
 import icon from '../assets/icon_pizza_shop.jpg';
 import { AddressForm } from '../components/AddressForm/Address';
-import { IUser } from '../types/types';
+import { IProfile } from '../types/types';
 import useLogout from '../hooks/useLogout';
 import UpdateProfile from './UpdateProfile';
-type Props = { user: IUser; onShowMenuAgain: () => void };
+type Props = { user: IProfile; onShowMenuAgain: () => void };
 
 const Profile = ({ user, onShowMenuAgain }: Props) => {
   
@@ -38,26 +38,26 @@ const Profile = ({ user, onShowMenuAgain }: Props) => {
             </p>
             <p className="mb-3 mx-3">Nombre</p>
 
-            {user.direction &&
+            {user.lastName &&
               <>
-              <p data-cy="user-direction" className="mt-3 mx-3 font-semibold ">
-                {user.direction}
+              <p data-cy="user-last-name" className="mt-3 mx-3 font-semibold ">
+                {user.lastName}
               </p>
               
-              <p className="mb-3 mx-3">Dirección</p>
+              <p className="mb-3 mx-3">Apellido</p>
               </>
               
-              }
+            }
 
             <p data-cy="user-email" className="mt-3 mx-3 font-semibold ">
-              {user.email}
+              {user.age}
             </p>
-            <p className="mb-3 mx-3">Mail</p>
+            <p className="mb-3 mx-3">Edad</p>
 
-            {user.telephone && 
+            {user.phone && 
               <>
               <p data-cy="user-telephone" className="mt-3 mx-3 font-semibold ">
-                {user.telephone}
+                {user.phone}
               </p>
             
               <p className="mb-3 mx-3">Teléfono</p>
