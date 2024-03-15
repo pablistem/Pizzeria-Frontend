@@ -17,6 +17,7 @@ const CarouselCart = () => {
               className="w-32 h-32 object-cover object-center"
             />
             <button
+              id="add-item"
               className="bg-logo-orange rounded-3xl text-xs text-text-paragraph w-full items-center self-center"
               onClick={() => addToCart(product)}
             >

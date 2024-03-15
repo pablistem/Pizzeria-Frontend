@@ -9,8 +9,8 @@ type Props = {
 
 export const CartCard = ({ cartProduct, onAdd, onRemove, onDelete }: Props) => {
   return (
-    <div className="flex items-center w-48 h-52 space-x-2 object-cover object-center">
-      <div className="flex flex-col ml-1">
+    <div className="flex w-48 space-x-2 object-cover object-center">
+      <div className="flex flex-col items-center ml-1">
         <img
           src={cartProduct.product.image}
           className="w-10 h-10 object-cover object-center"
@@ -22,7 +22,7 @@ export const CartCard = ({ cartProduct, onAdd, onRemove, onDelete }: Props) => {
         </button>
       </div>
 
-      <div className="flex flex-col flex-grow items-center justify-center">
+      <div className="flex flex-col flex-grow">
         <p className="text-text-paragraph text-sm">
           {cartProduct.product.description}
         </p>
@@ -30,7 +30,7 @@ export const CartCard = ({ cartProduct, onAdd, onRemove, onDelete }: Props) => {
           <button className="text-text-paragraph w-6" onClick={onRemove}>
             -
           </button>
-          <p>{cartProduct.quantity}</p>
+          <p id="product-quantity">{cartProduct.quantity}</p>
           <button className="text-text-paragraph w-6" onClick={onAdd}>
             +
           </button>

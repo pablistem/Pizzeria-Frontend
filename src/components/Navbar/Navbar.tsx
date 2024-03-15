@@ -36,11 +36,12 @@ export const Navbar = () => {
         <Link to={'/login'}>Login</Link>
         <div className="relative">
           <button
+            id="cart-open"
             className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md"
             onClick={toggleCart}
           >
             <img src={iconCart} alt="Shopping Cart" className="h-6 w-6 mr-2" />
-            <p className="text-text-paragraph">
+            <p id="cart-quantity" className="text-text-paragraph">
               {Object.keys(productsCart).length}
             </p>
             {cartOpen ? true : false}

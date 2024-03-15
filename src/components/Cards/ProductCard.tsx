@@ -27,6 +27,7 @@ const ProductCard = ({ products }: Props) => {
             <p className="text-slate-500">{product.price}</p>
           </div>
           <button
+            id="add-product"
             className="bg-logo-orange rounded-3xl text-text-paragraph text-sm w-4/6 items-center self-center"
             onClick={() => addToCart(product)}
           >
