@@ -5,14 +5,15 @@ import couponIcon from '../../assets/Menu icons/coupon_icon.jpg';
 import discountIcon from '../../assets/Menu icons/discount_icon.jpg';
 import UnauthenticatedProfile from '../../pages/UnauthenticatedProfile';
 import Profile from '../../pages/Profile';
-import useUser from '../../hook/useUser';
-import ProfileForm from '../ProfileForm/ProfileForm';
+import useUser from '../../hooks/useProfile';
 import useAuth from '../../hooks/useAuth';
+import CreateProfile from '../ProfileForm/CreateProfileForm';
 
 const Menu = () => {
-  const { userData } = useUser();
-  const { accessToken } = useAuth();
   const [ selectedSection, setSelectedSection ] = useState<string>('');
+  const [ openModal, setOpenModal ] = useState<boolean>(false);
+  const { profileData } = useUser({ onReject: () => setOpenModal(true) });
+  const { accessToken } = useAuth();
 
   const menuItems = [
     {
@@ -47,14 +48,14 @@ const Menu = () => {
           ))}
         </ul>
       )}
-      {accessToken && userData && selectedSection === 'profile' && (
+      {accessToken && profileData && selectedSection === 'profile' && (
         <Profile
           onShowMenuAgain={() => setSelectedSection('')}
-          user={userData}
+          user={profileData}
         />
       )}
-      {accessToken && !userData && selectedSection === 'profile' && (
-        <ProfileForm />
+      {accessToken && !profileData && selectedSection === 'profile' && (
+        <CreateProfile openModal={openModal} />
       )}
       {!accessToken && selectedSection === 'profile' && (
         <UnauthenticatedProfile

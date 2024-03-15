@@ -2,7 +2,7 @@ import icon from '../assets/icon_pizza_shop.jpg';
 import { AddressForm } from '../components/AddressForm/Address';
 import { IProfile } from '../types/types';
 import useLogout from '../hooks/useLogout';
-import UpdateProfile from './UpdateProfile';
+import UpdateProfile from '../components/ProfileForm/UpdateProfileForm';
 type Props = { user: IProfile; onShowMenuAgain: () => void };
 
 const Profile = ({ user, onShowMenuAgain }: Props) => {

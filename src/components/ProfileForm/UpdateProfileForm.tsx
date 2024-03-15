@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import Modal from '../components/Modal/Modal';
-import { updateProfile } from '../services/user.api';
-import { IProfile } from '../types/types';
+import Modal from '../Modal/Modal';
+import { updateProfile } from '../../services/user.api';
+import { IProfile } from '../../types/types';
 import { FormikHelpers, Formik } from 'formik';
 import { AxiosError } from 'axios';
-import { errorAlert } from '../services/alert';
-import { updateProfileSchema } from '../schemas/validates.schema';
-import UploadImage from '../components/UploadImage/UploadImage';
+import { errorAlert } from '../../services/alert';
+import { updateProfileSchema } from '../../schemas/validates.schema';
+import UploadImage from '../UploadImage/UploadImage';
+import { INPUTS_PROFILE } from '../const/inputs.profile';
 
 function UpdateProfile() {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -75,61 +76,25 @@ function UpdateProfile() {
                 </div>
                 <div className='w-80 p-6'>
                   <div className="relative mb-2 mt-5">
-                    <input 
-                      type="text" 
-                      id="street"
-                      name="street"
-                      className="w-full h-12 p-3 pt-4 placeholder-transparent border border-gray-200 rounded-2xl peer focus:outline-none focus:border-gray-500 focus:shadow-sm"
-                      placeholder="" 
-                      autoComplete="off" />
+                    <input {...INPUTS_PROFILE.name} />
                     <label 
-                      htmlFor="street"
-                      className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-7 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Calle</label>
+                      htmlFor="name"
+                      className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-7 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Nombre</label>
                   </div>
                   <div className="relative">
-                    <input
-                      type="text"
-                      id="height"
-                      name='height'
-                      className="w-full mb-2 h-12 p-3 pt-4 placeholder-transparent border border-gray-200 rounded-2xl peer focus:outline-none focus:border-gray-500 focus:shadow-sm"
-                      placeholder=""
-                      autoComplete="off" />
+                    <input {...INPUTS_PROFILE.lastName} />
                     <label
-                      htmlFor="height"
+                      htmlFor="last-name"
                       className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Altura</label>
                   </div>
                   <div className="relative">
-                    <input
-                      type="text"
-                      id="postal-code"
-                      name="postal-code"
-                      className="w-full mb-2 h-12 p-3 pt-4 placeholder-transparent border border-gray-200 rounded-2xl peer focus:outline-none focus:border-gray-500 focus:shadow-sm"
-                      placeholder=""
-                      autoComplete="off" />
-                    <label
-                      htmlFor="postal-code"
-                      className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Código Postal</label>
-                  </div>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="age"
-                      name="age"
-                      className="w-full mb-2 h-12 p-3 pt-4 placeholder-transparent border border-gray-200 rounded-2xl peer focus:outline-none focus:border-gray-500 focus:shadow-sm"
-                      placeholder=""
-                      autoComplete="off" />
+                    <input {...INPUTS_PROFILE.age} />
                     <label
                       htmlFor="age"
                       className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Edad</label>
                   </div>
                   <div className="relative">
-                    <input
-                      type="text"
-                      id="phone"
-                      name="phone"
-                      className="w-full mb-2 h-12 p-3 pt-4 placeholder-transparent border border-gray-200 rounded-2xl peer focus:outline-none focus:border-gray-500 focus:shadow-sm"
-                      placeholder=""
-                      autoComplete="off" />
+                    <input {...INPUTS_PROFILE.phone} />
                     <label
                       htmlFor="phone"
                       className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Teléfono</label>

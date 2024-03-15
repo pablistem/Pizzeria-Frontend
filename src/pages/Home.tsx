@@ -5,7 +5,7 @@ import empanada_atun from '../assets/Food/empanada_atun.jpg';
 import gaseosa from '../assets/Food/gaseosa.jpg';
 import jamonymorron from '../assets/Food/jamonymorron.jpg';
 import { Navbar } from '../components/Navbar/Navbar';
-import useProducts from '../hook/useProduct';
+import useProducts from '../hooks/useProduct';
 
 export const Home = () => {
   const { productsData } = useProducts();

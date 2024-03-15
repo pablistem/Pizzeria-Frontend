@@ -1,18 +1,4 @@
 export const INPUTS_SIGNUP = {
-  name: {
-    type: 'text',
-    id: 'name',
-    name: 'name',
-    placeholder: 'Nombre',
-    autoComplete: 'given-name',
-  },
-  lastName: {
-    id: 'lastName',
-    name: 'lastName',
-    type: 'Text',
-    placeholder: 'Apellido',
-    autoComplete: 'family-name',
-  },
   email: {
     id: 'email',
     name: 'email',

@@ -72,7 +72,7 @@ export const createProfile = async (data: IProfile): Promise<void> => {
   await Axios({
     url: '/profile',
     method: 'POST',
-    data: JSON.stringify(data),
+    data: data,
     headers: {
       'Content-Type': 'multipart/form-data',
     }
