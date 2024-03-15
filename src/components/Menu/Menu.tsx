@@ -5,14 +5,14 @@ import couponIcon from '../../assets/Menu icons/coupon_icon.jpg';
 import discountIcon from '../../assets/Menu icons/discount_icon.jpg';
 import UnauthenticatedProfile from '../../pages/UnauthenticatedProfile';
 import Profile from '../../pages/Profile';
-import useUser from '../../hooks/useProfile';
+import useProfile from '../../hooks/useProfile';
 import useAuth from '../../hooks/useAuth';
 import CreateProfile from '../ProfileForm/CreateProfileForm';
 
 const Menu = () => {
   const [ selectedSection, setSelectedSection ] = useState<string>('');
   const [ openModal, setOpenModal ] = useState<boolean>(false);
-  const { profileData } = useUser({ onReject: () => setOpenModal(true) });
+  const { profileData } = useProfile({ onReject: () => setOpenModal(true) });
   const { accessToken } = useAuth();
 
   const menuItems = [
@@ -55,7 +55,7 @@ const Menu = () => {
         />
       )}
       {accessToken && !profileData && selectedSection === 'profile' && (
-        <CreateProfile openModal={openModal} />
+        <CreateProfile openModal={openModal} setOpenModal={setOpenModal} />
       )}
       {!accessToken && selectedSection === 'profile' && (
         <UnauthenticatedProfile

@@ -10,7 +10,7 @@ import useLogin from '../../hooks/useLogin';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const { setLogin } = useLogin({ onSuccess: () => navigate('/', { replace: true })});
+  const { setLogin } = useLogin({ onSuccess: () => navigate('/', { replace: true }) });
 
   const onSubmit = async (values: ILoginPayload) => {
     const loginPayload = {

@@ -83,14 +83,14 @@ export const updateProfile = async (data: IProfile): Promise<void> => {
   await Axios({
     url: '/profile',
     method: 'PUT',
-    data: JSON.stringify(data),
+    data: data,
     headers: {
       'Content-Type': 'multipart/form-data',
     }
   });
 }
 
-export const getAddressData = async (): Promise<IAddress> => {
+export const getAddressesList = async (): Promise<IAddress> => {
   const res: AxiosResponse<IAddress> = await Axios({
     url: '/address',
     method: 'GET',
@@ -98,11 +98,28 @@ export const getAddressData = async (): Promise<IAddress> => {
   return res.data;
 }
 
-export const addAddressData = async (address: IAddress): Promise<unknown> => {
+export const getAddressData = async (id: number): Promise<IAddress> => {
+  const res: AxiosResponse<IAddress> = await Axios({
+    url: `/address/${id}`,
+    method: 'GET',
+  })
+  return res.data;
+}
+
+export const addAddressData = async (data: IAddress): Promise<unknown> => {
   const res: AxiosResponse<IAddress> = await Axios({
     url: '/address',
     method: 'POST',
-    data: JSON.stringify(address),
+    data: data,
+  })
+  return res.data;
+}
+
+export const updateAddressData = async (id: number, changes: IAddress): Promise<IAddress> => {
+  const res: AxiosResponse<IAddress> = await Axios({
+    url: `/address/${id}`,
+    method: 'PUT',
+    data: changes,
   })
   return res.data;
 }

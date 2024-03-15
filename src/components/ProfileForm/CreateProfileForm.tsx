@@ -8,7 +8,7 @@ import { createProfileSchema } from '../../schemas/validates.schema';
 import UploadImage from '../UploadImage/UploadImage';
 import { INPUTS_PROFILE } from '../const/inputs.profile';
 
-function CreateProfile ({ openModal }) {
+function CreateProfile ({ openModal, setOpenModal }) {
 
   const onSubmit = async (
     values: IProfile,
@@ -24,14 +24,14 @@ function CreateProfile ({ openModal }) {
     };
 
     try {
-      await createProfile(payloadCreateProfile)
+      await createProfile(payloadCreateProfile);
+      setOpenModal(false);
     } catch (error) {
-      console.log(error);
       if (error instanceof AxiosError) {
-        if (error?.response?.data.statusCode === 400) {
-          errorAlert('Error', error?.response?.data.message)
-        } else if (error?.response?.data.statusCode === 409) {
-          errorAlert('Error', 'El perfil ya ha sido creado')
+        if (error?.response?.data.statusCode === 409) {
+          errorAlert('Error', 'El perfil ya ha sido creado');
+        } else if (error?.response?.data.statusCode === 422) {
+          errorAlert('Error', 'Archivo no compatible');
         }
       }
     }

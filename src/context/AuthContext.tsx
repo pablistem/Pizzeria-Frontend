@@ -6,13 +6,13 @@ import { setSession } from '../services/user.api';
 export type AccessToken = string | null;
 
 export interface AuthContextInterface {
-  accessToken: string | null,
-  setAccessToken: Dispatch<SetStateAction<AccessToken>>
+  accessToken: string | null;
+  setAccessToken: Dispatch<SetStateAction<AccessToken>>;
 }
 
 const defaultState = {
   accessToken: null,
-  setAccessToken: () => {}
+  setAccessToken: () => {},
 } as AuthContextInterface;
 
 export const AuthContext = createContext<AuthContextInterface>(defaultState);
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   setSession(accessToken)
 
   return (
-    <AuthContext.Provider value={{ 
+    <AuthContext.Provider value={{
       accessToken, 
       setAccessToken
       }}>
