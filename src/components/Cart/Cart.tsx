@@ -42,9 +42,9 @@ const Cart = () => {
                 <CartCard
                   key={cartProduct.product.id}
                   cartProduct={cartProduct}
-                  onDelete={() => deleteItemfromcart(cartProduct.product)}
+                  onDelete={() => removeFromCart(cartProduct.product)}
                   onAdd={() => addToCart(cartProduct.product)}
-                  onRemove={() => removeFromCart(cartProduct.product)}
+                  onRemove={() => deleteItemfromcart(cartProduct.product)}
                 ></CartCard>
               ))}
             </div>
