@@ -1,16 +1,8 @@
 /// <reference types="cypress" />
-describe('Should visit the home page and check if the products exists', () => {
-  it('Visit home page and check if the products exists', () => {
+describe('Agregar producto al carrito', () => {
+  it('Agrega un producto al carrito y verifica la cantidad', () => {
+    // Navega a la página del producto
     cy.visit('/');
-    cy.intercept('GET', '/user/profile', {
-      statusCode: 200,
-      body: {
-        name: 'pedro',
-        direction: 'calle falsa 123',
-        email: 'qwerty@mail.com',
-        telephone: +111111111,
-      },
-    }).as('userData');
     cy.intercept('GET', '/product', {
       statusCode: 200,
       body: [
@@ -41,5 +33,13 @@ describe('Should visit the home page and check if the products exists', () => {
         },
       ],
     }).as('productsData');
+    // Agrega el producto al carrito
+    cy.get('#add-product').click();
+
+    // Verifica la cantidad en el carrito
+    cy.get('#cart-quantity').should('have.text', '1');
+    cy.get('#cart-open').click();
+    cy.get('#add-item').click();
+    cy.get('#product-quantity').should('have.text', '2');
   });
 });
