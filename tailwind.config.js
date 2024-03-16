@@ -5,6 +5,7 @@ export default {
     extend: {},
     colors: {
       white: '#ffffff',
+      orange: 'rgb(253 186 116)',
       'logo-orange': '#E9573A',
       'light-pink': '#F4AB9D',
       'input-grey': '#17171750',
