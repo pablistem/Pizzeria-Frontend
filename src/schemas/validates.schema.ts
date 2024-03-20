@@ -38,5 +38,7 @@ export const addressSchema = object().shape({
   country: string().required(),
   state: string().required(),
   city: string().required(),
-  address: string().required(),
+  street: string().required(),
+  height: number().required(),
+  postalCode: number().required(),
 })

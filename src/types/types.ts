@@ -17,6 +17,7 @@ export interface IFormValues {
 export interface IProfile {
   id: number;
   avatar: string;
+  username: string;
   name: string;
   lastName: string;
   age: number;
@@ -31,10 +32,21 @@ export interface IProduct {
 }
 
 export interface IAddress {
+  id: number;
   country: string;
   state: string;
   city: string;
   street: string;
   height: number;
   postalCode: number;
+}
+
+export interface ICreateAddress {
+  country: string;
+  state: string;
+  city: string;
+  street: string;
+  height: number;
+  postalCode: number;
+  profile: number;
 }

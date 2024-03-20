@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import img from '../assets/profile/doorProfile.png';
+import img from '../../assets/profile/doorProfile.png';
 type Props = { onShowMenuAgain: () => void };
 
 const UnauthenticatedProfile = ({ onShowMenuAgain }: Props) => {

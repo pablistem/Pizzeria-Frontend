@@ -17,6 +17,7 @@ function CreateProfile ({ openModal, setOpenModal }) {
     const payloadCreateProfile = {
       id: values.id,
       avatar: values.avatar,
+      username: values.username,
       name: values.name,
       lastName: values.lastName,
       age: values.age,
@@ -44,6 +45,7 @@ function CreateProfile ({ openModal, setOpenModal }) {
         initialValues={{
           id: 1,
           avatar: 'image',
+          username: 'user',
           name: 'user',
           lastName: 'user',
           age: 30,
@@ -63,6 +65,17 @@ function CreateProfile ({ openModal, setOpenModal }) {
                   <UploadImage />
                 </div>
                 <div className='w-80 p-6'>
+                  <div className="relative mb-2 mt-5">
+                    <Field {...INPUTS_PROFILE.username} />
+                    <ErrorMessage
+                      name="username"
+                      component="div"
+                      className="error-validate"
+                    />
+                    <label 
+                      htmlFor="username"
+                      className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-7 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Nombre</label>
+                  </div>
                   <div className="relative mb-2 mt-5">
                     <Field {...INPUTS_PROFILE.name} />
                     <ErrorMessage

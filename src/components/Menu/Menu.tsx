@@ -3,11 +3,11 @@ import profileIcon from '../../assets/Menu icons/profile_icon.jpg';
 import orderIcon from '../../assets/Menu icons/order_icon.jpg';
 import couponIcon from '../../assets/Menu icons/coupon_icon.jpg';
 import discountIcon from '../../assets/Menu icons/discount_icon.jpg';
-import UnauthenticatedProfile from '../../pages/UnauthenticatedProfile';
-import Profile from '../../pages/Profile';
+import UnauthenticatedProfile from '../Profile/UnauthenticatedProfile';
+import Profile from '../Profile/Profile';
 import useProfile from '../../hooks/useProfile';
 import useAuth from '../../hooks/useAuth';
-import CreateProfile from '../ProfileForm/CreateProfileForm';
+import CreateProfile from '../Profile/CreateProfileForm';
 
 const Menu = () => {
   const [ selectedSection, setSelectedSection ] = useState<string>('');

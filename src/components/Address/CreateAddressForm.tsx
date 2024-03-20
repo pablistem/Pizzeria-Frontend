@@ -2,16 +2,17 @@ import { useState } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import { errorAlert, toastAlertSuccess } from '../../services/alert';
 import { addressSchema } from "../../schemas/validates.schema";
-import { IAddress } from "../../types/types";
+import { ICreateAddress } from "../../types/types";
 import Modal from "../Modal/Modal";
 import InputForm from "../InputForm/InputForm";
 import { addAddressData } from "../../services/user.api";
 import { ADDRESS_INPUTS } from "../const/inputs.auth";
+import { AxiosError } from "axios";
 
-export const AddressForm = ({ profile }) => {
+export const CreateAddressForm = ({ profile }) => {
     const [ openModal, setOpenModal ] = useState<boolean>(false);
 
-    const onSubmit = async (values: IAddress) => {
+    const onSubmit = async (values: ICreateAddress) => {
       const addressData = {
         country: values.country,
         state: values.state,
@@ -24,10 +25,10 @@ export const AddressForm = ({ profile }) => {
 
       try {
         await addAddressData(addressData);
-        toastAlertSuccess('Logeado satisfactoriamente');
+        toastAlertSuccess('Dirección agregada satisfactoriamente');
         setOpenModal(false);
       } catch (error) {
-        errorAlert('Error', (error as Error).message);
+        if (error instanceof AxiosError) errorAlert('Error', error?.response?.data);
       }
     }
 
@@ -45,13 +46,14 @@ export const AddressForm = ({ profile }) => {
           <div id='close-modal-button' className="text-right font-bold text-[24px] cursor-pointer hover:text-red-error" onClick={() => setOpenModal(!openModal)}>X</div>
           <header className="text-[20px] mb-4 text-center font-bold bg-white">Ingresar datos:</header>
           <Formik 
-            initialValues={{ 
-              country: '',
-              state: '',
-              city: '',
-              street: '',
+            initialValues={{
+              country: 'A',
+              state: 'M',
+              city: 'M',
+              street: 'A',
               height: 0,
-              postalCode: 0
+              postalCode: 0,
+              profile: 0,
             }}
             validationSchema={addressSchema}
             onSubmit={onSubmit}

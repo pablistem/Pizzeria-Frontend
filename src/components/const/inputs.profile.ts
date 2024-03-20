@@ -1,4 +1,12 @@
 export const INPUTS_PROFILE = {
+  username: {
+    type: "text", 
+    id: "username",
+    name: "username",
+    className: "w-full h-12 p-3 pt-4 placeholder-transparent border border-gray-200 rounded-2xl peer focus:outline-none focus:border-gray-500 focus:shadow-sm",
+    placeholder: "", 
+    autoComplete: "off",
+  },
   name: {
     type: "text", 
     id: "name",

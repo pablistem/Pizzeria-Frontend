@@ -59,11 +59,11 @@ export const ADDRESS_INPUTS = {
   height: {
     id: 'height',
     name: 'height',
-    type: 'text',
+    type: 'number',
   },
   postalCode: {
-    id: 'postal-code',
-    name: 'postal-code',
-    type: 'text',
+    id: 'postalCode',
+    name: 'postalCode',
+    type: 'number',
   },
 };

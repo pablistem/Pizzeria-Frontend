@@ -1,12 +1,18 @@
-import icon from '../assets/icon_pizza_shop.jpg';
-import { AddressForm } from '../components/AddressForm/Address';
-import { IProfile } from '../types/types';
-import useLogout from '../hooks/useLogout';
-import UpdateProfile from '../components/ProfileForm/UpdateProfileForm';
+import icon from '../../assets/icon_pizza_shop.jpg';
+import { CreateAddressForm } from '../Address/CreateAddressForm';
+import { IProfile } from '../../types/types';
+import useLogout from '../../hooks/useLogout';
+import UpdateProfile from './UpdateProfileForm';
+import useAddresses from '../../hooks/useAddresses';
+import { useState } from 'react';
+import AddressesList from '../Address/Addresses';
 type Props = { user: IProfile; onShowMenuAgain: () => void };
 
 const Profile = ({ user, onShowMenuAgain }: Props) => {
-  
+  const [ showList, setShowList ] = useState<boolean>(false);
+  const { addressesData } = useAddresses({
+    onSuccess: () => setShowList(true)
+  })
   const { setLogout } = useLogout({})
 
   return (
@@ -33,6 +39,11 @@ const Profile = ({ user, onShowMenuAgain }: Props) => {
         <div className="flex w-full min-h-full flex-col mt-50 items-start">
           <h2 className="text-center my-6 text-2xl">Datos Personales</h2>
           <div className="flex flex-col justify-center w-full bg-bubble-gum rounded-lg">
+            <p data-cy="user-username" className="mt-3 mx-3 font-semibold ">
+              {user.username}
+            </p>
+            <p className="mb-3 mx-3">Nombre de Usuario</p>
+            
             <p data-cy="user-name" className="mt-3 mx-3 font-semibold ">
               {user.name}
             </p>
@@ -65,7 +76,8 @@ const Profile = ({ user, onShowMenuAgain }: Props) => {
               </>
             }  
 
-            <AddressForm profile={user.id} />
+            <AddressesList addresses={addressesData} showList={showList} />
+            <CreateAddressForm profile={user.id} />
             <button
               type="button"
               onClick={() => setLogout()}

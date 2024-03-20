@@ -1,4 +1,4 @@
-import { IAddress, ILoginPayload, ISignUpPayload, IProfile } from '../types/types';
+import { IAddress, ILoginPayload, ISignUpPayload, IProfile, ICreateAddress } from '../types/types';
 import { AxiosResponse } from 'axios';
 import { Axios, AxiosAuth } from '../services/axios.api';
 import { AccessToken } from '../context/AuthContext';
@@ -106,8 +106,8 @@ export const getAddressData = async (id: number): Promise<IAddress> => {
   return res.data;
 }
 
-export const addAddressData = async (data: IAddress): Promise<unknown> => {
-  const res: AxiosResponse<IAddress> = await Axios({
+export const addAddressData = async (data: ICreateAddress): Promise<unknown> => {
+  const res: AxiosResponse<ICreateAddress> = await Axios({
     url: '/address',
     method: 'POST',
     data: data,
