@@ -68,3 +68,12 @@ export interface ICreateAddress {
   postalCode: number;
   profile: number;
 }
+
+export interface IUpdateAddress {
+  country: string;
+  state: string;
+  city: string;
+  street: string;
+  height: number;
+  postalCode: number;
+}

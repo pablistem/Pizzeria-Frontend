@@ -34,7 +34,7 @@ export const updateProfileSchema = object().shape({
   phone: number(),
 })
 
-export const addressSchema = object().shape({
+export const createAddressSchema = object().shape({
   country: string().required(),
   state: string().required(),
   city: string().required(),
@@ -42,3 +42,13 @@ export const addressSchema = object().shape({
   height: number().required(),
   postalCode: number().required(),
 })
+
+export const updateAddressSchema = object().shape({
+  country: string(),
+  state: string(),
+  city: string(),
+  street: string(),
+  height: number(),
+  postalCode: number(),
+})
+

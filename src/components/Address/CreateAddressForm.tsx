@@ -1,7 +1,7 @@
 import { useState } from "react"; 
 import { Formik, Form, ErrorMessage } from "formik";
 import { errorAlert, toastAlertSuccess } from '../../services/alert';
-import { addressSchema } from "../../schemas/validates.schema";
+import { createAddressSchema } from "../../schemas/validates.schema";
 import { ICreateAddress } from "../../types/types";
 import Modal from "../Modal/Modal";
 import InputForm from "../InputForm/InputForm";
@@ -55,7 +55,7 @@ export const CreateAddressForm = ({ profile }) => {
               postalCode: 0,
               profile: 0,
             }}
-            validationSchema={addressSchema}
+            validationSchema={createAddressSchema}
             onSubmit={onSubmit}
           >
             <Form>

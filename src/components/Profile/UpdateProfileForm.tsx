@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Modal from '../Modal/Modal';
 import { updateProfile } from '../../services/user.api';
-import { IProfile } from '../../types/types';
+import { ICreateProfile } from '../../types/types';
 import { FormikHelpers, Formik, Field, Form } from 'formik';
 import { AxiosError } from 'axios';
 import { errorAlert } from '../../services/alert';
@@ -13,11 +13,10 @@ function UpdateProfile() {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const onSubmit = async (
-    values: IProfile,
-    actions: FormikHelpers<IProfile>,
+    values: ICreateProfile,
+    actions: FormikHelpers<ICreateProfile>,
   ) => {
     const payloadUpdateProfile = {
-      id: values.id,
       avatar: values.avatar,
       username: values.username,
       name: values.name,
@@ -59,7 +58,6 @@ function UpdateProfile() {
       <Modal open={openModal} >
         <Formik 
           initialValues={{
-            id: 1,
             avatar: 'image',
             username: 'user',
             name: 'user',

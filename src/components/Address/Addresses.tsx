@@ -3,9 +3,9 @@ import { IAddress } from "../../types/types";
 import AddressDetail from "./AddressDetail";
 import useAddressDetail from "../../hooks/useAddressDetail";
 
-const AddressesList = ({ addresses }) => {
+const AddressesList = ({ className, addresses }) => {
   const [ openModal, setOpenModal ] = useState<boolean>(false)
-  const { setAddresss, addressDetail } = useAddressDetail({ onSuccess: () => setOpenModal(true) });
+  const { addressDetail, setAddresss } = useAddressDetail({ onSuccess: () => setOpenModal(true) });
 
   const getAddress = async (id: number) => {
     try {
@@ -15,16 +15,26 @@ const AddressesList = ({ addresses }) => {
     }
   }
 
+  console.log(addresses);
+
   return (
-    (addresses = []
-      ? <p>No hay direcciones disponibles</p>
-      : (addresses.map((address: IAddress) => {
-        <>
-          <div className="cursor-pointer" onClick={() => getAddress(address.id)} key={address.id}>{address.id}</div>
-          <AddressDetail open={openModal} data={addressDetail} />
-        </>
-      }))
-    )
+    <div className={className}>
+      {addresses.length === 0
+        ? <p>No hay direcciones disponibles</p>
+        : (addresses.map((address: IAddress) => (
+          <>
+            <ul>
+              <li className="cursor-pointer" onClick={() => getAddress(address.id)} key={address.id}>
+                {address.street} {address.height}, {address.city}
+              </li>
+            </ul>
+            {addressDetail && 
+              <AddressDetail setOpen={setOpenModal} open={openModal} data={addressDetail} />
+            }
+          </>
+        )))
+      }
+    </div>
   )
 }
 

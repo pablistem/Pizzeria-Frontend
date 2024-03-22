@@ -1,4 +1,4 @@
-import { IAddress, ILoginPayload, ISignUpPayload, IProfile, ICreateAddress } from '../types/types';
+import { IAddress, ILoginPayload, ISignUpPayload, IProfile, ICreateAddress, ICreateProfile, IUpdateAddress } from '../types/types';
 import { AxiosResponse } from 'axios';
 import { Axios, AxiosAuth } from '../services/axios.api';
 import { AccessToken } from '../context/AuthContext';
@@ -68,7 +68,7 @@ export const getProfile = async (): Promise<IProfile> => {
   return res.data;
 };
 
-export const createProfile = async (data: IProfile): Promise<void> => {
+export const createProfile = async (data: ICreateProfile): Promise<void> => {
   await Axios({
     url: '/profile',
     method: 'POST',
@@ -79,7 +79,7 @@ export const createProfile = async (data: IProfile): Promise<void> => {
   });
 }
 
-export const updateProfile = async (data: IProfile): Promise<void> => {
+export const updateProfile = async (data: ICreateProfile): Promise<void> => {
   await Axios({
     url: '/profile',
     method: 'PUT',
@@ -115,8 +115,8 @@ export const addAddressData = async (data: ICreateAddress): Promise<unknown> => 
   return res.data;
 }
 
-export const updateAddressData = async (id: number, changes: IAddress): Promise<IAddress> => {
-  const res: AxiosResponse<IAddress> = await Axios({
+export const updateAddressData = async (id: number, changes: IUpdateAddress): Promise<IUpdateAddress> => {
+  const res: AxiosResponse<IUpdateAddress> = await Axios({
     url: `/address/${id}`,
     method: 'PUT',
     data: changes,

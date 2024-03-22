@@ -33,44 +33,33 @@ const Profile = ({ profile, onShowMenuAgain }: Props) => {
         <div className="flex w-full min-h-full flex-col mt-50 items-start">
           <h2 className="text-center my-6 text-2xl">Datos Personales</h2>
           <div className="flex flex-col justify-center w-full bg-bubble-gum rounded-lg">
-            <p data-cy="user-username" className="mt-3 mx-3 font-semibold ">
+            <p data-cy="user-username" className="mt-3 mx-3 font-semibold">
               {profile.username}
             </p>
             <p className="mb-3 mx-3">Nombre de Usuario</p>
             
-            <p data-cy="user-name" className="mt-3 mx-3 font-semibold ">
+            <p data-cy="user-name" className="mt-3 mx-3 font-semibold">
               {profile.name}
             </p>
             <p className="mb-3 mx-3">Nombre</p>
 
-            {profile.lastName &&
-              <>
-              <p data-cy="user-last-name" className="mt-3 mx-3 font-semibold ">
-                {profile.lastName}
-              </p>
-              
-              <p className="mb-3 mx-3">Apellido</p>
-              </>
-              
-            }
+            <p data-cy="user-last-name" className="mt-3 mx-3 font-semibold">
+              {profile.lastName}
+            </p>
+            <p className="mb-3 mx-3">Apellido</p>
 
-            <p data-cy="user-email" className="mt-3 mx-3 font-semibold ">
+            <p data-cy="user-email" className="mt-3 mx-3 font-semibold">
               {profile.age}
             </p>
             <p className="mb-3 mx-3">Edad</p>
 
-            {profile.phone && 
-              <>
-              <p data-cy="user-telephone" className="mt-3 mx-3 font-semibold ">
-                {profile.phone}
-              </p>
-            
-              <p className="mb-3 mx-3">Teléfono</p>
-              
-              </>
-            }  
+            <p data-cy="user-telephone" className="mt-3 mx-3 font-semibold">
+              {profile.phone}
+            </p>
+            <p className="mb-3 mx-3">Teléfono</p>
 
-            <AddressesList addresses={profile.addresses} />
+            <p className="mb-3 mx-3">Direcciones</p>
+            <AddressesList className="mb-3 mx-3" addresses={profile.addresses} />
             <CreateAddressForm profile={profile.id} />
             <button
               type="button"

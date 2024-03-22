@@ -1,6 +1,6 @@
 import Modal from '../Modal/Modal';
 import { createProfile } from '../../services/user.api';
-import { IProfile } from '../../types/types';
+import { ICreateProfile } from '../../types/types';
 import { FormikHelpers, Formik, Form, Field, ErrorMessage } from 'formik';
 import { AxiosError } from 'axios';
 import { errorAlert } from '../../services/alert';
@@ -11,11 +11,10 @@ import { INPUTS_PROFILE } from '../const/inputs.profile';
 function CreateProfile ({ openModal, setOpenModal }) {
 
   const onSubmit = async (
-    values: IProfile,
-    actions: FormikHelpers<IProfile>,
+    values: ICreateProfile,
+    actions: FormikHelpers<ICreateProfile>,
   ) => {
     const payloadCreateProfile = {
-      id: values.id,
       avatar: values.avatar,
       username: values.username,
       name: values.name,
@@ -43,7 +42,6 @@ function CreateProfile ({ openModal, setOpenModal }) {
     <Modal open={openModal}>
       <Formik 
         initialValues={{
-          id: 1,
           avatar: 'image',
           username: 'user',
           name: 'user',
