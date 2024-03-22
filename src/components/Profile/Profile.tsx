@@ -20,7 +20,7 @@ const Profile = ({ profile, onShowMenuAgain }: Props) => {
       </button>
       <div className="w-96 grid overflow-hidden  text-left m-auto">
         <h1 className="font-semibold text-2xl">Mi Perfil</h1>
-        <UpdateProfile />
+        <UpdateProfile profile={profile} />
         <div className="w-32 justify-self-center">
           <img
             src={icon}

@@ -20,6 +20,7 @@ export const registerSchema = object().shape({
 
 export const createProfileSchema = object().shape({
   avatar: mixed(),
+  username: string().required('Debes ingresar un nombre de usuario'),
   name: string().required('Debes ingresar un nombre'),
   lastName: string().required('Debes ingresar un apellido'),
   age: number().required('Debes ingresar una edad'),
@@ -28,6 +29,7 @@ export const createProfileSchema = object().shape({
 
 export const updateProfileSchema = object().shape({
   avatar: mixed(),
+  username: string(),
   name: string(),
   lastName: string(),
   age: number(),

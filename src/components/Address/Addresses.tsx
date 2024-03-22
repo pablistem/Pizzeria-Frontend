@@ -15,8 +15,6 @@ const AddressesList = ({ className, addresses }) => {
     }
   }
 
-  console.log(addresses);
-
   return (
     <div className={className}>
       {addresses.length === 0
