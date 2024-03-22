@@ -3,16 +3,10 @@ import { CreateAddressForm } from '../Address/CreateAddressForm';
 import { IProfile } from '../../types/types';
 import useLogout from '../../hooks/useLogout';
 import UpdateProfile from './UpdateProfileForm';
-import useAddresses from '../../hooks/useAddresses';
-import { useState } from 'react';
 import AddressesList from '../Address/Addresses';
-type Props = { user: IProfile; onShowMenuAgain: () => void };
+type Props = { profile: IProfile; onShowMenuAgain: () => void };
 
-const Profile = ({ user, onShowMenuAgain }: Props) => {
-  const [ showList, setShowList ] = useState<boolean>(false);
-  const { addressesData } = useAddresses({
-    onSuccess: () => setShowList(true)
-  })
+const Profile = ({ profile, onShowMenuAgain }: Props) => {
   const { setLogout } = useLogout({})
 
   return (
@@ -40,19 +34,19 @@ const Profile = ({ user, onShowMenuAgain }: Props) => {
           <h2 className="text-center my-6 text-2xl">Datos Personales</h2>
           <div className="flex flex-col justify-center w-full bg-bubble-gum rounded-lg">
             <p data-cy="user-username" className="mt-3 mx-3 font-semibold ">
-              {user.username}
+              {profile.username}
             </p>
             <p className="mb-3 mx-3">Nombre de Usuario</p>
             
             <p data-cy="user-name" className="mt-3 mx-3 font-semibold ">
-              {user.name}
+              {profile.name}
             </p>
             <p className="mb-3 mx-3">Nombre</p>
 
-            {user.lastName &&
+            {profile.lastName &&
               <>
               <p data-cy="user-last-name" className="mt-3 mx-3 font-semibold ">
-                {user.lastName}
+                {profile.lastName}
               </p>
               
               <p className="mb-3 mx-3">Apellido</p>
@@ -61,14 +55,14 @@ const Profile = ({ user, onShowMenuAgain }: Props) => {
             }
 
             <p data-cy="user-email" className="mt-3 mx-3 font-semibold ">
-              {user.age}
+              {profile.age}
             </p>
             <p className="mb-3 mx-3">Edad</p>
 
-            {user.phone && 
+            {profile.phone && 
               <>
               <p data-cy="user-telephone" className="mt-3 mx-3 font-semibold ">
-                {user.phone}
+                {profile.phone}
               </p>
             
               <p className="mb-3 mx-3">Teléfono</p>
@@ -76,8 +70,8 @@ const Profile = ({ user, onShowMenuAgain }: Props) => {
               </>
             }  
 
-            <AddressesList addresses={addressesData} showList={showList} />
-            <CreateAddressForm profile={user.id} />
+            <AddressesList addresses={profile.addresses} />
+            <CreateAddressForm profile={profile.id} />
             <button
               type="button"
               onClick={() => setLogout()}

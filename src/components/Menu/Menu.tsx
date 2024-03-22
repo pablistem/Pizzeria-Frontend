@@ -51,7 +51,7 @@ const Menu = () => {
       {accessToken && profileData && selectedSection === 'profile' && (
         <Profile
           onShowMenuAgain={() => setSelectedSection('')}
-          user={profileData}
+          profile={profileData}
         />
       )}
       {accessToken && !profileData && selectedSection === 'profile' && (

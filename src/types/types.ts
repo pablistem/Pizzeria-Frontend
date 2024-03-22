@@ -22,6 +22,24 @@ export interface IProfile {
   lastName: string;
   age: number;
   phone: number;
+  addresses: [{
+    id: number;
+    country: string;
+    state: string;
+    city: string;
+    street: string;
+    height: number;
+    postalCode: number;
+  }]
+}
+
+export interface ICreateProfile {
+  avatar: string;
+  username: string;
+  name: string;
+  lastName: string;
+  age: number;
+  phone: number;
 }
 
 export interface IProduct {

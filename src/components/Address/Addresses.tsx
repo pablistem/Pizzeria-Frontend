@@ -3,7 +3,7 @@ import { IAddress } from "../../types/types";
 import AddressDetail from "./AddressDetail";
 import useAddressDetail from "../../hooks/useAddressDetail";
 
-const AddressesList = ({ addresses, showList }) => {
+const AddressesList = ({ addresses }) => {
   const [ openModal, setOpenModal ] = useState<boolean>(false)
   const { setAddresss, addressDetail } = useAddressDetail({ onSuccess: () => setOpenModal(true) });
 
@@ -16,7 +16,7 @@ const AddressesList = ({ addresses, showList }) => {
   }
 
   return (
-    (!showList
+    (addresses = []
       ? <p>No hay direcciones disponibles</p>
       : (addresses.map((address: IAddress) => {
         <>
