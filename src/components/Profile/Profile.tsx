@@ -7,7 +7,7 @@ import AddressesList from '../Address/Addresses';
 type Props = { profile: IProfile; onShowMenuAgain: () => void };
 
 const Profile = ({ profile, onShowMenuAgain }: Props) => {
-  const { setLogout } = useLogout({})
+  const { setLogout } = useLogout({});
 
   return (
     <div className="min-w-50 wrapper pt-5 pb-12 pl-5 pr-5 bg-bubble-gum">
@@ -18,7 +18,7 @@ const Profile = ({ profile, onShowMenuAgain }: Props) => {
       >
         volver
       </button>
-      <div className="w-96 grid overflow-hidden  text-left m-auto">
+      <div className="w-96 grid overflow-y-auto h-4/5 text-left m-auto">
         <h1 className="font-semibold text-2xl">Mi Perfil</h1>
         <UpdateProfile profile={profile} />
         <div className="w-32 justify-self-center">
@@ -37,7 +37,7 @@ const Profile = ({ profile, onShowMenuAgain }: Props) => {
               {profile.username}
             </p>
             <p className="mb-3 mx-3">Nombre de Usuario</p>
-            
+
             <p data-cy="user-name" className="mt-3 mx-3 font-semibold">
               {profile.name}
             </p>
@@ -59,7 +59,10 @@ const Profile = ({ profile, onShowMenuAgain }: Props) => {
             <p className="mb-3 mx-3">Teléfono</p>
 
             <p className="mb-3 mx-3">Direcciones</p>
-            <AddressesList className="mb-3 mx-3" addresses={profile.addresses} />
+            <AddressesList
+              className="mb-3 mx-3"
+              addresses={profile.addresses}
+            />
             <CreateAddressForm profile={profile.id} />
             <button
               type="button"

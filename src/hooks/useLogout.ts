@@ -3,25 +3,23 @@ import { AuthContext } from '../context/AuthContext';
 import { logout } from '../services/user.api';
 
 type options = {
-    onSuccess?: () => void;
-    onReject?: () => void;
+  onSuccess?: () => void;
+  onReject?: () => void;
 };
 
 const useLogout = ({ onSuccess, onReject }: options) => {
-  const { accessToken, setAccessToken } = useContext(AuthContext)
+  const { accessToken, setAccessToken } = useContext(AuthContext);
 
   const setLogout = () => {
     logout(accessToken)
-      .then(() => 
-        setAccessToken(null)
-      ).then(() =>
-        onSuccess?.(),
-      ).catch((error) => {
+      .then(() => setAccessToken(null))
+      .then(() => onSuccess?.())
+      .catch((error) => {
         console.error(error);
         onReject?.();
-      })
-    }
-    return { setLogout };
-  }
+      });
+  };
+  return { setLogout };
+};
 
 export default useLogout;

@@ -9,23 +9,28 @@ type options = {
 };
 
 const useProfile = ({ onReject }: options) => {
-  const [ profileData, setProfileData] = useState<IProfile | null>(null);
-  const [ loading, setLoading ] = useState<boolean>(false);
+  const [profileData, setProfileData] = useState<IProfile | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const { accessToken } = useAuth();
 
   useEffect(() => {
     const fetchData = () => {
-      getProfile()
-        .then((data: IProfile) => {
-          setLoading(true);
-          setProfileData(data);
-        }).catch(() => {
-          onReject?.()
-        }).finally(() => {
-          setLoading(false);
-        })
-      };
+      if (accessToken) {
+        getProfile()
+          .then((data: IProfile) => {
+            setLoading(true);
+            setProfileData(data);
+          })
+          .catch(() => {
+            onReject?.();
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+      }
+    };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accessToken]);
 
   return { profileData, loading };

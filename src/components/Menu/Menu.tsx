@@ -7,12 +7,10 @@ import UnauthenticatedProfile from '../Profile/UnauthenticatedProfile';
 import Profile from '../Profile/Profile';
 import useProfile from '../../hooks/useProfile';
 import useAuth from '../../hooks/useAuth';
-import CreateProfile from '../Profile/CreateProfileForm';
 
 const Menu = () => {
-  const [ selectedSection, setSelectedSection ] = useState<string>('');
-  const [ openModal, setOpenModal ] = useState<boolean>(false);
-  const { profileData } = useProfile({ onReject: () => setOpenModal(true) });
+  const [selectedSection, setSelectedSection] = useState<string>('');
+  const { profileData } = useProfile({});
   const { accessToken } = useAuth();
 
   const menuItems = [
@@ -53,9 +51,6 @@ const Menu = () => {
           onShowMenuAgain={() => setSelectedSection('')}
           profile={profileData}
         />
-      )}
-      {accessToken && !profileData && selectedSection === 'profile' && (
-        <CreateProfile openModal={openModal} setOpenModal={setOpenModal} />
       )}
       {!accessToken && selectedSection === 'profile' && (
         <UnauthenticatedProfile

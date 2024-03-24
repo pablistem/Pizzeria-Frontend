@@ -1,4 +1,5 @@
-import { useState } from 'react'
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import { updateProfile } from '../../services/user.api';
 import { ICreateProfile } from '../../types/types';
@@ -31,14 +32,14 @@ function UpdateProfile({ profile }) {
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error?.response?.data.statusCode === 404) {
-          errorAlert('Error', 'Perfil no encontrado!')
+          errorAlert('Error', 'Perfil no encontrado!');
         } else {
-          errorAlert('Error', error.message)
+          errorAlert('Error', error.message);
         }
       }
     }
     actions.setSubmitting(false);
-  }
+  };
 
   return (
     <>
@@ -56,8 +57,8 @@ function UpdateProfile({ profile }) {
           <path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"></path>
         </svg>
       </div>
-      <Modal open={openModal} >
-        <Formik 
+      <Modal open={openModal}>
+        <Formik
           initialValues={{
             avatar: profile.avatar,
             username: profile.username,
@@ -65,48 +66,74 @@ function UpdateProfile({ profile }) {
             lastName: profile.lastName,
             age: profile.age,
             phone: profile.phone,
-          }} 
-          validationSchema={updateProfileSchema} 
+          }}
+          validationSchema={updateProfileSchema}
           onSubmit={onSubmit}
         >
           {({ values, handleChange }) => (
             <Form>
               <main className="bg-white p-6 rounded-xl w-96">
                 <div className="grid w-full min-h-full flex-col mt-50 justify-center">
-                  <h1 className="font-semibold text-center text-2xl">Editar perfil</h1>
+                  <h1 className="font-semibold text-center text-2xl">
+                    Editar perfil
+                  </h1>
                   <div className="relative top-start w-32 justify-self-center">
                     <UploadImage />
                   </div>
-                  <div className='w-80 p-6'>
+                  <div className="w-80 p-6">
                     <div className="relative mb-2 mt-5">
-                      <Field {...INPUTS_PROFILE.username} onChange={handleChange} />
-                      <label 
+                      <Field
+                        {...INPUTS_PROFILE.username}
+                        onChange={handleChange}
+                      />
+                      <label
                         htmlFor="username"
-                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-7 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Nombre de usuario</label>
+                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-7 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1"
+                      >
+                        Nombre de usuario
+                      </label>
                     </div>
                     <div className="relative mb-2 mt-5">
                       <Field {...INPUTS_PROFILE.name} onChange={handleChange} />
-                      <label 
+                      <label
                         htmlFor="name"
-                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-7 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Nombre</label>
+                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-7 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1"
+                      >
+                        Nombre
+                      </label>
                     </div>
                     <div className="relative">
-                      <Field {...INPUTS_PROFILE.lastName} onChange={handleChange} />
+                      <Field
+                        {...INPUTS_PROFILE.lastName}
+                        onChange={handleChange}
+                      />
                       <label
                         htmlFor="last-name"
-                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Altura</label>
+                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1"
+                      >
+                        Altura
+                      </label>
                     </div>
                     <div className="relative">
                       <Field {...INPUTS_PROFILE.age} onChange={handleChange} />
                       <label
                         htmlFor="age"
-                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Edad</label>
+                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1"
+                      >
+                        Edad
+                      </label>
                     </div>
                     <div className="relative">
-                      <Field {...INPUTS_PROFILE.phone} onChange={handleChange} />
+                      <Field
+                        {...INPUTS_PROFILE.phone}
+                        onChange={handleChange}
+                      />
                       <label
                         htmlFor="phone"
-                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1">Teléfono</label>
+                        className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1"
+                      >
+                        Teléfono
+                      </label>
                     </div>
                     <button
                       id="open-modal-button"
@@ -123,7 +150,13 @@ function UpdateProfile({ profile }) {
                     >
                       Actualizar
                     </button>
-                    <div id='close-modal-button' className="text-center font-bold text-logo-orange cursor-pointer" onClick={() => setOpenModal(!openModal)}>Cancelar</div>
+                    <div
+                      id="close-modal-button"
+                      className="text-center font-bold text-logo-orange cursor-pointer"
+                      onClick={() => setOpenModal(!openModal)}
+                    >
+                      Cancelar
+                    </div>
                   </div>
                 </div>
               </main>
@@ -132,7 +165,7 @@ function UpdateProfile({ profile }) {
         </Formik>
       </Modal>
     </>
-  )
+  );
 }
 
-export default UpdateProfile
+export default UpdateProfile;

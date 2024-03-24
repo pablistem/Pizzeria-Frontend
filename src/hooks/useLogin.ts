@@ -4,25 +4,28 @@ import { ILoginPayload } from '../types/types';
 import { login } from '../services/user.api';
 
 type options = {
-    onSuccess?: () => void;
-    onReject?: () => void;
+  onSuccess?: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onReject?: (e: Error) => void;
 };
 
-const useLogin = ({ onSuccess }: options) => {
+const useLogin = ({ onSuccess, onReject }: options) => {
   const { setAccessToken } = useContext(AuthContext);
 
   const setLogin = (payload: ILoginPayload) => {
     login(payload)
-      .then(({accessToken}) => {
-        setAccessToken(accessToken)
-      }).then(() => {
-        onSuccess?.()
-      }).catch((error) => {
-        console.error(error)
+      .then((res) => {
+        setAccessToken(res.accessToken);
       })
-  }
+      .then(() => {
+        onSuccess?.();
+      })
+      .catch((error) => {
+        onReject?.(error);
+      });
+  };
 
   return { setLogin };
-}
+};
 
 export default useLogin;

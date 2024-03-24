@@ -6,11 +6,23 @@ import gaseosa from '../assets/Food/gaseosa.jpg';
 import jamonymorron from '../assets/Food/jamonymorron.jpg';
 import { Navbar } from '../components/Navbar/Navbar';
 import useProducts from '../hooks/useProduct';
-
+import useProfile from '../hooks/useProfile';
+import { useState } from 'react';
+import CreateProfile from '../components/Profile/CreateProfileForm';
 export const Home = () => {
   const { productsData } = useProducts();
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const { profileData } = useProfile({
+    onReject: () => {
+      setOpenModal(true);
+    },
+  });
+
   return (
     <>
+      {!profileData && (
+        <CreateProfile openModal={openModal} setOpenModal={setOpenModal} />
+      )}
       <Navbar />
       <div className="flex justify-center items-center pt-20 bg-background-home">
         <div className="container mx-auto grid max-md: grid-cols-1 lg:grid-cols-2">

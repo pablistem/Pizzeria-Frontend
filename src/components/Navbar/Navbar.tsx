@@ -34,7 +34,11 @@ export const Navbar = () => {
         <h1>Pizzeria Don Remolo</h1>
         <Menu /> {/* Aquí se utiliza el componente Menu */}
         {!accessToken && <Link to={'/login'}>Login</Link>}
-        {accessToken && <div onClick={() => setLogout()} className='cursor-pointer'>Logout</div>}
+        {accessToken && (
+          <div onClick={() => setLogout()} className="cursor-pointer">
+            Logout
+          </div>
+        )}
         <div className="relative">
           <button
             className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-md"

@@ -22,20 +22,22 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [ accessToken, setAccessToken ] = useState<AccessToken>(null);
+  const [accessToken, setAccessToken] = useState<AccessToken>(null);
   const navigate = useNavigate();
 
-  useRefresh({ 
-    onSuccess: () => navigate('/'), 
-    setToken: (token: string) => setAccessToken(token) 
+  useRefresh({
+    onSuccess: () => navigate('/'),
+    setToken: (token: string) => setAccessToken(token),
   });
-  setSession(accessToken)
+  setSession(accessToken);
 
   return (
-    <AuthContext.Provider value={{
-      accessToken, 
-      setAccessToken
-      }}>
+    <AuthContext.Provider
+      value={{
+        accessToken,
+        setAccessToken,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

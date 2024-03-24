@@ -10,22 +10,25 @@ import useLogin from '../../hooks/useLogin';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const { setLogin } = useLogin({ onSuccess: () => navigate('/', { replace: true }) });
+  const onLoginSuccess = () => {
+    toastAlertSuccess('Logeado satisfactoriamente');
+    navigate('/', { replace: true });
+  };
+  const onLoginError = () => {
+    errorAlert('Error', 'Datos Invalidos');
+  };
+  const { setLogin } = useLogin({
+    onSuccess: onLoginSuccess,
+    onReject: onLoginError,
+  });
 
   const onSubmit = async (values: ILoginPayload) => {
     const loginPayload = {
       email: values.email,
       password: values.password,
     };
-
-    try {
-      setLogin(loginPayload);
-      toastAlertSuccess('Logeado satisfactoriamente');
-    } catch (error) {
-      errorAlert('Error', (error as Error).message);
-    }
+    setLogin(loginPayload);
   };
-  
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <Formik

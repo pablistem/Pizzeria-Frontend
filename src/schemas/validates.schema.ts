@@ -25,7 +25,7 @@ export const createProfileSchema = object().shape({
   lastName: string().required('Debes ingresar un apellido'),
   age: number().required('Debes ingresar una edad'),
   phone: number().required('Debes ingresar un número de teléfono'),
-})
+});
 
 export const updateProfileSchema = object().shape({
   avatar: mixed(),
@@ -34,7 +34,7 @@ export const updateProfileSchema = object().shape({
   lastName: string(),
   age: number(),
   phone: number(),
-})
+});
 
 export const createAddressSchema = object().shape({
   country: string().required(),
@@ -43,7 +43,7 @@ export const createAddressSchema = object().shape({
   street: string().required(),
   height: number().required(),
   postalCode: number().required(),
-})
+});
 
 export const updateAddressSchema = object().shape({
   country: string(),
@@ -52,5 +52,4 @@ export const updateAddressSchema = object().shape({
   street: string(),
   height: number(),
   postalCode: number(),
-})
-
+});

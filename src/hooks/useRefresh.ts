@@ -4,6 +4,7 @@ import { refreshSessions } from '../services/user.api';
 type options = {
   onSuccess?: () => void;
   onReject?: () => void;
+  // eslint-disable-next-line no-unused-vars
   setToken: (token: string) => void;
 };
 

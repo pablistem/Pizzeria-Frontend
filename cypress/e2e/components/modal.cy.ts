@@ -10,5 +10,5 @@ describe('Modal test', () => {
     cy.contains('Domicilio').should('exist');
     cy.get('#close-modal-button').click();
     cy.get('#modal').should('not.be.visible');
-  })
-})
+  });
+});

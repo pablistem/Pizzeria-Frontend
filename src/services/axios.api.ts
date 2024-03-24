@@ -10,5 +10,5 @@ export const AxiosAuth: AxiosInstance = axios.create({
   headers: {
     'Access-Control-Allow-Credentials': true,
     'Access-Control-Allow-Origin': '*',
-  }
+  },
 });
