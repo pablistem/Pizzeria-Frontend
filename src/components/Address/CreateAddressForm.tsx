@@ -8,10 +8,12 @@ import InputForm from '../InputForm/InputForm';
 import { addAddressData } from '../../services/user.api';
 import { ADDRESS_INPUTS } from '../const/inputs.auth';
 import { AxiosError } from 'axios';
+import useAuth from '../../hooks/useAuth';
 
 // eslint-disable-next-line react/prop-types
 export const CreateAddressForm = ({ profile }) => {
-  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [ openModal, setOpenModal ] = useState<boolean>(false);
+  const { setLoading } = useAuth();
 
   const onSubmit = async (values: ICreateAddress) => {
     const addressData = {
@@ -28,6 +30,7 @@ export const CreateAddressForm = ({ profile }) => {
       await addAddressData(addressData);
       toastAlertSuccess('Dirección agregada satisfactoriamente');
       setOpenModal(false);
+      setLoading(true);
     } catch (error) {
       if (error instanceof AxiosError)
         errorAlert('Error', error?.response?.data);

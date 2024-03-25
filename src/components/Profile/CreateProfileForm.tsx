@@ -7,15 +7,17 @@ import { errorAlert, toastAlertSuccess } from '../../services/alert';
 import { createProfileSchema } from '../../schemas/validates.schema';
 import UploadImage from '../UploadImage/UploadImage';
 import { INPUTS_PROFILE } from '../const/inputs.profile';
+import useAuth from '../../hooks/useAuth';
 
 // eslint-disable-next-line react/prop-types
 function CreateProfile({ openModal, setOpenModal }) {
+  const { setLoading } = useAuth()
+
   const onSubmit = async (
     values: ICreateProfile,
     actions: FormikHelpers<ICreateProfile>,
   ) => {
     const payloadCreateProfile = {
-      avatar: values.avatar,
       username: values.username,
       name: values.name,
       lastName: values.lastName,
@@ -27,7 +29,7 @@ function CreateProfile({ openModal, setOpenModal }) {
       await createProfile(payloadCreateProfile);
       toastAlertSuccess('Perfil creado exitosamente');
       setOpenModal(false);
-      window.location.reload();
+      setLoading(true);
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error?.response?.data.statusCode === 409) {
@@ -46,7 +48,6 @@ function CreateProfile({ openModal, setOpenModal }) {
     <Modal open={openModal}>
       <Formik
         initialValues={{
-          avatar: 'image',
           username: 'user',
           name: 'user',
           lastName: 'user',

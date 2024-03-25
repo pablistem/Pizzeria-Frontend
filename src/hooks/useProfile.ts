@@ -9,16 +9,14 @@ type options = {
 };
 
 const useProfile = ({ onReject }: options) => {
-  const [profileData, setProfileData] = useState<IProfile | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const { accessToken } = useAuth();
+  const [ profileData, setProfileData ] = useState<IProfile | null>(null);
+  const { accessToken, loading, setLoading } = useAuth();
 
   useEffect(() => {
     const fetchData = () => {
       if (accessToken) {
         getProfile()
           .then((data: IProfile) => {
-            setLoading(true);
             setProfileData(data);
           })
           .catch(() => {
@@ -31,7 +29,7 @@ const useProfile = ({ onReject }: options) => {
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [accessToken]);
+  }, [accessToken, loading]);
 
   return { profileData, loading };
 };

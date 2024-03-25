@@ -5,20 +5,21 @@ import { updateProfile } from '../../services/user.api';
 import { ICreateProfile } from '../../types/types';
 import { FormikHelpers, Formik, Field, Form } from 'formik';
 import { AxiosError } from 'axios';
-import { errorAlert } from '../../services/alert';
+import { errorAlert, toastAlertSuccess } from '../../services/alert';
 import { updateProfileSchema } from '../../schemas/validates.schema';
 import UploadImage from '../UploadImage/UploadImage';
 import { INPUTS_PROFILE } from '../const/inputs.profile';
+import useAuth from '../../hooks/useAuth';
 
 function UpdateProfile({ profile }) {
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const { setLoading } = useAuth();
 
   const onSubmit = async (
     values: ICreateProfile,
     actions: FormikHelpers<ICreateProfile>,
   ) => {
     const payloadUpdateProfile = {
-      avatar: values.avatar,
       username: values.username,
       name: values.name,
       lastName: values.lastName,
@@ -28,7 +29,9 @@ function UpdateProfile({ profile }) {
 
     try {
       await updateProfile(payloadUpdateProfile);
+      toastAlertSuccess('Perfil actualizado exitosamente');
       setOpenModal(false);
+      setLoading(true);
     } catch (error) {
       if (error instanceof AxiosError) {
         if (error?.response?.data.statusCode === 404) {
@@ -60,7 +63,6 @@ function UpdateProfile({ profile }) {
       <Modal open={openModal}>
         <Formik
           initialValues={{
-            avatar: profile.avatar,
             username: profile.username,
             name: profile.name,
             lastName: profile.lastName,
@@ -140,7 +142,6 @@ function UpdateProfile({ profile }) {
                       type="submit"
                       className="flex w-full text-white justify-center rounded-full bg-logo-orange mb-2 px-3 py-1.5 font-semibold shadow-sm hover:bg-red-error disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed"
                       disabled={
-                        values.avatar === profile.avatar &&
                         values.username === profile.username &&
                         values.name === profile.name &&
                         values.lastName === profile.lastName &&

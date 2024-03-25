@@ -84,8 +84,8 @@ export const getProfile = async (): Promise<IProfile> => {
 
 export const createProfile = async (
   data: ICreateProfile,
-): Promise<IProfile> => {
-  const response = await Axios({
+): Promise<void> => {
+  await Axios({
     url: '/profile',
     method: 'POST',
     data: data,
@@ -93,7 +93,6 @@ export const createProfile = async (
       'Content-Type': 'multipart/form-data',
     },
   });
-  return response.data;
 };
 
 export const updateProfile = async (data: ICreateProfile): Promise<void> => {
@@ -105,14 +104,6 @@ export const updateProfile = async (data: ICreateProfile): Promise<void> => {
       'Content-Type': 'multipart/form-data',
     },
   });
-};
-
-export const getAddressesList = async (): Promise<IAddress> => {
-  const res: AxiosResponse<IAddress> = await Axios({
-    url: '/address',
-    method: 'GET',
-  });
-  return res.data;
 };
 
 export const getAddressData = async (id: number): Promise<IAddress> => {
@@ -144,4 +135,11 @@ export const updateAddressData = async (
     data: changes,
   });
   return res.data;
+};
+
+export const removeAddress = async (id: number): Promise<void> => {
+  await Axios({
+    url: `/address/${id}`,
+    method: 'DELETE',
+  });
 };
