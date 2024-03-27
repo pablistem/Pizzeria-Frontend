@@ -36,6 +36,7 @@ export interface IProfile {
 }
 
 export interface ICreateProfile {
+  avatar: string | null,
   username: string;
   name: string;
   lastName: string;

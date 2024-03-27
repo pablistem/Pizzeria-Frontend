@@ -8,8 +8,10 @@ import { updateAddressData } from '../../services/user.api';
 import { errorAlert, toastAlertSuccess } from '../../services/alert';
 import { AxiosError } from 'axios';
 import UpdateInputForm from '../InputForm/UpdateInputForm';
+import useAuth from '../../hooks/useAuth';
 
 const AddressDetail = ({ data, open, setOpen }) => {
+  const { setLoading } = useAuth();
 
   const onSubmit = async (
     values: IUpdateAddress,
@@ -28,7 +30,7 @@ const AddressDetail = ({ data, open, setOpen }) => {
       await updateAddressData(data.id, payloadUpdateAddress);
       toastAlertSuccess('Dirección actualizada satisfactoriamente');
       setOpen(false);
-      window.location.reload();
+      setLoading(true);
     } catch (error) {
       if (error instanceof AxiosError)
         errorAlert('Error', error?.response?.data);

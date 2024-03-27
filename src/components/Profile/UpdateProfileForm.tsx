@@ -12,7 +12,7 @@ import { INPUTS_PROFILE } from '../const/inputs.profile';
 import useAuth from '../../hooks/useAuth';
 
 function UpdateProfile({ profile }) {
-  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [ openModal, setOpenModal ] = useState<boolean>(false);
   const { setLoading } = useAuth();
 
   const onSubmit = async (
@@ -20,6 +20,7 @@ function UpdateProfile({ profile }) {
     actions: FormikHelpers<ICreateProfile>,
   ) => {
     const payloadUpdateProfile = {
+      avatar: values.avatar,
       username: values.username,
       name: values.name,
       lastName: values.lastName,
@@ -63,6 +64,7 @@ function UpdateProfile({ profile }) {
       <Modal open={openModal}>
         <Formik
           initialValues={{
+            avatar: null,
             username: profile.username,
             name: profile.name,
             lastName: profile.lastName,
@@ -72,7 +74,7 @@ function UpdateProfile({ profile }) {
           validationSchema={updateProfileSchema}
           onSubmit={onSubmit}
         >
-          {({ values, handleChange }) => (
+          {({ values, handleChange, setFieldValue }) => (
             <Form>
               <main className="bg-white p-6 rounded-xl w-96">
                 <div className="grid w-full min-h-full flex-col mt-50 justify-center">
@@ -80,7 +82,13 @@ function UpdateProfile({ profile }) {
                     Editar perfil
                   </h1>
                   <div className="relative top-start w-32 justify-self-center">
-                    <UploadImage />
+                    <UploadImage 
+                      name="avatar" 
+                      id="avatar"
+                      accept=".jpg,.jpeg,.png"
+                      avatar={profile.avatar}
+                      file={values.avatar}
+                      onChange={event => {setFieldValue('avatar', event.target.files[0])}} />
                   </div>
                   <div className="w-80 p-6">
                     <div className="relative mb-2 mt-5">
@@ -113,7 +121,7 @@ function UpdateProfile({ profile }) {
                         htmlFor="last-name"
                         className="absolute top-0 left-0 h-full px-3 py-5 text-sm transition-all duration-100 ease-in-out origin-left transform scale-75 translate-x-1 -translate-y-3 opacity-75 pointer-events-none peer-placeholder-shown:opacity-100 peer-focus:opacity-75 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3 peer-placeholder-shown:translate-x-0 peer-focus:translate-x-1"
                       >
-                        Altura
+                        Apellido
                       </label>
                     </div>
                     <div className="relative">
@@ -142,6 +150,7 @@ function UpdateProfile({ profile }) {
                       type="submit"
                       className="flex w-full text-white justify-center rounded-full bg-logo-orange mb-2 px-3 py-1.5 font-semibold shadow-sm hover:bg-red-error disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed"
                       disabled={
+                        values.avatar === null &&
                         values.username === profile.username &&
                         values.name === profile.name &&
                         values.lastName === profile.lastName &&
